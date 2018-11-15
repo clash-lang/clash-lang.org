@@ -10,6 +10,13 @@
     {{ end }}
 
 	<ul class="menu__list">
+    {{ if .CurrentSection }}
+        {{ if not (eq .CurrentSection.Kind "home") }}
+            <li class="menu__item__hide"><a class="menu__link" href="/">Home</a></li>
+        {{ end }}
+    {{ else }}
+        <li class="menu__item__hide"><a class="menu__link" href="/">Home</a></li>
+    {{ end }}
 		{{- range sort .Site.Menus.main }}
 		{{- if .Name}}
 		<li class="menu__item{{if or ($currentNode.IsMenuCurrent "main" .) ($currentNode.HasMenuCurrent "main" .) }} menu__item--active{{end}}"><a class="menu__link" href="{{ .URL }}">{{ .Name }}</a></li>
