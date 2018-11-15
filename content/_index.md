@@ -4,9 +4,12 @@ title: Home
 weight: -50
 ---
 
-**Clash** is a functional hardware description language that borrows both its syntax and semantics from the functional programming language **Haskell**. It provides a familiar structural design approach to both combinational and synchronous sequential circuits. The Clash compiler transforms these high-level descriptions to low-level synthesizable **VHDL**, **Verilog**, or **SystemVerilog**. Clash is open-source, licensed under BSD.
+**Clash** is a functional hardware description language that borrows both its syntax and semantics from the functional programming language **Haskell**. It provides a familiar structural design approach to both combinational and synchronous sequential circuits. The Clash compiler transforms these high-level descriptions to low-level synthesizable **VHDL**, **Verilog**, or **SystemVerilog**.
 
-Clash is mainly [developed by QBayLogic](https://qbaylogic.com/). If you need professional support from the original developers of Clash, head over to [support plan](/support/).
+Clash is an [open-source](https://github.com/clash-lang/clash-compiler) project, licensed under the permissive [BSD2](https://github.com/clash-lang/clash-compiler/LICENSE) license, and actively maintained by [QBayLogic](https://qbaylogic.com/).
+
+[![Build Status](https://travis-ci.org/clash-lang/clash-compiler.svg?branch=master)](https://travis-ci.org/clash-lang/clash-compiler)
+[![Hackage](https://img.shields.io/hackage/v/clash-ghc.svg)](https://hackage.haskell.org/package/clash-ghc)
 
 # Features
 <div class="cards250">
@@ -23,34 +26,6 @@ Clash is mainly [developed by QBayLogic](https://qbaylogic.com/). If you need pr
         <p>Although Clash offers many features, you sometimes need to directly access VHDL, Verilog, or SystemVerilog directly. Clash allows you to do this with its own templating system.</p>
     </div>
 </div>
-
-
-# Installing
-On Ubuntu (or any Linux distribution running `snap`) run:
-
-{{< highlight bash >}}
-snap install clash
-{{< / highlight >}}
-
-On macOS run:
-
-{{< highlight bash >}}
-brew install clash
-{{< / highlight >}}
-
-On Windows run:
-
-{{< highlight bash >}}
-choco install clash
-{{< / highlight >}}
-
-On any system running Cabal ≥ 2.2, GHC ≥ 8.4 run:
-
-{{< highlight bash >}}
-cabal new-install clash-ghc
-{{< / highlight >}}
-
-See [compiling from source](#) for development versions or other platforms.
 
 # Examples
 <div class="cards450">
@@ -106,11 +81,17 @@ mmult mA mB = result
 
 </div>
 
+# Open-source community
+Clash benefits from an active community.
+Whether you need a question answered or want to contribute to open-source features, browse the features below to make the most of Clash.
 
+{{% fontawesome list-alt %}} [Mailing list](http://groups.google.com/group/clash-language)</br>
+{{% fontawesome ticket-alt %}} [Issue tracker](https://github.com/clash-lang/clash-compiler/issues)</br>
+{{% fontawesome slack-hash %}} [freenode#clash-lang](irc://chat.freenode.net/clash-lang)</br>
+{{% fontawesome slack-hash %}} [freenode#haskell-embedded](irc://chat.freenode.net/haskell-embedded)
 
-# Support and community
-Clash is an open-source community backed project, <a href="">hosted on GitHub</a> and maintained by <a href="https://qbaylogic.com/">QBayLogic</a>. 
-
+# Support
+If you need professional support from the [original developers](https://qbaylogic.com) of Clash, check out the [support plan]({{< ref "support" >}}).
 
 <style>
 .post__title{ display:none; }

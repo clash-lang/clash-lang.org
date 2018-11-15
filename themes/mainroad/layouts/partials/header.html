@@ -36,8 +36,7 @@
 		<header class="header">
 			{{ partial "menu.html" . }}
 		</header>
-        {{ if .CurrentSection }}
-        {{ if eq .CurrentSection.Kind "home" }}
+        {{ if eq .Title "Home" }}
         <div class="clash-banner">
             <div class="logo"></div>
             <div class="logo__inner">
@@ -45,6 +44,5 @@
                 <div class="logo__tagline">A modern, functional, hardware description language</div>
             </div>
         </div>
-        {{ end }}
         {{ end }}
 		<div class="wrapper clearfix">

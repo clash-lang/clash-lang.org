@@ -2,7 +2,7 @@
 {{- $currentNode := . }}
 <nav class="menu">
     {{ if .CurrentSection }}
-        {{ if not (eq .CurrentSection.Kind "home") }}
+        {{ if not (eq .Title "Home") }}
             {{ partial "menu_logo.html" }}
         {{ end }}
     {{ else }}
@@ -11,7 +11,7 @@
 
 	<ul class="menu__list">
     {{ if .CurrentSection }}
-        {{ if not (eq .CurrentSection.Kind "home") }}
+        {{ if not (eq .Title "Home") }}
             <li class="menu__item__hide"><a class="menu__link" href="/">Home</a></li>
         {{ end }}
     {{ else }}
