@@ -376,6 +376,7 @@ pre {
 	white-space: -o-pre-wrap;
 	white-space: -moz-pre-wrap;
 	white-space: -webkit-pre-wrap;
+	overflow-x: auto;
 }
 
 pre code {
@@ -385,6 +386,7 @@ pre code {
 	white-space: inherit;
 	background: inherit;
 	border: 0;
+	white-space: pre;
 }
 
 kbd {
