@@ -20,10 +20,15 @@ $(function(){
             // Gather all nodes (including text nodes!) between this function
             // definition and the next.
             var node = $block.get(0);
-            var last = $blockElements.nextAll(".nf").get(0);
+            var last = $blockElements.nextAll().filter(function () {return $(this).text() === "=";}).get(0);
+            console.log(last);
+            var beforeLast = $(last).prevAll().filter (function () {return this.offsetTop === last.offsetTop;});
+            var reallyLast = beforeLast.get(beforeLast.length - 1);
+            console.log(reallyLast);
+            console.log(beforeLast);
             var blockContents = [];
-            
-            while (node !== null && node !== last){
+
+            while (node !== null && node !== reallyLast){
                 blockContents.push(node);
                 node = node.nextSibling;
             }
