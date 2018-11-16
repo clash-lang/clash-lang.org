@@ -387,6 +387,9 @@ pre code {
 	background: inherit;
 	border: 0;
 	white-space: pre;
+	white-space: -o-pre;
+	white-space: -moz-pre;
+	white-space: -webkit-pre;
 }
 
 kbd {
