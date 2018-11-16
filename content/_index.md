@@ -28,7 +28,7 @@ Clash is an [open-source](https://github.com/clash-lang/clash-compiler) project,
 </div>
 
 # Examples
-<div class="cards450">
+<div class="cards350">
     <div class="card">
         <h2>FIR Filter</h2>
         <p>Clash allows programmers to write function without hardcoded length or element type information, such as this FIR filter:</p>
