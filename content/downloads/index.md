@@ -57,3 +57,7 @@ The CλaSH compiler is written in [Haskell](http://haskell.org) and is compiled 
         - Other: `cabal install clash-ghc --enable-documentation`
         - If you get the error `can't load .so/.DLL for: libtinfo.so (libtinfo.so: cannot open shared object file: No such file or directory)`, add a symlink from `libtinfo.5.so` to `libtinfo.so`, and retry the `cabal install` process.
     - _This is going to take awhile, so have a refreshment_ [xkcd](https://xkcd.com/303/)
+
+<style>
+.post__title{ display:none; }
+</style>

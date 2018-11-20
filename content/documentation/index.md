@@ -23,3 +23,7 @@ disable_comments: true
 {{% fontawesome globe %}} [Functional hardware](http://rahne.si/programming/2016/02/28/funcional-hadware.html)</br>
 {{% fontawesome globe %}} [Remote fpga call](http://rahne.si/programming/clash/fpga/2016/02/28/remote-core-call.html)</br>
 {{% fontawesome globe %}} [FIR filter design in Clash](http://adamwalker.github.io/Filter-Design-in-Clash/)
+
+<style>
+.post__title{ display:none; }
+</style>
