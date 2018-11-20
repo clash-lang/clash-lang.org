@@ -29,7 +29,6 @@
 	<script type="text/javascript" src="{{ "js/scripts.js" | relURL }}"></script>
 	<script type="text/javascript" src="{{ "js/jquery-3.3.1.min.js" | relURL }}"></script>
 	<link rel="shortcut icon" href="{{ "/media/logos/favicon.png" | relURL }}">
-	{{ template "_internal/google_analytics_async.html" . }}
 </head>
 <body class="body {{ if or (eq .Title "Blogs") (eq .Title "News") }}body-right-sidebar{{ else }}body-no-sidebar{{ end }}">
 	<div class="container container-outer">
