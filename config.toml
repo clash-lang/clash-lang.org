@@ -40,8 +40,22 @@ pygmentsStyle = "tango"
     categories = false # Enable "Categories" widget
 
     # TODO: lumps tags of news and blog together, no obvious way to fix this
-    tags = false 
-    tags_counter = false 
+    tags = false
+    tags_counter = false
+
+[privacy]
+  [privacy.disqus]
+    disable = true
+  [privacy.googleAnalytics]
+    disable = true
+  [privacy.instagram]
+    disable = true
+  [privacy.twitter]
+    disable = true
+  [privacy.vimeo]
+    disable = true
+  [privacy.youtube]
+    disable = true
 
 [menu]
   [[menu.main]]
