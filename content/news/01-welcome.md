@@ -10,7 +10,7 @@ mathjax: true
 ---
 
 Welcome to the new **Clash** website!
-While the [old website](http://clash-lang.github.io) served us well, we wanted to have support for a [blog]({{< ref "blog" >}}): go check out our first two posts on [matrix multiplication]({{< ref "0001-matrix-multiplication" >}}) and [systolic arrays]({{< ref "0002-systolic-arrays" >}}).
+While the [old website](http://clash-lang.github.io) served us well, we wanted to have support for a [blog]({{< ref "/blog" >}}): go check out our first two posts on [matrix multiplication]({{< ref "/blog/0001-matrix-multiplication" >}}) and [systolic arrays]({{< ref "/blog/0002-systolic-arrays" >}}).
 
 We wanted a static website for all the usual reasons (speed, security, etc), and decided to use [hugo](https://gohugo.io) because:
 
