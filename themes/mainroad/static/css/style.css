@@ -373,10 +373,10 @@ pre {
 	margin-bottom: 20px;
 	margin-bottom: 1.25rem;
 	color: #000;
-	white-space: pre-wrap;
-	white-space: -o-pre-wrap;
-	white-space: -moz-pre-wrap;
-	white-space: -webkit-pre-wrap;
+	white-space: pre;
+	white-space: -o-pre;
+	white-space: -moz-pre;
+	white-space: -webkit-pre;
 	overflow-x: auto;
 }
 
