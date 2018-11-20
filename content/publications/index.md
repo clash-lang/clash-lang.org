@@ -1,7 +1,18 @@
 ---
 identifier: publications
 title: Academic publications
+disable_comments: true
 ---
+
+# 2017
+
+* Wentink, D.J.M. (2017) <strong><a href="https://essay.utwente.nl/74336/">Signal Recovery using CλaSH</a></strong>. MSc thesis, University of Twente, Enschede, The Netherlands, December 2017.
+
+* Gottimukkala, Anirudh (2017) <strong><a href="https://essay.utwente.nl/74181/">Implementation of a digital Class-D amplifier controller in CλaSH</a></strong>. MSc thesis, University of Twente, Enschede, The Netherlands, November 2017.
+
+* Appel, R. and Folmer, H.H. and Kuper, J. and Wester, R. and Broenink, J.F. (2017). <strong>Design-Time Improvement Using a Functional Approach to Specify GraphSLAM with Deterministic Performance on an FPGA</strong>. In 2017 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS) (pp. 797-803). DOI: <a href="https://doi.org/10.1109/IROS.2017.8202241">10.1109/IROS.2017.8202241</a>
+
+* Kuipers, F.P. (2017) <strong><a href="https://essay.utwente.nl/72512/">FPGA design support using CλaSH and LUNA</a></strong>. MSc thesis, University of Twente, Enschede, The Netherlands, May 2017.
 
 # 2016
 
@@ -63,4 +74,6 @@ title: Academic publications
 
 * Kooijman, M. (2009) <strong><a href="http://essay.utwente.nl/59381/">Haskell as a higher order structural hardware description language</a></strong>. MSc thesis, University of Twente, Enschede, The Netherlands, December 2009.
 
-
+<style>
+.post__title{ display:none; }
+</style>
