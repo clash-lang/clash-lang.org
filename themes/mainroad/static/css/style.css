@@ -360,10 +360,10 @@ code {
 code {
 	padding: 0 5px;
 	color: #4b7745;
-	white-space: nowrap;
-	white-space: -o-nowrap;
-	white-space: -moz-nowrap;
-	white-space: -webkit-nowrap;
+	white-space: wrap;
+	white-space: -o-wrap;
+	white-space: -moz-wrap;
+	white-space: -webkit-wrap;
 }
 
 pre {
