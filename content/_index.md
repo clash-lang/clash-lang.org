@@ -39,7 +39,7 @@ fir coeffs x = dotp coeffs (window x)
     dotp as bs = sum (zipWith (*) as bs)
 {{< / highlight >}}
         </p>
-        <p>Clash will figure out the type of this function through its powerful type interference system. To "lock" types in place, we can partially apply `fir`: </p>
+        <p>Clash will figure out the type of this function through its powerful type inference system. To "lock" types in place, we can partially apply `fir`: </p>
         <p>
 {{< highlight haskell >}}
 -- inferred: Signal dom Int -> Signal dom Int
