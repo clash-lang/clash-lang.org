@@ -391,6 +391,7 @@ pre code {
 	white-space: -o-pre;
 	white-space: -moz-pre;
 	white-space: -webkit-pre;
+	overflow-wrap: normal;
 }
 
 kbd {
