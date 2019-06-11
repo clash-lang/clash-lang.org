@@ -17,11 +17,9 @@
 			{{ .Summary }}
 		</div>
 		{{- if .Site.Params.readmore }}
-		{{- if .Truncated }}
 		<div class="list__footer">
 			<a class="list__footer-readmore btn" href="{{ .RelPermalink }}">{{ T "read_more" }}</a>
 		</div>
-		{{- end }}
 		{{- end }}
 	</div>
 </article>

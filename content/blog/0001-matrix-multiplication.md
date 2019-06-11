@@ -5,7 +5,7 @@ description: "Building, restructuring, and pipelining matrix multiplication with
 disable_comments: false
 author: "martijnbastiaan"
 authorbox: true # Optional, enable authorbox for specific post
-summary: hello
+summary: Matrix multiplications happen to be useful in a very broad range of computational applications, such as computer graphics, artificial intelligence, and climate change research. At QbayLogic we help implement these (and more) applications on FPGAs using Clash. In this blogpost we will explore the intricacies of implementing matrix multiplications on FPGAs. We will explore the apparent differences between hardware and software development, how to use Clash to convert a “naive” algorithm to one suitable for an FPGA, and the use of Clash dependent types.
 toc: true
 mathjax: true
 categories:

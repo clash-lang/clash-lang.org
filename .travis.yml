@@ -5,8 +5,8 @@ language: generic
 env:
   global:
       - GIT_URL: https://github.com/clash-lang/clash-lang.github.io.git
-      - HUGO_CHECKSUM: 1c1d8942e12f36ef3f5ca4dd8a0a1bd9b5de87a6accc839dfbae705503e7693c
-      - HUGO_URL: https://github.com/gohugoio/hugo/releases/download/v0.44/hugo_0.44_Linux-64bit.tar.gz
+      - HUGO_CHECKSUM: 39d3119cdb9ba5d6f1f1b43693e707937ce851791a2ea8d28003f49927c428f4
+      - HUGO_URL: https://github.com/gohugoio/hugo/releases/download/v0.55.6/hugo_0.55.6_Linux-64bit.tar.gz
 
 addons:
     apt:
