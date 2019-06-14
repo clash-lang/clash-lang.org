@@ -357,6 +357,11 @@ code {
 	border: 0px solid #ebebeb;
 }
 
+.post__content > pre {
+	margin-left: 2em;
+	margin-right: 2em;
+}
+
 code {
 	padding: 0 5px;
 	color: #4b7745;
