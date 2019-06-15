@@ -4,6 +4,12 @@ title: Academic publications
 disable_comments: true
 ---
 
+# 2019
+
+* Raalte, E. (2019) <strong><a href="https://essay.utwente.nl/77541/">Automating system generation in Clash</a></strong>. MSc thesis, University of Twente, The Netherlands, March 2019.
+
+* Wijlens, B. (2019) <strong><a href="https://essay.utwente.nl/77411/"> Building a framework in Clash to create deterministic sensor and actuator interfaces for FPGAs</a></strong>. MSc thesis, University of Twente, The Netherlands, 2019.
+
 # 2017
 
 * Wentink, D.J.M. (2017) <strong><a href="https://essay.utwente.nl/74336/">Signal Recovery using CλaSH</a></strong>. MSc thesis, University of Twente, Enschede, The Netherlands, December 2017.
