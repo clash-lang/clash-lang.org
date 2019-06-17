@@ -112,6 +112,11 @@ The catastropic issue is that the output port corresponding to the argument of `
 
 _TODO: create a picture making the above more intuiative._
 
+There are two options here:
+
+1. Duplicate the output (and input) ports of the `h` argument so that `x` and `y` can be connected to these outputs seperately; this behaviour basically corresponds to the specialisation transformation Clash applies already.
+2. Use linear arrows
+
 # Synchronisation and the case for higher-order top-level functions
 You might argue that a first-order top-level function (`topEntity`) is a sensible restriction, after all, it's kind of the "entry point" into your entire circuit (much like `main :: IO ()` in regular Haskell program).
 So what use would we have for a higher-order `topEnity`?
