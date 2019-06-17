@@ -34,11 +34,25 @@ In many situations this is a straightforwared prcoess, but what happens when one
 f :: (Int32 -> Int32) -> Int32 -> Bool
 f h y = (h y) < 10
 
-g :: Int32 -> Bool
-g x = f k x
-
 k :: Int32 -> Int32
+
+topEntity :: Int32 -> Bool
+topEntity x = f k x
 {{< / highlight >}}
 
 How many bits are needed for a port of type `(Int32 -> Int32)`? How would the input port `y` corresponding to hook up to the input port corresponding to `h`? How, inside `g`, do we hook up the input ports of `k` to the input port to the input port `h`?
-Clearly this idea of mapping arguments to input ports, and results to output ports, doesn't work when our arguments have a function type.
+Clearly this idea of mapping arguments to input ports, and results to output ports, doesn't work when our arguments have a function type. So how does Clash handle this? Well, before converting the expressions to a circuit, uses a process called specialisation to transform the above code to:
+
+{{< highlight haskell >}}
+fK :: Int32 -> Bool
+fK y = (k y) < 10
+
+k :: Int32 -> Int32
+
+topEntity :: Int32 -> Bool
+topEntity x = fK x
+{{< / highlight >}}
+
+resulting in a collection of functions where none of them have an argument with a function type; and so the idea of mapping arguments to input ports, and results to output works, will work again.
+This specialisation process will always succeed as long as `topEntity` doesn't have any arguments with a function type.
+And in the case that `topEntity` does have arguments with a function type, Clash gives up immediately and reports to the user that their code cannot be translated into a circuit. 
