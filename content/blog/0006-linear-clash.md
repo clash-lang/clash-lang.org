@@ -64,11 +64,11 @@ So what use would we have for a higher-order `topEnity`?
 One such case is when your circuit is communicating with peripherals that have an explicit synchronisation, whether it be an _acknowledge_, _ready_, or _wait_ signal, and both in case your circuit is producing that synchronisation signal or consuming that synchronistation signal.
 In these cases, when you're producing data, then this data is part of the result of your `topEntity`, corresponding to an output port, and the synchronistation channel becomes an argument, corresponding to an input.
 When you're consuming data, then this data becomes an argument, corresponding to an output port, and the synchronistation channel becomes part of the result, corresponding to an output port.
-Now imagine that your circuit is communicating with six peripherals.
+Now imagine that your circuit is communicating with four peripherals, with 3 peripherals producing data, and 1 consuming data.
 With a first-order restriction on your `topEntity`, the only way to implement this is to have something like:
 
 {{< highlight haskell >}}
-topEntity :: DataIn1 -> DataIn2 -> SyncIn3 -> DataIn4 -> (SyncOut1, SyncOut2, DataOut3, SyncIn4)
+topEntity :: Data1 -> Data2 -> Sync3 -> Data4 -> (Sync1, Sync2, Data3, Sync4)
 topEntity d1 d2 s3 d4 = (s1, s2, d3, s4)
  where
   ...
@@ -77,16 +77,18 @@ topEntity d1 d2 s3 d4 = (s1, s2, d3, s4)
 where the data and synchronisation part of a channel become syntactically seperated, and you'll quickly use the overview of what's going on.
 It becomes worse when you get to protocols like AXI4, where you're the consumer of some data, and the producer of some other data.
 
-The interface just becomes so much nice if you could simply write:
+The interface just becomes so much nicer if you could simply write:
 
 {{< highlight haskell >}}
-type DataConsumer1 = DataIn1 -> SyncOut1
-type DataConsumer2 = DataIn2 -> SyncOut2
-type DataProducer3 = SyncIn3 -> DataOut3
-type DataConsumer4 = DataIn4 -> SyncOut4
+type DataProducer1 = Sync1 -> Data1
+type DataProducer2 = Sync2 -> Data2
+type DataConsumer3 = Data3 -> Sync3
+type DataProducer4 = Sync4 -> Data4
 
-topEntity :: DataConsumer1 -> DataConsumer2 -> DataProducer3 -> DataConsumer4
+topEntity :: DataProducer1 -. DataProducer2 -. DataConsumer3 -. DataConsumer4
 topEntity c1 c2 p3 = c4
  where
   ...
 {{< / highlight >}}
+
+Also note that it's impossible to convert between the two, and so we really need linear types for the above API to work safely.
