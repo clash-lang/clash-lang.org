@@ -10,7 +10,7 @@ toc: false
 mathjax: false
 ---
 
-__TL;DR Consuming a function linearly means consuming the function's argument linearly, which at the circuit-level means that the output port of a higher-order argument is only driven by a single source. This means we need linear arrows to correctly translate non-duplicable functions, e.g. the higher-order arguments of the very top of our function hierarcy.__
+__TL;DR Consuming a function linearly means consuming the function's argument linearly, which in a circuit context means that the output port of a higher-order argument is only driven/written by a single source. This means we need linear arrows to correctly translate non-duplicable functions, e.g. higher-order arguments corresponding to components peripheral to our circuit.__
 
 I'm writing this post on the train on my way back from an amazing ZuriHac 2019, where I got to meet a lot of new people, many of them really excited about Clash!
 I also got to talk with some about the linear types feature that will hopefully hit GHC HEAD very soon.
@@ -89,7 +89,28 @@ Inside the component for `f` we would then:
 * connect the input port corresponding to `y` to the output port corresponding to `h`s argument,
 * and connect the input port corresponding to `h`s result to the left input of the `<` component.
 
-Inside `topEntity`
+Inside `topEntity`, we would then:
+
+* Connect the input port of `k` to the output port of `f` that corresponds to the argument of `h`,
+* and connect the ouptput port of `k` to the input port of `f` that corresponds to the result of `h`.
+
+_TODO: create a picture making the above more intuiative._
+
+# Consuming functions linearly
+
+Now let's say we change our definition of `f` to:
+
+{{< highlight haskell >}}
+f :: (Int32 -> Int32) -> Int32 -> Int -> Bool
+f h x y = (h x + h y) < 10
+{{< / highlight >}}
+
+i.e. apply the function `h` twice to different arguments.
+If we would keep the same translation, then the input port corresponding the the result of `h` would be connected to the input ports of the `+` component.
+There are no issues here, a source can drive/write multiple sinks.
+The catastropic issue is that the output port corresponding to the argument of `h` is now being driven/written by the input ports corresponding to `x` and `y`: a sink should only be driven/written by a single source!
+
+_TODO: create a picture making the above more intuiative._
 
 # Synchronisation and the case for higher-order top-level functions
 You might argue that a first-order top-level function (`topEntity`) is a sensible restriction, after all, it's kind of the "entry point" into your entire circuit (much like `main :: IO ()` in regular Haskell program).
