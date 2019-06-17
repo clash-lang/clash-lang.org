@@ -10,7 +10,7 @@ toc: false
 mathjax: false
 ---
 
-__TL;DR What does it mean for a function to be used linearly? It means that function's _argument_ will be used linearly. Somewhat surprisingly, in a circuit context it means that the _output port_ of a higher-order argument is only driven by a single source. This means we need linear arrows to correctly translate non-duplicable functions, e.g. higher-order arguments corresponding to components peripheral to the circuit.__
+__TL;DR In the context of linear types, what does it mean for a function to be consumed exactly once? It means to apply it to a single argument, and consume its result only once. Somewhat surprisingly, in a circuit context it means that the output port of a higher-order argument is only driven by a single source. This means we need linear types to correctly translate non-duplicable functions, e.g. higher-order arguments corresponding to components peripheral to the circuit.__
 
 I'm writing this post on the train on my way back from an amazing ZuriHac 2019, where I got to meet a lot of new people, many of them really excited about Clash!
 I also got to talk with some about the linear types feature that will hopefully hit GHC HEAD very soon.
