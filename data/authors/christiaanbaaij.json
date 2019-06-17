@@ -1,0 +1,10 @@
+{
+    "name": "Christiaan Baaij",
+    "bio": "Christiaan Baaij is one of the initial developers of the Clash compiler.",
+    "image": "/media/authors/christiaanbaaij.jpg",
+    "weight": 1,
+    "social": {
+        "twitter": "christiaanbaaij",
+        "github": "https://www.github.com/christiaanb"
+    }
+}
