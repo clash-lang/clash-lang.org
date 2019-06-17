@@ -10,7 +10,7 @@ toc: false
 mathjax: false
 ---
 
-__TL;DR What does it mean for a function to be used linearly? It means that it's argument will be used linearly. Somewhat surprisingly, in a circuit context it means that the output port of a higher-order argument is only driven by a single source. This means we need linear arrows to correctly translate non-duplicable functions, e.g. higher-order arguments corresponding to components peripheral to the circuit.__
+__TL;DR What does it mean for a function to be used linearly? It means that it's _argument_ will be used linearly. Somewhat surprisingly, in a circuit context it means that the _output port_ of a higher-order argument is only driven by a single source. This means we need linear arrows to correctly translate non-duplicable functions, e.g. higher-order arguments corresponding to components peripheral to the circuit.__
 
 I'm writing this post on the train on my way back from an amazing ZuriHac 2019, where I got to meet a lot of new people, many of them really excited about Clash!
 I also got to talk with some about the linear types feature that will hopefully hit GHC HEAD very soon.
@@ -30,7 +30,7 @@ Clash will convert this to a circuit with two 32-bit input ports, corresponding 
 That is, Clash will create a circuit from a function where the function's arguments are transformed to input ports, and the result of the function is mapped to an output port.
 And then when a function is called, the circuits corresponding to the applied arguments are connected to the input ports, and the output port is connected to the circuits corresponding to the expressions using the result of the (fully) applied circuit.
 
-In many situations this is a straightforwared prcoess, but what happens when one of the arguments has a function type?
+In many situations this is a straightforward process, but what happens when one of the arguments has a function type?
 
 {{< highlight haskell >}}
 f :: (Int32 -> Int32) -> Int32 -> Bool
@@ -64,7 +64,7 @@ So what if we really wanted a higher-order `topEntity`, how could we then procee
 Now the following concept is exactly described in the Geometry of Synthesis papers, for any argument with a function type:
 
 * The function arguments become output ports,
-* and the function result becomes an output port,
+* and the function result becomes an input port,
 * and if any of the arguments are themself higher-order then the "polarity" inside of them will be switched again.
 
 So in:
