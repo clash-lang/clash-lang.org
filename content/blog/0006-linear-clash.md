@@ -10,6 +10,8 @@ toc: false
 mathjax: false
 ---
 
+__TL;DR Consuming a function linearly means consuming the function's argument linearly, which at the circuit-level means that the output port of a higher-order argument is only driven by a single source. This means we need linear arrows to correctly translate non-duplicable functions, e.g. the higher-order arguments of the very top of our function hierarcy.__
+
 I'm writing this post on the train on my way back from an amazing ZuriHac 2019, where I got to meet a lot of new people, many of them really excited about Clash!
 I also got to talk with some about the linear types feature that will hopefully hit GHC HEAD very soon.
 There were some thoughts floating around in my head on how to use linear types (not "original" thoughts, but I'll get to that later) for Clash, but wasn't really sure how the linear arrows approach would actually fit.
@@ -57,7 +59,39 @@ resulting in a collection of functions where none of them have an argument with 
 This specialisation process will always succeed as long as `topEntity` doesn't have any arguments with a function type.
 And in the case that `topEntity` does have arguments with a function type, Clash gives up immediately and reports to the user that their code cannot be translated into a circuit.
 
-# Synchronisation and the case for a higher-order top-level functions
+# Synthesis of higher order functions, take 2
+So what if we really wanted a higher-order `topEntity`, how could we then proceed?
+Now the following concept is exactly described in the Geometry of Synthesis papers, for any argument with a function type:
+
+* The function arguments become output ports,
+* and the function result becomes an output port,
+* and if any of the arguments are themself higher-order then the "polarity" inside of them will be switched again.
+
+So in:
+
+{{< highlight haskell >}}
+f :: (Int32 -> Int32) -> Int32 -> Bool
+f h y = (h y) < 10
+
+k :: Int32 -> Int32
+
+topEntity :: Int32 -> Bool
+topEntity x = f k x
+{{< / highlight >}}
+
+the component for `f` would get: 
+
+* an additional `Int32` input port corresponding to the result of the `h` argument, 
+* and an additional `Int32` output port corresponding to the argument of `h`.
+
+Inside the component for `f` we would then:
+
+* connect the input port corresponding to `y` to the output port corresponding to `h`s argument,
+* and connect the input port corresponding to `h`s result to the left input of the `<` component.
+
+Inside `topEntity`
+
+# Synchronisation and the case for higher-order top-level functions
 You might argue that a first-order top-level function (`topEntity`) is a sensible restriction, after all, it's kind of the "entry point" into your entire circuit (much like `main :: IO ()` in regular Haskell program).
 So what use would we have for a higher-order `topEnity`?
 
