@@ -65,3 +65,28 @@ One such case is when your circuit is communicating with peripherals that have a
 In these cases, when you're producing data, then this data is part of the result of your `topEntity`, corresponding to an output port, and the synchronistation channel becomes an argument, corresponding to an input.
 When you're consuming data, then this data becomes an argument, corresponding to an output port, and the synchronistation channel becomes part of the result, corresponding to an output port.
 Now imagine that your circuit is communicating with six peripherals.
+With a first-order restriction on your `topEntity`, the only way to implement this is to have something like:
+
+{{< highlight haskell >}}
+topEntity :: DataIn1 -> DataIn2 -> SyncIn3 -> DataIn4 -> (SyncOut1, SyncOut2, DataOut3, SyncIn4)
+topEntity d1 d2 s3 d4 = (s1, s2, d3, s4)
+ where
+  ...
+{{< / highlight >}}
+
+where the data and synchronisation part of a channel become syntactically seperated, and you'll quickly use the overview of what's going on.
+It becomes worse when you get to protocols like AXI4, where you're the consumer of some data, and the producer of some other data.
+
+The interface just becomes so much nice if you could simply write:
+
+{{< highlight haskell >}}
+type DataConsumer1 = DataIn1 -> SyncOut1
+type DataConsumer2 = DataIn2 -> SyncOut2
+type DataProducer3 = SyncIn3 -> DataOut3
+type DataConsumer4 = DataIn4 -> SyncOut4
+
+topEntity :: DataConsumer1 -> DataConsumer2 -> DataProducer3 -> DataConsumer4
+topEntity c1 c2 p3 = c4
+ where
+  ...
+{{< / highlight >}}
