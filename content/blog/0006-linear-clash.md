@@ -10,7 +10,7 @@ toc: false
 mathjax: false
 ---
 
-__TL;DR Consuming a function linearly means consuming the function's argument linearly, which in a circuit context means that the output port of a higher-order argument is only driven/written by a single source. This means we need linear arrows to correctly translate non-duplicable functions, e.g. higher-order arguments corresponding to components peripheral to our circuit.__
+__TL;DR Consuming a function linearly means consuming the function's argument linearly, which in a circuit context means that the output port of a higher-order argument is only driven/written by a single source. This means we need linear arrows to correctly translate non-duplicable functions, e.g. higher-order arguments corresponding to components peripheral to the circuit.__
 
 I'm writing this post on the train on my way back from an amazing ZuriHac 2019, where I got to meet a lot of new people, many of them really excited about Clash!
 I also got to talk with some about the linear types feature that will hopefully hit GHC HEAD very soon.
