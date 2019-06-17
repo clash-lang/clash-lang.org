@@ -55,4 +55,13 @@ topEntity x = fK x
 
 resulting in a collection of functions where none of them have an argument with a function type; and so the idea of mapping arguments to input ports, and results to output works, will work again.
 This specialisation process will always succeed as long as `topEntity` doesn't have any arguments with a function type.
-And in the case that `topEntity` does have arguments with a function type, Clash gives up immediately and reports to the user that their code cannot be translated into a circuit. 
+And in the case that `topEntity` does have arguments with a function type, Clash gives up immediately and reports to the user that their code cannot be translated into a circuit.
+
+# Synchronisation and the case for a higher-order top-level functions
+You might argue that a first-order top-level function (`topEntity`) is a sensible restriction, after all, it's kind of the "entry point" into your entire circuit (much like `main :: IO ()` in regular Haskell program).
+So what use would we have for a higher-order `topEnity`?
+
+One such case is when your circuit is communicating with peripherals that have an explicit synchronisation, whether it be an _acknowledge_, _ready_, or _wait_ signal, and both in case your circuit is producing that synchronisation signal or consuming that synchronistation signal.
+In these cases, when you're producing data, then this data is part of the result of your `topEntity`, corresponding to an output port, and the synchronistation channel becomes an argument, corresponding to an input.
+When you're consuming data, then this data becomes an argument, corresponding to an output port, and the synchronistation channel becomes part of the result, corresponding to an output port.
+Now imagine that your circuit is communicating with six peripherals.
