@@ -1,0 +1,10 @@
+{
+    "name": "Christiaan Baaij",
+    "bio": "Christiaan Baaij is co-founder of QBayLogic B.V. and one of the core developers of the Clash compiler.",
+    "image": "/media/authors/christiaanbaaij.jpg",
+    "weight": 1,
+    "social": {
+        "twitter": "christiaanbaaij",
+        "github": "https://www.github.com/christiaanb"
+    }
+}
