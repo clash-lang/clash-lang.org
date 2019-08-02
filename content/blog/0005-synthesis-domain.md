@@ -42,7 +42,7 @@ After a few design iterations (see [PR #527](https://github.com/clash-lang/clash
 
 {{< highlight haskell >}}
 register
-  :: ( KnownDomain dom conf
+  :: ( KnownDomain dom
      , Undefined a )
   => Clock dom
   -> Reset dom
@@ -56,7 +56,7 @@ register clk rst gen initial i = ..
 First off:
 
 {{< highlight haskell >}}
-  :: ( KnownDomain dom conf
+  :: ( KnownDomain dom
 {{< / highlight >}}
 
 ^ This is the core of the change: functions that need to know anything about the synthesis domain need a `KnownDomain` constraint. It's made up of two parts. The first, `dom :: Symbol`, is the name for the domain. This dom uniquely refers to the second part, `conf :: DomainConfiguration`. "Uniquely" in this context means that there can never be two intances where `dom1 == dom2`, but `conf1 /= conf2`. We'll later see how to actually use this contraint, and what properties it carries.
@@ -119,6 +119,30 @@ and `vSyncUndefined` to create an other domain:
 createDomain vSyncUndefined{vTag="SyncUndefined_2300", vPeriod=2300}
 {{< / highlight >}}
 
+## How to use: constrained synthesis domains
+It sometimes happens that a particular function can only handle certian kinds of domains. For example, you might be implementing a component mimicking an existing piece of hardware made by an FPGA vendor only supporting asynchronous resets. In this case, you'd like your components to work on domains configured to use asynchronous resets. This particular case used to be handled by taking a special kind of `Reset`:
+
+{{< highlight haskell >}}
+myIP
+  :: Clock dom gated
+  -> Reset dom 'Asynchronous
+  -> [..]
+{{< / highlight >}}
+
+`Reset` lost its second argument however, so we now have to handle this in the constraints like so:
+
+{{< highlight haskell >}}
+myIP
+  :: ( KnownDomain dom
+     , DomainResetKind dom ~ 'Asynchronous
+     )
+  :: Clock dom
+  -> Reset dom
+  -> [..]
+{{< / highlight >}}
+
+We can constrain initial value behavior, clock periods, and all other domain properties in a similar fashion using: `DomainResetPolarity`, `DomainInitBehavior`, `DomainActiveEdge`, and `DomainPeriod`.
+
 
 ## How to use: initial values
 Create a domain using the instructions above, setting `Defined` or `Undefined` however you wish. Given the simple counter we've seen before:
@@ -132,7 +156,7 @@ createDomain vSystem{vTag="AsyncUndefined", vReset=Asynchronous, vInit=Undefined
 createDomain vSystem{vTag="AsyncDefined",   vReset=Asynchronous, vInit=Defined}
 
 counter
-  :: HiddenClockResetEnable dom conf
+  :: HiddenClockResetEnable dom
   => Signal dom Int
 counter = register 0 (counter + 1)
 
@@ -166,21 +190,46 @@ Async:
 ## How to use: hidden clocks, resets, and enables
 Syntax has changed _slightly_, with some type variables having moved to the synthesis domain. The explicitness of `Enable` slightly changes names of some constructs. To sum it up:
 
-* `SystemClockReset` is now called `SystemClockResetEnable`, as it now includes the enable signal too. 
+* `SystemClockReset` is now called `SystemClockResetEnable`, as it now includes the enable signal too.
 * `HiddenClockReset` is now called `HiddenClockResetEnable`, as it now includes the enable signal too.
-* `HiddenClock conf gated` is now `HiddenClock dom conf`. 
-* `HiddenReset conf sync` is now `HiddenReset dom conf`. 
-* `HiddenEnable dom conf` has been added. 
+* `HiddenClock conf gated` is now `HiddenClock dom`.
+* `HiddenReset conf sync` is now `HiddenReset dom`.
+* `HiddenEnable dom` has been added.
 
 All of the `Hidden*` constructs carry a `KnownDomain` constraint.
+
+## How to use: explicit clocks, resets, and enables
+Nothing fundamentally has changed, but a lot of components now take an extra argument: `Enable dom`. Additionally, they now take an extra constraint `KnownDomain dom`. We plan on eventually removing the constraint again, but this will take some engineering and validation. In short, what this means is that - for example - `register` looked like:
+
+{{< highlight haskell >}}
+register
+  :: Undefined a
+  => Clock dom
+  -> Reset dom
+  -> a
+  -> [..]
+{{< / highlight >}}
+
+and now looks like:
+
+{{< highlight haskell >}}
+register
+  :: ( KnownDomain dom
+     , Undefined a )
+  => Clock dom
+  -> Reset dom
+  -> Enable dom
+  -> a
+  -> [..]
+{{< / highlight >}}
 
 # Bonus: multiple hidden clocks
 Thanks to the API changes, you can now use multiple hidden clocks, resets, and enables. It basically works as you'd expect it would:
 
 {{< highlight haskell >}}
 delay2
-  :: ( HiddenClockResetEnable domA confA
-     , HiddenClockResetEnable domB confB )
+  :: ( HiddenClockResetEnable domA
+     , HiddenClockResetEnable domB )
   => Signal domA Int
   -> Signal domB Int
   -> (Signal domA Int, Signal domB Int)
