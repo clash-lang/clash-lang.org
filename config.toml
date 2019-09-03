@@ -59,10 +59,10 @@ pygmentsStyle = "tango"
 
 [menu]
   [[menu.main]]
-    identifier = "downloads"
-    name = "Downloads"
+    identifier = "install-clash"
+    name = "Install Clash"
     pre = ""
-    url = "/downloads/"
+    url = "/install/"
     weight = 60
 
   [[menu.main]]
