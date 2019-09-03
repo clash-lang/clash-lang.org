@@ -24,7 +24,7 @@ $ clashi
 
 The first value, `X`, signifies an _undefined_ value with similar meaning to its Verilog, SystemVerilog, and VHDL counterpart. Whenever you have to deal with undefined values, you have to be careful not to evaluate them during simulation at the risk of stopping the simulation entirely. This change in Clash meant that circuits previously not having to deal with undefined values, suddenly had to. This was especially annoying for users that used strict data structures in order to increase simulation performance - for no good reason their simulations wouldn't run anymore.
 
-Undefined initial values had never been intented to stay around for long though, as almost all mainstream FPGAs support defined register initial values. With [PR #498](https://github.com/clash-lang/clash-compiler/pull/498) merged, Clash would now assume the reset value as initial value too:
+Undefined initial values had never been intended to stay around for long though, as almost all mainstream FPGAs support defined register initial values. With [PR #498](https://github.com/clash-lang/clash-compiler/pull/498) merged, Clash would now assume the reset value as initial value too:
 
 ```
 $ clashi
@@ -33,7 +33,7 @@ $ clashi
 [0,0,1,2,3]
 ```
 
-Great! Case closed? 
+Great! Case closed?
 
 No, not really. While this strategy covers a good chunk of use cases, it doesn't account for them all. For example, reconfigurable regions of many FPGAs do _not_ support defined initial values, and neither do ASICs. What we actually need is the ability to configure whether a specific circuit has defined or undefined initial values.
 
@@ -43,7 +43,7 @@ After a few design iterations (see [PR #527](https://github.com/clash-lang/clash
 {{< highlight haskell >}}
 register
   :: ( KnownDomain dom
-     , Undefined a )
+     , NFDataX a )
   => Clock dom
   -> Reset dom
   -> Enable dom
@@ -59,10 +59,10 @@ First off:
   :: ( KnownDomain dom
 {{< / highlight >}}
 
-^ This is the core of the change: functions that need to know anything about the synthesis domain need a `KnownDomain` constraint. The `dom` part of that construct is a type level string, or `dom :: Symbol`, and represents the name of the domain. A name uniquely refers to a set of domain configuration options. We'll later see how to actually use this contraint, and what properties it carries.
+^ This is the core of the change: functions that need to know anything about the synthesis domain need a `KnownDomain` constraint. The `dom` part of that construct is a type level string, or `dom :: Symbol`, and represents the name of the domain. A name uniquely refers to a set of domain configuration options. We'll later see how to actually use this constraint, and what properties it carries.
 
 {{< highlight haskell >}}
-     , Undefined a )
+     , NFDataX a )
 {{< / highlight >}}
 
 ^ For users of the development version of Clash this should be familiar. It's a constraint that considerably improves dealing with undefined values. For more information, see the blogpost [Undefined values: how do they work?](/blog/0004-undefined-values/).
@@ -75,7 +75,7 @@ First off:
 
 ^ Both `Clock` and `Reset` have been simplified. `Clock` used to carry and extra type argument, indicating whether it was a gated clock or not. Because gated clocks don't really exist on FPGAs, we decided to remove this altoghether. Instead, what we _actually_ implemented was some sort of "enabled" clock: a simple wire indicating whether a component is active or not. This has been moved to a separate argument `Enable`. `Reset` used to carry an extra type argument too, indicating whether it was a _synchronous_ or _asynchronous_ reset. This is now part of the synthesis domain. For all arguments, `dom` indicates what domain they belong to.
 
-Finally, not much has changed for `Signal`. `dom` is of kind `Symbol` (a type level string), pointing to the domain carried by the `KnownDomain` constraint. The obvious next question is, what does a domain configuration actually look like? 
+Finally, not much has changed for `Signal`. `dom` is of kind `Symbol` (a type level string), pointing to the domain carried by the `KnownDomain` constraint. The obvious next question is, what does a domain configuration actually look like?
 
 
 {{< highlight haskell >}}
@@ -88,7 +88,7 @@ data DomainConfiguration
   , _edge :: ActiveEdge
   -- ^ Active edge of the clock (not yet implemented)
   , _reset :: ResetKind
-  -- ^ Whether resets are synchronous (edge-sensitive) or 
+  -- ^ Whether resets are synchronous (edge-sensitive) or
   -- ^ asynchronous (level-sensitive)
   , _init :: InitBehavior
   -- ^ Whether the initial (or "power up") value of memory elements is
@@ -98,13 +98,13 @@ data DomainConfiguration
   }
 {{< / highlight >}}
 
-Quite a few options! 
+Quite a few options!
 
 ## How to use: synthesis domains
 Because it's quite a tedious task to actually write instances for `KnownDomain` due to its use of GADTs and promoted data kinds, we've written a convenience Template Haskell function called `createDomain`. It takes a `VDomainConfiguration`: it's similar to `DomainConfiguration`, but with `Domain` and `Nat` replaced with `String` and `Integer` respectively, such that it can be represented on Haskell runtime. To create a synthesis domain based on the `System` domain, but with _synchronous_ resets and _undefined_ initial values use:
 
 {{< highlight haskell >}}
-createDomain vSystem{vTag="SyncUndefined", vReset=Synchronous, vInit=Undefined}
+createDomain vSystem{vName="SyncUndefined", vReset=Synchronous, vInit=Undefined}
 {{< / highlight >}}
 
 After doing this, you can use `SyncUndefined` in your type signatures:
@@ -116,11 +116,11 @@ f :: Signal SyncUndefined Bool
 and `vSyncUndefined` to create an other domain:
 
 {{< highlight haskell >}}
-createDomain vSyncUndefined{vTag="SyncUndefined_2300", vPeriod=2300}
+createDomain vSyncUndefined{vName="SyncUndefined_2300", vPeriod=2300}
 {{< / highlight >}}
 
 ## How to use: constrained synthesis domains
-It sometimes happens that a particular function can only handle certian kinds of domains. For example, you might be implementing a component mimicking an existing piece of hardware made by an FPGA vendor only supporting asynchronous resets. In this case, you'd like your components to work on domains configured to use asynchronous resets. This particular case used to be handled by taking a special kind of `Reset`:
+It sometimes happens that a particular function can only handle certain kinds of domains. For example, you might be implementing a component mimicking an existing piece of hardware made by an FPGA vendor only supporting asynchronous resets. In this case, you'd like your components to work on domains configured to use asynchronous resets. This particular case used to be handled by taking a special kind of `Reset`:
 
 {{< highlight haskell >}}
 myIP
@@ -150,10 +150,10 @@ Create a domain using the instructions above, setting `Defined` or `Undefined` h
 {{< highlight haskell >}}
 import Clash.Prelude
 
-createDomain vSystem{vTag="SyncUndefined",  vReset=Synchronous,  vInit=Undefined}
-createDomain vSystem{vTag="SyncDefined",    vReset=Synchronous,  vInit=Defined}
-createDomain vSystem{vTag="AsyncUndefined", vReset=Asynchronous, vInit=Undefined}
-createDomain vSystem{vTag="AsyncDefined",   vReset=Asynchronous, vInit=Defined}
+createDomain vSystem{vName="SyncUndefined",  vReset=Synchronous,  vInit=Undefined}
+createDomain vSystem{vName="SyncDefined",    vReset=Synchronous,  vInit=Defined}
+createDomain vSystem{vName="AsyncUndefined", vReset=Asynchronous, vInit=Undefined}
+createDomain vSystem{vName="AsyncDefined",   vReset=Asynchronous, vInit=Defined}
 
 counter
   :: HiddenClockResetEnable dom
@@ -203,7 +203,7 @@ Nothing fundamentally has changed, but a lot of components now take an extra arg
 
 {{< highlight haskell >}}
 register
-  :: Undefined a
+  :: NFDataX a
   => Clock dom
   -> Reset dom
   -> a
@@ -215,7 +215,7 @@ and now looks like:
 {{< highlight haskell >}}
 register
   :: ( KnownDomain dom
-     , Undefined a )
+     , NFDataX a )
   => Clock dom
   -> Reset dom
   -> Enable dom
@@ -223,8 +223,9 @@ register
   -> [..]
 {{< / highlight >}}
 
-# Bonus: multiple hidden clocks
-Thanks to the API changes, you can now use multiple hidden clocks, resets, and enables. It basically works as you'd expect it would:
+# Bonus: multiple hidden clocks (experimental)
+Thanks to the API changes, you can now use multiple hidden clocks, resets, and enables.
+It basically works as you'd expect it would:
 
 {{< highlight haskell >}}
 delay2
@@ -235,5 +236,8 @@ delay2
   -> (Signal domA Int, Signal domB Int)
 delay2 a b = (register 0 a, register 0 b)
 {{< / highlight >}}
+
+Currently, this feature is still considered experimental and therefor disabled in the 1.0 release.
+It is available on the development version of the compiler.
 
 That's all, thanks for reading!

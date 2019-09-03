@@ -5,17 +5,17 @@ description: "What it says on the tin"
 disable_comments: false
 author: "martijnbastiaan"
 authorbox: true # Optional, enable authorbox for specific post
-summary: Clash uses Haskell's _bottom_ to represent undefined values. Traditionally, _bottoms_ are used to represent exceptional situations which, if evaluated and not explicitely handled, should halt program execution. Due to the nature of circuits, Clash programs have to deal with these situations much more often (and more explicitely) than normal Haskell programs. In this blogpost we'll go over the common pitfalls of undefined values, and what tooling is available to deal with them.
+summary: Clash uses Haskell's _bottom_ to represent undefined values. Traditionally, _bottoms_ are used to represent exceptional situations which, if evaluated and not explicitly handled, should halt program execution. Due to the nature of circuits, Clash programs have to deal with these situations much more often (and more explicitly) than normal Haskell programs. In this blogpost we'll go over the common pitfalls of undefined values, and what tooling is available to deal with them.
 toc: false
 mathjax: false
 ---
 
-**Note**: This blogpost was written with the upcoming _Clash 1.0_ in mind. Many of the features discussed here are not availabe in _Clash 0.99_!
+**Note**: This blogpost was written with the upcoming _Clash 1.0_ in mind. Many of the features discussed here are not available in _Clash 0.99_!
 
 --------
 
-Clash uses Haskell's _bottom_ to represent undefined values. Traditionally, _bottoms_ are used to represent exceptional situations 
-which, if evaluated and not explicitely handled, should halt program execution. Due to the nature of circuits, Clash programs have to deal with these situations much more often (and more explicitely) than normal Haskell programs. In this blogpost we'll go over the common pitfalls
+Clash uses Haskell's _bottom_ to represent undefined values. Traditionally, _bottoms_ are used to represent exceptional situations
+which, if evaluated and not explicitly handled, should halt program execution. Due to the nature of circuits, Clash programs have to deal with these situations much more often (and more explicitly) than normal Haskell programs. In this blogpost we'll go over the common pitfalls
  of undefined values, and what tooling is available to deal with them.
 
 # Two of a kind
@@ -34,15 +34,15 @@ Generally, Clash distinguishes two types of (useful) _bottoms_:
 *** Exception: divide by zero
 ```
 
-We still consider these programmer errors in Clash. If the Clash synthesizer encounters such a value it will still render `X`s in the target HDL, but Clash simulation will stop if it evaluates one and it has no tools to keep running anyway. 
+We still consider these programmer errors in Clash. If the Clash synthesizer encounters such a value it will still render `X`s in the target HDL, but Clash simulation will stop if it evaluates one and it has no tools to keep running anyway.
 
-**The second** is a kind of bottom more prevelant in hardware design: an undefined value. Not all signals will carry useful or defined values at all time. The most common situation is a pair of signals, one carrying a `valid` bit and the other the actual `data`. Whenever the valid bit is deasserted, the data lines do not carry useful values.
+**The second** is a kind of bottom more prevalent in hardware design: an undefined value. Not all signals will carry useful or defined values at all time. The most common situation is a pair of signals, one carrying a `valid` bit and the other the actual `data`. Whenever the valid bit is deasserted, the data lines do not carry useful values.
 
 We'd still like to be able to sample/print these undefined values of the second kind. Luckily, we can. Consider the following circuit:
 
 {{< highlight haskell >}}
 split :: Maybe a -> (Bool, a)
-split a = 
+split a =
   ( isJust a
   , fromMaybe (errorX "split: Nothing") )
 
@@ -50,7 +50,7 @@ splitS :: Signal tag (Maybe a) -> Signal tag (Bool, a)
 splitS = fmap split
 {{< / highlight >}}
 
-where `splitS` is the same as `split` but "lifted" into being defined over `Signal`s. 
+where `splitS` is the same as `split` but "lifted" into being defined over `Signal`s.
 
 ```
 > let dat = [Just 3, Just 5, Nothing, Nothing, Just 7]
@@ -72,7 +72,7 @@ where `splitS` is the same as `split` but "lifted" into being defined over `Sign
 Depending on your background, you might be surprised to learn that the following circuit won't produce any useful values, even after shifting in values for more than five cycles:
 
 {{< highlight haskell >}}
--- | Shift given values into a vector of length 5 from the right, 
+-- | Shift given values into a vector of length 5 from the right,
 -- while continuously yielding the leftmost element.
 shiftIn
   :: SystemClockResetEnable
@@ -119,14 +119,14 @@ shiftInVec a = head <$> vec
   vec     = register vecInit (liftA2 (<<+) vec a)
 {{< / highlight >}}
 
-What if we're not using `Vec 5 Int`, but `a`? This is where the class `Undefined` comes in.
+What if we're not using `Vec 5 Int`, but `a`? This is where the class `NFDataX` comes in.
 
 
 {{< highlight haskell >}}
 shiftInA
   :: forall a
    . ( SystemClockResetEnable
-     , Undefined a )
+     , NFDataX a )
   => Signal System a
   -> Signal System a
 shiftInA a = head <$> vec
@@ -135,7 +135,7 @@ shiftInA a = head <$> vec
   vec     = register vecInit (liftA2 (<<+) vec a)
 {{< / highlight >}}
 
-`deepErrorX` will recursively define the spine of whatever type has an instance for `Undefined`. 
+`deepErrorX` will recursively define the spine of whatever type has an instance for `NFDataX`.
 
 A similar problem exists when evaluating data structures to [Normal Form](https://medium.com/@aleksandrasays/brief-normal-forms-explanation-with-haskell-cd5dfa94a157). For memory/performance reasons you sometimes want to deeply evaluate a structure. We'd like:
 
@@ -146,15 +146,15 @@ rnf (e1 :> e2 :> 💣 :> e3 :> Nil) = ()
 with `e1`, `e2`, and `e3` fully evaluated. Instead, only `e1` and `e2` will get evaluated to normal form, and the equation turns out to be:
 
 ```
-rnf (e1 :> e2 :> 💣 :> e3 :> Nil) = 💣 
+rnf (e1 :> e2 :> 💣 :> e3 :> Nil) = 💣
 ```
 
-Again, `Undefined` to the rescue. It defined `rnfX`, which does behave as we'd like:
+Again, `NFDataX` to the rescue. It defined `rnfX`, which does behave as we'd like:
 
 ```
 rnfX (e1 :> e2 :> 💣 :> e3 :> Nil) = ()
 ```
 
-Clash also exports the `forceX` and `deepseqX`, the `Undefined` versions of [`force`](http://hackage.haskell.org/package/deepseq-1.4.4.0/docs/Control-DeepSeq.html#v:force) and [`deepseq`](http://hackage.haskell.org/package/deepseq-1.4.4.0/docs/Control-DeepSeq.html#v:deepseq)
+Clash also exports the `forceX` and `deepseqX`, the `NFDataX` versions of [`force`](http://hackage.haskell.org/package/deepseq-1.4.4.0/docs/Control-DeepSeq.html#v:force) and [`deepseq`](http://hackage.haskell.org/package/deepseq-1.4.4.0/docs/Control-DeepSeq.html#v:deepseq)
 
 That's all for now. Thanks for reading!
