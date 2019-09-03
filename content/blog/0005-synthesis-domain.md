@@ -59,7 +59,7 @@ First off:
   :: ( KnownDomain dom
 {{< / highlight >}}
 
-^ This is the core of the change: functions that need to know anything about the synthesis domain need a `KnownDomain` constraint. It's made up of two parts. The first, `dom :: Symbol`, is the name for the domain. This dom uniquely refers to the second part, `conf :: DomainConfiguration`. "Uniquely" in this context means that there can never be two intances where `dom1 == dom2`, but `conf1 /= conf2`. We'll later see how to actually use this contraint, and what properties it carries.
+^ This is the core of the change: functions that need to know anything about the synthesis domain need a `KnownDomain` constraint. The `dom` part of that construct is a type level string, or `dom :: Symbol`, and represents the name of the domain. A name uniquely refers to a set of domain configuration options. We'll later see how to actually use this contraint, and what properties it carries.
 
 {{< highlight haskell >}}
      , Undefined a )
