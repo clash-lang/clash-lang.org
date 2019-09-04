@@ -53,7 +53,7 @@ pygmentsStyle = "tango"
   [privacy.twitter]
     disable = true
   [privacy.vimeo]
-    disable = true
+    disable = false
   [privacy.youtube]
     disable = true
 
