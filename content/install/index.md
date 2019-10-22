@@ -40,7 +40,7 @@ You can find other install instructions (using Cabal or Stack) [on github.com/cl
 2. Download [the source code](https://github.com/clash-lang/clash-compiler/archive/1.0.zip) of Clash 1.0
 3. Unpack the archive
 4. Use `cd` to navigate to the unpacked directory
-5. Run: `stack build clash`. [This will take a while.](https://xkcd.com/303/)
+5. Run: `stack build clash-ghc`. [This will take a while.](https://xkcd.com/303/)
 
 Try to compile one of the examples to see if it works:
 
