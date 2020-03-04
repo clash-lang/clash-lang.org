@@ -28,8 +28,8 @@ This version is updated every 24 hours.
 Install [the latest nix](https://nixos.org/nix/download.html) and run:
 
 ```bash
-curl -s -L https://github.com/clash-lang/clash-compiler/archive/1.0.tar.gz | tar xz
-nix-shell clash-compiler-1.0/shell.nix
+curl -s -L https://github.com/clash-lang/clash-compiler/archive/1.2.tar.gz | tar xz
+nix-shell clash-compiler-1.2/shell.nix
 ```
 
 You can find other install instructions (using Cabal or Stack) [on github.com/clash-lang/clash-compiler](https://github.com/clash-lang/clash-compiler/tree/1.0#using-clash-from-source).
@@ -37,7 +37,7 @@ You can find other install instructions (using Cabal or Stack) [on github.com/cl
 ## Windows (source)
 
 1. Install [GHC Platform](https://www.haskell.org/platform/windows.html). Make sure to install Stack along with it.
-2. Download [the source code](https://github.com/clash-lang/clash-compiler/archive/1.0.zip) of Clash 1.0
+2. Download [the source code](https://github.com/clash-lang/clash-compiler/archive/1.2.zip) of Clash 1.2
 3. Unpack the archive
 4. Use `cd` to navigate to the unpacked directory
 5. Run: `stack build clash-ghc`. [This will take a while.](https://xkcd.com/303/)
