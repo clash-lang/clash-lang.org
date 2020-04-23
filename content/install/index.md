@@ -36,7 +36,7 @@ You can find other install instructions (using Cabal or Stack) [on github.com/cl
 
 ## Windows (source)
 
-1. Install [GHC Platform](https://www.haskell.org/platform/windows.html). Make sure to install Stack along with it.
+1. Install [Stack](https://get.haskellstack.org/stable/windows-x86_64-installer.exe)
 2. Download [the source code](https://github.com/clash-lang/clash-compiler/archive/1.2.zip) of Clash 1.2
 3. Unpack the archive
 4. Use `cd` to navigate to the unpacked directory
