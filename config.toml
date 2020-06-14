@@ -11,6 +11,8 @@ pygmentsUseClasses = true
 pygmentsStyle = "tango"
 
 
+[markup.goldmark.renderer]
+unsafe= true
 
 [Params]
     subtitle = "From Haskell to hardware" 
