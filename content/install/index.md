@@ -36,7 +36,7 @@ You can find other install instructions (using Cabal or Stack) [on github.com/cl
 
 ## Windows (source)
 
-**(Windows 10 Insider preview**: The instructions below do not work if you are running an insider preview of Windows 10 due to an upstream bug. See further details and a work-around [here](https://github.com/clash-lang/clash-compiler/issues/1290))
+(**Windows 10 2004 build or Insider preview**: The instructions below do not work if you are running the very latest 2004 build or an insider preview of Windows 10 due to an upstream bug. See further details and a work-around [here](https://github.com/clash-lang/clash-compiler/issues/1290))
 
 1. Install [Stack](https://get.haskellstack.org/stable/windows-x86_64-installer.exe)
 2. Download [the source code](https://github.com/clash-lang/clash-compiler/archive/1.2.zip) of Clash 1.2
