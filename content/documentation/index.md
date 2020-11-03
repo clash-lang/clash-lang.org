@@ -25,6 +25,7 @@ disable_comments: true
 {{% fontawesome globe %}} [Remote fpga call](http://rahne.si/programming/clash/fpga/2016/02/28/remote-core-call.html)</br>
 {{% fontawesome globe %}} [FIR filter design in Clash](http://adamwalker.github.io/Filter-Design-in-Clash/)</br>
 {{% fontawesome globe %}} [Stack-based Clash environment](https://dram.cf/p/clash-with-stack/)
+{{% fontawesome globe %}} [VELDT blinker example with Clash](https://github.com/standardsemiconductor/VELDT-blinker-clash)
 
 <style>
 .post__title{ display:none; }
