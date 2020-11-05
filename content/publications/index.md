@@ -6,7 +6,7 @@ disable_comments: true
 
 # 2019
 
-* Raalte, E. (2019) <strong><a href="https://essay.utwente.nl/77541/">Automating system generation in Clash</a></strong>. MSc thesis, University of Twente, The Netherlands, March 2019.
+* Van Raalte, E. (2019) <strong><a href="https://essay.utwente.nl/77541/">Automating system generation in Clash</a></strong>. MSc thesis, University of Twente, The Netherlands, March 2019.
 
 * Wijlens, B. (2019) <strong><a href="https://essay.utwente.nl/77411/"> Building a framework in Clash to create deterministic sensor and actuator interfaces for FPGAs</a></strong>. MSc thesis, University of Twente, The Netherlands, 2019.
 
