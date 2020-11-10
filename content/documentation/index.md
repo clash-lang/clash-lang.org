@@ -6,6 +6,7 @@ disable_comments: true
 
 # Tutorial and reference material
 
+{{% fontawesome book %}} [User guide](https://clash-lang.readthedocs.io/en/latest/index.html)</br>
 {{% fontawesome book %}} [Tutorial](http://hackage.haskell.org/package/clash-prelude/docs/Clash-Tutorial.html)</br>
 {{% fontawesome book %}} [Reference documentation](http://hackage.haskell.org/package/clash-prelude/docs/Clash-Prelude.html)</br>
 {{% fontawesome github %}} [FAQ](https://github.com/clash-lang/clash-compiler/wiki/FAQ)</br>
