@@ -4,11 +4,19 @@ title: Academic publications
 disable_comments: true
 ---
 
+# 2020
+
+* Westerveld, J.P. van (2020) <strong><a href="https://essay.utwente.nl/85411/">FPGA partial reconfiguration and automatic variant generation as a side-channel attack countermeasure with functional HDL Clash</a></strong>. MSc thesis, University of Twente, The Netherlands, December 2020. 
+
+* Bremmer, D.J. (2020) <strong><a href="https://essay.utwente.nl/85254/">Mapping dataflow over multiple FPGAs in Clash</a></strong>. MSc thesis, University of Twente, The Netherlands, November 2020. 
+
 # 2019
+
+* Lebbing, P. (2019) <strong><a href="https://essay.utwente.nl/78888/">Modelling and Realizing the Tunnelling Ball Device in UniTi and CλaSH</a></strong>. MSc thesis, University of Twente, The Netherlands, June 2019.
 
 * Van Raalte, E. (2019) <strong><a href="https://essay.utwente.nl/77541/">Automating system generation in Clash</a></strong>. MSc thesis, University of Twente, The Netherlands, March 2019.
 
-* Wijlens, B. (2019) <strong><a href="https://essay.utwente.nl/77411/"> Building a framework in Clash to create deterministic sensor and actuator interfaces for FPGAs</a></strong>. MSc thesis, University of Twente, The Netherlands, 2019.
+* Wijlens, B. (2019) <strong><a href="https://essay.utwente.nl/77411/">Building a framework in Clash to create deterministic sensor and actuator interfaces for FPGAs</a></strong>. MSc thesis, University of Twente, The Netherlands, 2019.
 
 # 2017
 
