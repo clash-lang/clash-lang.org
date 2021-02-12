@@ -1,0 +1,18 @@
+#platform-select{
+  /* width: auto; */
+}
+
+#platform-select a,
+#platform-select a:hover
+{
+  text-decoration: none;
+}
+
+#platform-select .inline-svg{
+  width: 8em;
+  margin-right:3em;
+}
+
+.post__title, .list__item{
+  display:none;
+}
