@@ -4,7 +4,23 @@ title: Install Clash
 disable_comments: true
 ---
 
-<script>window.location.href = "./windows";</script>
+<script>
+// From: https://stackoverflow.com/a/38241481
+var userAgent = window.navigator.userAgent,
+    platform = window.navigator.platform,
+    macosPlatforms = ['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K'],
+    windowsPlatforms = ['Win32', 'Win64', 'Windows', 'WinCE'];
+
+if (macosPlatforms.indexOf(platform) !== -1) {
+  window.location.href = "./macos";
+} else if (windowsPlatforms.indexOf(platform) !== -1) {
+  window.location.href = "./windows";
+} else if (/Linux/.test(platform)) {
+  window.location.href = "./linux";
+} else {
+  // Make a choice
+}
+</script>
 <link rel="stylesheet" href="/css/install.css">
 
 # 1. Choose your platform
