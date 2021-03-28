@@ -28,7 +28,7 @@ Either:
 ..or:
 
  * [Install Stack](https://docs.haskellstack.org/en/stable/README/#how-to-install). Stack is a build tool for Haskell / Clash projects;
- * Run `stack exec --package clash-ghc -- clash HelloWorld.hs --vhdl` to compile `HelloWorld.hs` to VHDL.
+ * Run `stack exec --package clash-ghc --resolver=nightly -- clash HelloWorld.hs --vhdl` to compile `HelloWorld.hs` to VHDL.
 
 ### Option B. Setup a project
 To setup a new project, [install Stack](https://docs.haskellstack.org/en/stable/README/#how-to-install) and run:

@@ -26,7 +26,7 @@ Depending on your goals, you might want to simply run Clash on its own, or setup
 The following compiles a file `HelloWorld.hs` to VHDL:
 
 ```
-stack exec --package clash-ghc -- clash HelloWorld.hs --vhdl
+stack exec --package clash-ghc --resolver=nightly -- clash HelloWorld.hs --vhdl
 ```
 
 ### Option B. Setup a project
