@@ -22,6 +22,7 @@ disable_comments: true
 {{% fontawesome github %}} [Clashilator: Automated Clash - Verilator integration](https://github.com/gergoerdi/clashilator)</br>
 {{% fontawesome globe %}} [Lattice iCE40 Primitive IP](http://hackage.haskell.org/package/ice40-prim)</br>
 {{% fontawesome github %}} [Contranomy: LiteX-compatible single-stage/non-pipelined RISC-V core](https://github.com/christiaanb/contranomy)</br>
+{{% fontawesome github %}} [Clash-WaveDrom: Generate wave diagrams from Clash](https://github.com/expipiplus1/clash-wavedrom)</br>
 
 # Resources requiring minor changes
 While the text in the following articles probably did age well, the code will need minor changes in order to compile with the latest versions of the Clash compiler.
