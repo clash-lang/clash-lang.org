@@ -6,7 +6,7 @@ weight: -50
 
 **Clash** is a functional hardware description language that borrows both its syntax and semantics from the functional programming language **Haskell**. It provides a familiar structural design approach to both combinational and synchronous sequential circuits. The Clash compiler transforms these high-level descriptions to low-level synthesizable **VHDL**, **Verilog**, or **SystemVerilog**.
 
-Clash is an [open-source](https://github.com/clash-lang/clash-compiler) project, licensed under the permissive [BSD2](https://raw.githubusercontent.com/clash-lang/clash-compiler/master/LICENSE) license, and actively maintained by [QBayLogic](https://qbaylogic.com/). The Clash project is a [Haskell Foundation](https://haskell.foundation/en/affiliates/) affiliated project.
+Clash is an [open-source](https://github.com/clash-lang/clash-compiler) project, licensed under the permissive [BSD2](https://raw.githubusercontent.com/clash-lang/clash-compiler/master/LICENSE) license, and actively maintained by [QBayLogic](https://qbaylogic.com/). The Clash project is a [Haskell Foundation](https://haskell.foundation/affiliates/) affiliated project.
 
 [![pipeline status](https://gitlab.com/clash-lang/clash-compiler/badges/master/pipeline.svg)](https://gitlab.com/clash-lang/clash-compiler/commits/master)
 [![Hackage](https://img.shields.io/hackage/v/clash-ghc.svg)](https://hackage.haskell.org/package/clash-ghc)
