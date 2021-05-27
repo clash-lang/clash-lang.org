@@ -88,7 +88,7 @@ Whether you need a question answered or want to contribute to open-source featur
 {{% fontawesome list-alt %}} [Mailing list](http://groups.google.com/group/clash-language)</br>
 {{% fontawesome ticket-alt %}} [Issue tracker](https://github.com/clash-lang/clash-compiler/issues)</br>
 {{% fontawesome slack-hash %}} [Slack: functionalprogramming.slack.com#clash](https://functionalprogramming.slack.com/archives/CPGMJFF50) (Invite yourself at [fpchat-invite.herokuapp.com](http://fpchat-invite.herokuapp.com))</br>
-{{% fontawesome slack-hash %}} [IRC: libera.chat#clash](ircs://irc.libera.chat:6697/clash)
+{{% fontawesome slack-hash %}} [IRC (webchat): libera.chat#clash](https://web.libera.chat/#clash) (or [ircs://irc.libera.chat:6697/clash](ircs://irc.libera.chat:6697/clash) when you want to connect with a regular IRC client)
 
 # Support
 If you need professional support from the [original developers](https://qbaylogic.com) of Clash, check out the [support plan]({{< ref "support" >}}).
