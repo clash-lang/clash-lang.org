@@ -57,7 +57,7 @@ unsafe= true
   [privacy.vimeo]
     disable = false
   [privacy.youtube]
-    disable = true
+    disable = false
 
 [menu]
   [[menu.main]]
