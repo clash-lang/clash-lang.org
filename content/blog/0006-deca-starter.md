@@ -31,7 +31,7 @@ The DECA development kit is an inexpensive ($37 ex. VAT at the time of writing) 
   * 64 MB QSPI Flash
   * Micro SD card socket
 * Communication
-  * 10/100 Mbsps Ethernet PHY with RJ45 connector
+  * 10/100 Mbps Ethernet PHY with RJ45 connector
   * USB 2.0 PHY with Mini USB type AB connector
 * Connectors
   * Two 46-pin BeagleBone expansion headers
