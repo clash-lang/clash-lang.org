@@ -123,4 +123,4 @@ Currently, the starter project is just a minor adaption of the blinker circuit d
 The included [README.md](https://github.com/clash-lang/clash-starters/blob/main/deca/README.md) elaborates some more on the purpose of all the files in the project, and also repeats the above instructions on how to program the FPGA.
 
 For now, the DECA starter project only connects the LEDs and the push-buttons.
-The intention is however to improve this DECA starter project over time add Clash descriptions that enable you to talk to all the other peripherals on the devkit.
+The intention is however to improve this DECA starter project over time and to add Clash descriptions that enable you to talk to all the other peripherals on the devkit.
