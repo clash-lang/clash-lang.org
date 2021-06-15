@@ -84,6 +84,7 @@ mmult mA mB = result
 # Open-source community
 Clash benefits from an active community.
 Whether you need a question answered or want to contribute to open-source features, browse the features below to make the most of Clash.
+We expect participants in these public forums to observere our [Guidelines for Respectful Communication](https://github.com/clash-lang/clash-compiler/blob/master/CODE_OF_CONDUCT.md).
 
 {{% fontawesome list-alt %}} [Mailing list](http://groups.google.com/group/clash-language)</br>
 {{% fontawesome ticket-alt %}} [Issue tracker](https://github.com/clash-lang/clash-compiler/issues)</br>
