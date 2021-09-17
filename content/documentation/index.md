@@ -14,7 +14,9 @@ disable_comments: true
 {{% fontawesome globe %}} [Dr. Gergő Érdi posts on CPU, VGA, PS2 and much more](https://gergo.erdi.hu/blog/tags/clash/)</br>
 {{% fontawesome globe %}} [Where Lions Roam: Haskell & Hardware on the VELDT](https://github.com/standardsemiconductor/VELDT-getting-started)</br>
 {{% fontawesome globe %}} [VELDT blinker example with Clash](https://github.com/standardsemiconductor/VELDT-blinker-clash)</br>
-{{% fontawesome globe %}} [Programming an FPGA with CλaSH](https://qbaylogic.com/blog/2020/07/09/new-clash-fpga-starter.html)
+{{% fontawesome globe %}} [Programming an FPGA with CλaSH](https://qbaylogic.com/blog/2020/07/09/new-clash-fpga-starter.html)</br>
+{{% fontawesome globe %}} [Building a Networked Key-Value-Store on an FPGA](https://adamwalker.github.io/Building-FPGA-KVS/)</br>
+{{% fontawesome globe %}} [Getting started with Clash on the Arrow DECA devkit](https://qbaylogic.com/all/clash/getting-started-with-clash-on-the-arrow-deca-devkit/)
 
 # Projects in/for Clash
 {{% fontawesome github %}} [Lion: a formally verified, 5-stage pipeline RISC-V core](https://github.com/standardsemiconductor/lion)</br>
