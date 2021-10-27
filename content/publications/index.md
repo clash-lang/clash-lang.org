@@ -4,6 +4,12 @@ title: Academic publications
 disable_comments: true
 ---
 
+# 2021
+
+* Klute, L.R.W. (2021) <strong><a href="http://essay.utwente.nl/87696/">Space-time Trade-off in Clash: Improving Smart Machines</a></strong>. MSc thesis, University of Twente, The Netherlands, July 2021. 
+
+* Strijker, H.W. (2021) <strong><a href="http://essay.utwente.nl/85643/">Ethernet implementation in Clash</a></strong>. MSc thesis, University of Twente, The Netherlands, January 2021. 
+
 # 2020
 
 * Westerveld, J.P. van (2020) <strong><a href="https://essay.utwente.nl/85411/">FPGA partial reconfiguration and automatic variant generation as a side-channel attack countermeasure with functional HDL Clash</a></strong>. MSc thesis, University of Twente, The Netherlands, December 2020. 
