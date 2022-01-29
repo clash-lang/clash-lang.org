@@ -20,13 +20,6 @@ Depending on your goals, you might want to simply run Clash on its own, or setup
 
 ### Option A. Run Clash on its own
 
-Either:
-
- * Install Clash using `snap`: see [snapcraft.io/clash](https://snapcraft.io/clash);
- * Run `clash HelloWorld.hs --vhdl` to compile `HelloWorld.hs` to VHDL.
-
-..or:
-
  * [Install Stack](https://docs.haskellstack.org/en/stable/README/#how-to-install). Stack is a build tool for Haskell / Clash projects;
  * Run `stack exec --package clash-ghc -- clash HelloWorld.hs --vhdl` to compile `HelloWorld.hs` to VHDL.
 
