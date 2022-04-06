@@ -52,7 +52,7 @@ fir4float = fir (3.5 :> 4.2 :> 3.0 :> 6.1 :> Nil)
     </div>
     <div class="card">
         <h2>Matrix multiplication</h2>
-        <p> If you do choose to write types explicitely, you can add additional constraints. Clash will check these constraints and refuse to compile if they are not met. The following example implements a fully parallel matrix multiplication algorithm:
+        <p> If you do choose to write types explicitly, you can add additional constraints. Clash will check these constraints and refuse to compile if they are not met. The following example implements a fully parallel matrix multiplication algorithm:
 {{< highlight haskell >}}
 mmult
   -- Dimension constraints:
