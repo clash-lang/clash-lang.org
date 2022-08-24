@@ -88,7 +88,7 @@ We expect participants on these public forums to observe our [Guidelines for Res
 
 {{% fontawesome list-alt %}} [Mailing list](http://groups.google.com/group/clash-language)</br>
 {{% fontawesome ticket-alt %}} [Issue tracker](https://github.com/clash-lang/clash-compiler/issues)</br>
-{{% fontawesome slack-hash %}} [Slack: functionalprogramming.slack.com#clash](https://functionalprogramming.slack.com/archives/CPGMJFF50) (Invite yourself at [fpchat-invite.herokuapp.com](http://fpchat-invite.herokuapp.com))</br>
+{{% fontawesome slack-hash %}} [Slack: functionalprogramming.slack.com#clash](https://functionalprogramming.slack.com/archives/CPGMJFF50) (Invite yourself at [fpslack.com](https://fpslack.com))</br>
 {{% fontawesome slack-hash %}} [IRC (webchat): libera.chat#clash](https://web.libera.chat/#clash) (or [ircs://irc.libera.chat:6697/clash](ircs://irc.libera.chat:6697/clash) when you want to connect with a regular IRC client)
 
 # Support
