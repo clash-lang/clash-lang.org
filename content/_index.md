@@ -8,8 +8,9 @@ weight: -50
 
 Clash is an [open-source](https://github.com/clash-lang/clash-compiler) project, licensed under the permissive [BSD2](https://raw.githubusercontent.com/clash-lang/clash-compiler/master/LICENSE) license, and actively maintained by [QBayLogic](https://qbaylogic.com/). The Clash project is a [Haskell Foundation](https://haskell.foundation/affiliates/) affiliated project.
 
-[![pipeline status](https://gitlab.com/clash-lang/clash-compiler/badges/master/pipeline.svg)](https://gitlab.com/clash-lang/clash-compiler/commits/master)
+[![pipeline status](https://gitlab.com/clash-lang/clash-compiler/badges/master/pipeline.svg)](https://gitlab.com/clash-lang/clash-compiler/-/pipelines?scope=finished&ref=master)
 [![Hackage](https://img.shields.io/hackage/v/clash-ghc.svg)](https://hackage.haskell.org/package/clash-ghc)
+[![activity](https://img.shields.io/github/commit-activity/m/clash-lang/clash-compiler)](https://github.com/clash-lang/clash-compiler/commits/master)
 
 # Features
 <div class="cards250">
