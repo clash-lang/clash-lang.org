@@ -28,6 +28,29 @@ Clash is an [open-source](https://github.com/clash-lang/clash-compiler) project,
     </div>
 </div>
 
+<h1 id="get-thebook-retrocomputing-with-clash"><a href="https://unsafeperform.io/retroclash/" style="color:black">Get the book: Retrocomputing with Clash</a></h1>
+<div class="cards250">
+    <div class="card">
+        <p style="text-align:center;"><a href="https://unsafeperform.io/retroclash/"><img src="/cover-3d.png" width="220"></a></p>
+    </div>
+    <div class="card">
+    <p>Haskell has become the functional programming language of choice for many developers due to its excellent tools for abstraction and principled program design. The open source Clash hardware description language now brings these features to FPGA development.</p>
+    <p><a href="https://unsafeperform.io/retroclash/">Retrocomputing with Clash</a> takes the experienced Haskell programmer on a journey into the world of hardware design with Clash. Our approach is based on using Haskell to its fullest potential, using abstractions like monads and lenses in building a library of reusable components.</p>
+    </div>
+    <div class="card">
+        Implement various retro-computing devices:
+        <ul>
+            <li>Pocket calculator</li>
+            <li>Pong <a href="https://unsafeperform.io/retroclash/retroclash-chapter09-pong.pdf">(sample chapter)</a></li>
+            <li>A simple, but Turing-complete computer that uses Brainfuck as its machine code</li>
+            <li>An implementation of the CHIP-8 virtual computer specification</li>
+            <li>Intel 8080 CPU</li>
+            <li>Space Invaders arcade machine</li>
+            <li>Compucolor II, a home computer from 1977 complete with keyboard, color video, and a floppy drive</li>
+        </ul>
+    </div>
+</div>
+
 # Examples
 <div class="cards350">
     <div class="card">
