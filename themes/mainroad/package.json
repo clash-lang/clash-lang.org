@@ -5,7 +5,7 @@
   "license": "GPL-2.0",
   "dependencies": {},
   "devDependencies": {
-    "stylelint": "^9.2.0",
+    "stylelint": "^14.16.0",
     "stylelint-order": "^0.8.1"
   },
   "scripts": {
