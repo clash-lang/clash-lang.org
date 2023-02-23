@@ -42,7 +42,6 @@ Clash is an [open-source](https://github.com/clash-lang/clash-compiler) project,
         <ul>
             <li>Pocket calculator</li>
             <li>Pong <a href="https://unsafeperform.io/retroclash/retroclash-chapter09-pong.pdf">(sample chapter)</a></li>
-            <li>A simple, but Turing-complete computer that uses Brainfuck as its machine code</li>
             <li>An implementation of the CHIP-8 virtual computer specification</li>
             <li>Intel 8080 CPU</li>
             <li>Space Invaders arcade machine</li>
