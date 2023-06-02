@@ -26,11 +26,11 @@ Depending on your goals, you might want to simply run Clash on its own, or setup
 The following compiles a file `HelloWorld.hs` to VHDL:
 
 ```
-stack exec --package clash-ghc -- clash HelloWorld.hs --vhdl
+stack exec --resolver lts-19 --package clash-ghc -- clash HelloWorld.hs --vhdl
 ```
 
-### Option B. Setup a project
-To setup a new project, run:
+### Option B. Setup a starter project
+To setup a new project based on the provided starter projects, run:
 
 ```
 stack new my-clash-project clash-lang/simple

@@ -28,14 +28,14 @@ Depending on your goals, you might want to simply run Clash on its own, or setup
 The following compiles a file `HelloWorld.hs` to VHDL:
 
 ```
-stack exec --package clash-ghc -- clash HelloWorld.hs --vhdl
+stack exec --resolver lts-19 --package clash-ghc -- clash HelloWorld.hs --vhdl
 ```
 
-### Option B. Setup a project
-To setup a new project, run:
+### Option B. Setup a starter project
+To setup a new project based on the provided starter projects, run:
 
 ```
 stack new my-clash-project clash-lang/simple
 ```
 
-This will create a new project called `my-clash-project` in a folder named the same. The folder will contain a `README.md` to get you up and running. Alternatively, you [can read it online](https://github.com/clash-lang/clash-starters/tree/main/simple#simple-starter-project). People familiar with the Haskell ecosystem might prefer to use Cabal instead. To do so, [download the starter project as a zip](https://raw.githubusercontent.com/clash-lang/clash-starters/main/simple.zip) and follow the instructions in `README.md`.
+This will create a new project called `my-clash-project` in a folder named the same. The folder will contain a `README.md` to get you up and running. Alternatively, you [can read it online](https://github.com/clash-lang/clash-starters/tree/main/simple#simple-starter-project). People familiar with the Haskell ecosystem might prefer to use Cabal instead. To do so, [download the starter project as a zip](https://raw.githubusercontent.com/clash-lang/clash-starters/main/simple.zip) and follow the instructions in [`README.md`](https://github.com/clash-lang/clash-starters/tree/main/simple#simple-starter-project).
