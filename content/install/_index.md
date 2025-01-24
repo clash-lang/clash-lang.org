@@ -25,9 +25,11 @@ if (macosPlatforms.indexOf(platform) !== -1) {
 <link rel="stylesheet" href="/css/install.css">
 
 # 1. Choose your platform
+
+Please click to highlight your platform; this will show the instructions for that platform.
+
 <div id="platform-select" class="button-group">
     <a href="/install/windows"><button class="button">{{% fontawesome windows-brands %}}<br>Windows</button>
     </a><a href="/install/macos"><button class="button">{{% fontawesome apple-brands %}}<br>macOS</button>
     </a><a href="/install/linux"><button class="button">{{% fontawesome linux-brands %}}<br>Linux</button>
     </a>
-</div>
