@@ -133,10 +133,10 @@ Again, when Clash sees this primitive being used, it generates a hardcoded bit o
 And just like that, we've introduced state. We can now implement a simple counter:
 
 ```haskell
-counter = register clock (fmap (+1) counter)
+counter = register clock 0 (fmap (+1) counter)
 
 -- Because `Signal` has a `Num` instance, we can also write:
--- counter = register clock (counter + 1)
+-- counter = register clock 0 (counter + 1)
 ```
 
 From an HDL compilation point of view, we can see how this might work. If Clash encounters the special primitive `register`, it will not try to translate the definition, but it will insert a predefined bit of HDL that implements the register.
