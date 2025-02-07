@@ -1,6 +1,6 @@
 ---
 title: "Tricking Haskell into state: how Clash's Signal type works"
-date: "2025-01-12"
+date: "2025-02-07"
 description: ""
 disable_comments: false
 author: "martijnbastiaan"
