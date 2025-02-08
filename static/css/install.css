@@ -1,18 +1,31 @@
-#platform-select{
-  /* width: auto; */
-}
-
-#platform-select a,
-#platform-select a:hover
-{
-  text-decoration: none;
-}
-
-#platform-select .inline-svg{
-  width: 8em;
-  margin-right:3em;
-}
-
 .post__title, .list__item{
   display:none;
+}
+
+.button-group {
+    display: inline-flex;
+    border-radius: 5px;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    height:70px;
+}
+
+.button {
+    padding: 10px 20px;
+    background-color: #f8f9fa;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+    font-size: 16px;
+    height:100%;
+}
+
+/* Add border between buttons */
+.button:not(:last-child) {
+    border-right: 1px solid #ccc;
+}
+
+.button:hover, .button.active {
+    background-color: #67ce59;
+    color: white;
 }
