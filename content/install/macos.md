@@ -7,12 +7,14 @@ disable_comments: true
 <link rel="stylesheet" href="/css/install.css">
 
 # 1. Choose your platform
-<div id="platform-select">
-  <a style="color:black;" href="/install/windows">{{% fontawesome windows-brands %}}</a>
-  <a href="/install/macos">{{% fontawesome apple-brands %}}</a>
-  <a style="color:black;" href="/install/linux">{{% fontawesome linux-brands %}}</a>
+<div id="platform-select" class="button-group">
+    <a href="/install/windows"><button class="button">{{% fontawesome windows-brands %}}<br>Windows</button>
+    </a><a href="/install/macos"><button class="button active">{{% fontawesome apple-brands %}}<br>macOS</button>
+    </a><a href="/install/linux"><button class="button">{{% fontawesome linux-brands %}}<br>Linux</button>
+    </a>
 </div>
 
+<br/>
 <br/>
 
 # 2. Install Stack
