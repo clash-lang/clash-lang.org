@@ -31,7 +31,7 @@ Clash is an [open-source](https://github.com/clash-lang/clash-compiler) project,
 <h1 id="get-thebook-retrocomputing-with-clash"><a href="https://unsafeperform.io/retroclash/" style="color:black">Get the book: Retrocomputing with Clash</a></h1>
 <div class="cards250">
     <div class="card">
-        <p style="text-align:center;"><a href="https://unsafeperform.io/retroclash/"><img src="/cover-3d.png" width="220"></a></p>
+        <p style="text-align:center;"><a href="https://unsafeperform.io/retroclash/"><img src="/media/home/cover-3d-220px.png" width="220px"></a></p>
     </div>
     <div class="card">
     <p>Haskell has become the functional programming language of choice for many developers due to its excellent tools for abstraction and principled program design. The open source Clash hardware description language now brings these features to FPGA development.</p>
