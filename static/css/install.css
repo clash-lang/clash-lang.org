@@ -21,7 +21,7 @@
 }
 
 /* Add border between buttons */
-.button:not(:last-child) {
+.button-group a:not(:last-child) {
     border-right: 1px solid #ccc;
 }
 
