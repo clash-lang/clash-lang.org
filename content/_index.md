@@ -109,6 +109,7 @@ Clash benefits from an active community.
 Whether you need a question answered or want to contribute to open-source features, browse the features below to make the most of Clash.
 
 {{% fontawesome list-alt %}} [Discourse: long form discussions and questions](https://clash-lang.discourse.group/)</br>
+{{% fontawesome discord %}} [Discord: short form discussions and community chat room](https://discord.gg/rebGq25FB4)</br>
 {{% fontawesome slack-hash %}} [Slack: short form discussions and questions](https://functionalprogramming.slack.com/archives/CPGMJFF50) (Invite yourself at [fpslack.com](https://fpslack.com)) </br>
 {{% fontawesome ticket-alt %}} [Github: issue tracker](https://github.com/clash-lang/clash-compiler/issues)
 
