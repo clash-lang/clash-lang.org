@@ -43,7 +43,7 @@ A starter project using Stack is the recommended way to use Clash, and is fully 
 The following compiles the file <a href="/code/ShortBlinker.hs" download>`ShortBlinker.hs`</a> to VHDL:
 
 ```
-stack exec --resolver nightly-2025-03-07 --package clash-ghc -- clash ShortBlinker.hs --vhdl
+stack exec --resolver lts-23.15 --package clash-ghc -- clash ShortBlinker.hs --vhdl
 ```
 
 The resulting HDL should be very similar to the following:
