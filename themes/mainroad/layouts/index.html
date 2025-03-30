@@ -3,7 +3,7 @@
 
 	<main class="main list" role="main">
 		<div class="post__content clearfix">
-			{{ .Content }}
+			{{ .Content | replaceRE `(<h[1-4] id="([^"]+)".+)(</h[1-4]>)` `${1}<a href="#${2}" class="hanchor" aria-label="Anchor">&#x1f517;&#xfe0f;</a>${3}` | safeHTML }}
 		</div>
 	</main>
 

@@ -844,6 +844,23 @@ select {
     fill: #fff;
 }
 
+.hanchor {
+    font-size: 60%;
+    vertical-align: 25%;
+    visibility: hidden;
+}
+
+h1:hover a,
+h2:hover a,
+h3:hover a,
+h4:hover a {
+    visibility: visible;
+}
+
+a.hanchor:hover {
+    text-decoration: none;
+}
+
 /* Table of Contents */
 .toc {
     margin-bottom: 20px;
