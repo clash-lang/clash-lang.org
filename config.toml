@@ -65,13 +65,20 @@ unsafe= true
     name = "Install Clash"
     pre = ""
     url = "/install/"
-    weight = 60
+    weight = 70
 
   [[menu.main]]
     identifier = "documentation"
     name = "Documentation"    
     pre = ""
     url = "/documentation/"
+    weight = 60
+
+  [[menu.main]]
+    identifier = "ecosystem"
+    name = "Ecosystem"    
+    pre = ""
+    url = "/ecosystem/"
     weight = 50
 
   [[menu.main]]
