@@ -4,6 +4,10 @@ title: Academic publications
 disable_comments: true
 ---
 
+# Adding a publication
+
+If you want to add a publication to this list, you can [edit this file on Github](https://github.com/clash-lang/clash-lang.org/tree/master/content/publications/index.md) and open a pull request.
+
 # 2021
 
 * Klute, L.R.W. (2021) <strong><a href="http://essay.utwente.nl/87696/">Space-time Trade-off in Clash: Improving Smart Machines</a></strong>. MSc thesis, University of Twente, The Netherlands, July 2021. 
