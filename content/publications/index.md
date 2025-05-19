@@ -8,19 +8,21 @@ disable_comments: true
 
 If you want to add a publication to this list, you can [edit this file on Github](https://github.com/clash-lang/clash-lang.org/tree/master/content/publications/index.md) and open a pull request.
 
-# 2021
+# Publications by year
+
+## 2021
 
 * Klute, L.R.W. (2021) <strong><a href="http://essay.utwente.nl/87696/">Space-time Trade-off in Clash: Improving Smart Machines</a></strong>. MSc thesis, University of Twente, The Netherlands, July 2021. 
 
 * Strijker, H.W. (2021) <strong><a href="http://essay.utwente.nl/85643/">Ethernet implementation in Clash</a></strong>. MSc thesis, University of Twente, The Netherlands, January 2021. 
 
-# 2020
+## 2020
 
 * Westerveld, J.P. van (2020) <strong><a href="https://essay.utwente.nl/85411/">FPGA partial reconfiguration and automatic variant generation as a side-channel attack countermeasure with functional HDL Clash</a></strong>. MSc thesis, University of Twente, The Netherlands, December 2020. 
 
 * Bremmer, D.J. (2020) <strong><a href="https://essay.utwente.nl/85254/">Mapping dataflow over multiple FPGAs in Clash</a></strong>. MSc thesis, University of Twente, The Netherlands, November 2020. 
 
-# 2019
+## 2019
 
 * Lebbing, P. (2019) <strong><a href="https://essay.utwente.nl/78888/">Modelling and Realizing the Tunnelling Ball Device in UniTi and CλaSH</a></strong>. MSc thesis, University of Twente, The Netherlands, June 2019.
 
@@ -28,7 +30,7 @@ If you want to add a publication to this list, you can [edit this file on Github
 
 * Wijlens, B. (2019) <strong><a href="https://essay.utwente.nl/77411/">Building a framework in Clash to create deterministic sensor and actuator interfaces for FPGAs</a></strong>. MSc thesis, University of Twente, The Netherlands, 2019.
 
-# 2017
+## 2017
 
 * Wentink, D.J.M. (2017) <strong><a href="https://essay.utwente.nl/74336/">Signal Recovery using CλaSH</a></strong>. MSc thesis, University of Twente, Enschede, The Netherlands, December 2017.
 
@@ -38,7 +40,7 @@ If you want to add a publication to this list, you can [edit this file on Github
 
 * Kuipers, F.P. (2017) <strong><a href="https://essay.utwente.nl/72512/">FPGA design support using CλaSH and LUNA</a></strong>. MSc thesis, University of Twente, Enschede, The Netherlands, May 2017.
 
-# 2016
+## 2016
 
 * Appel, R.N. and Folmer, H.H. (2016) <strong><a href="http://essay.utwente.nl/71550/">Analysis, optimization, and design of a SLAM solution for an implementation on reconfigurable hardware (FPGA) using CλaSH</a></strong>. MSc thesis, University of Twente, Enschede, The Netherlands, December 2016.
 
@@ -46,7 +48,7 @@ If you want to add a publication to this list, you can [edit this file on Github
 
 * Verheij, J.G.J. (2016) <strong><a href="http://essay.utwente.nl/70777/">Co-simulation between CλaSH and traditional HDLs</a></strong>. MSc thesis, University of Twente, Enschede, The Netherlands, August 2016.
 
-# 2015
+## 2015
 * Raa, I. te (2015) <strong><a href="http://essay.utwente.nl/68804/">Recursive functional hardware descriptions using CλaSH</a></strong>. MSc thesis, University of Twente, Enschede, The Netherlands, November 2015.
 
 * Wester, R. (2015) <strong><a href="http://doc.utwente.nl/96278/">A transformation-based approach to hardware design using higher-order functions</a></strong>. PhD thesis, University of Twente, Enschede, The Netherlands, July 2015.
@@ -61,7 +63,7 @@ If you want to add a publication to this list, you can [edit this file on Github
 
 * Wester, R. and Kuper, J. (2014) <strong><a href="http://doc.utwente.nl/90642/">Design space exploration of a particle filter using higher-order functions</a></strong>. In: <em>Reconfigurable Computing: Architectures, Tools, and Applications</em>. Lecture Notes in Computer Science 8405. Springer Verlag, London, pp. 219-226. ISSN 0302-9743 ISBN 978-3-319-05959-4.
 
-# 2014
+## 2014
 * Bos, J.C.H. (2014) <strong><a href="http://essay.utwente.nl/66086/">Synthesizable Specification of a VLIW Processor in the Functional Hardware Description Language CλaSH</a></strong>. MSc thesis, University of Twente, Enschede, The Netherlands, September 2014.
 
 * Niedermeier, A. (2014) <strong><a href="http://doc.utwente.nl/91607/">A Fine-Grained Parallel Dataflow-Inspired Architecture for Streaming Applications</a></strong>. PhD thesis, University of Twente, Enschede, The Netherlands, August 2014.
@@ -76,15 +78,15 @@ If you want to add a publication to this list, you can [edit this file on Github
 
 * Baaij, C.P.R. and Kuper, J. (2014) <strong><a href="http://doc.utwente.nl/89215/">Using Rewriting to Synthesize Functional Languages to Digital Circuits</a></strong>. In: <em>Jay McCarthy, editor, Trends in Functional Programming (TFP)</em>, Provo, UT, USA, May 14-16, 2013. Volume 8322 of Lecture Notes in Computer Science (LNCS). pages 17–33. Springer-Verlag. ISBN 978-3-642-45340-3.
 
-# 2012
+## 2012
 * Wester, R. and Baaij, C.P.R. and Kuper, J. (2012) <strong><a href="http://doc.utwente.nl/82306/">A two step hardware design method using CλaSH</a></strong>. In: <em>Proceedings of the 22nd International Conference on Field Programmable Logic and Applications (FPL)</em>, Aug 29-31, 2012, Oslo, Norway. pages 181-188. IEEE Computer Society. ISBN 978-1-4673-2257-7.
 
 * Wester, R. and Sarakiotis, D. and Kooistra, E. and J. Kuper. (2012) <strong><a href="http://doc.utwente.nl/82307/">Specifications of APERTIF Polyphase Filter Bank in CλaSH</a></strong>. In: <em>Communicating Process Architectures (CPA)</em>, pages 53-64, United Kingdom, August 2012. Open Channel Publishing. ISBN 978-0-9565409-5-9.
 
-# 2011
+## 2011
 * Gerards, M.E.T. and Baaij, C.P.R. and Kuper, J. and Kooijman, M. (2011) <strong><a href="http://doc.utwente.nl/78217/">Higher-Order Abstraction in Hardware Descriptions with CλaSH</a></strong>. In: <em>Proceedings of the 14th Conference on Digital System Design (DSD)</em>, Oulu, Finland. pages 495-502, 31 Aug - 2 September, 2011. IEEE Computer Society. ISBN 978-0-7695-4494-6.
 
-# 2010
+## 2010
 * Niedermeier, A. and Wester, R. and Rovers, K.C. and Baaij, C.P.R. and Kuper, J. and Smit, G.J.M. (2010) <strong><a href="http://doc.utwente.nl/74963/">Designing a dataflow processor using CλaSH</a></strong>. In: <em>28th Norchip Conference</em>, 15-16 November 2010, Tampere, Finland. 69. IEEE Circuits and Systems Society. ISBN 978-1-4244-8971-8.
 
 * Kuper, J. and Baaij, C.P.R. and Kooijman, M. and Gerards, M.E.T. (2010) <strong><a href="http://doc.utwente.nl/75093/">Exercises in architecture specification using CλaSH</a></strong>. In: <em>Proceedings of Forum on Specification and Design Languages (FDL)</em>, 2010, Southampton, England, Sept 13-16. pages 178-183. Electronic Chips &amp; Systems design Initiative (ECSI). ISSN 1636-9874.
@@ -93,7 +95,7 @@ If you want to add a publication to this list, you can [edit this file on Github
 
 * Smit, G.J.M. and Kuper, J. and Baaij, C.P.R (2010) <strong><a href="http://doc.utwente.nl/75334/">A mathematical approach towards hardware design</a></strong>. In: <em>Dagstuhl Seminar on Dynamically Reconfigurable Architectures</em>, 11-16 July 2010, Dagstuhl, Germany.
 
-# 2009
+## 2009
 * Baaij, C.P.R. (2009) <strong><a href="http://essay.utwente.nl/59482/">CλasH : from Haskell to hardware</a></strong>. MSc thesis, University of Twente, Enschede, The Netherlands, December 2009.
 
 * Kooijman, M. (2009) <strong><a href="http://essay.utwente.nl/59381/">Haskell as a higher order structural hardware description language</a></strong>. MSc thesis, University of Twente, Enschede, The Netherlands, December 2009.
