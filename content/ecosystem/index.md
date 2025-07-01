@@ -74,6 +74,24 @@ Clash primitives to instantiate Lattice Semiconductor's iCE40 FPGA hard IP
   ```
 {{< /details >}}
 
+### [`clash-port-name`](https://git.smart-cactus.org/ben/clash-port-name)
+
+A library that attempts to provide a flexible and composable solution to the problem of port naming of Clash top-level entities.
+
+{{< details summary="Adding to the starter project">}}
+  Make sure to add/insert this to your `stack.yaml`file:
+  ```yaml
+  extra-deps:
+    - git: https://git.smart-cactus.org/ben/clash-port-name.git
+      commit: 576e508ea42edea44143510446dca07187124c44
+  ```
+  and this to your `project.cabal` file
+  ```yaml
+  build-depends:
+    clash-port-name,
+  ```
+{{< /details >}}
+
 ## Just need a quick update
 
 These packages do work with latest clash, but might need a manual version bump here and there.
@@ -139,7 +157,6 @@ A [VexRiscv](https://github.com/SpinalHDL/VexRiscv) based CPU core and binding
 
 - [`clashilator`](https://github.com/gergoerdi/clashilator)
 - [`clash-axi`](https://git.smart-cactus.org/ben/clash-axi)
-- [`clash-port-name`](https://git.smart-cactus.org/ben/clash-port-name)
 - [`clash-testbench`](https://git.smart-cactus.org/ben/clash-testbench)
 - [`axi-register`](https://git.smart-cactus.org/ben/axi-register)
 
