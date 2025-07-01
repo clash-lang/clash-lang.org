@@ -28,8 +28,8 @@ A battery-included library for writing on-chip protocols, such as AMBA AXI and A
   and this to your `project.cabal` file
   ```yaml
   build-depends:
-    , clash-protocols
-    , circuit-notation
+    clash-protocols,
+    circuit-notation,
   ```
 {{< /details >}}
 
@@ -52,7 +52,7 @@ A collection of Clash IP cores, including: SPI master; UART; CRC; Etherbone; 8b1
   and this to your `project.cabal` file
   ```yaml
   build-depends:
-    , clash-cores
+    clash-cores,
   ```
 {{< /details >}}
 
@@ -70,7 +70,7 @@ Clash primitives to instantiate Lattice Semiconductor's iCE40 FPGA hard IP
   and this to your `project.cabal` file
   ```yaml
   build-depends:
-    , ice40-prim
+    ice40-prim,
   ```
 {{< /details >}}
 
@@ -94,7 +94,7 @@ Shake (a build system) rules for building Clash programs and synthesizing FPGA. 
   and this to your `project.cabal` file
   ```yaml
   build-depends:
-    , clash-shake
+    clash-shake,
   ```
 {{< /details >}}
 
@@ -116,7 +116,7 @@ The installation instructions below use the updated version from the linked PR.
   and this to your `project.cabal` file
   ```yaml
   build-depends:
-    , clash-utils
+    clash-utils,
   ```
 {{< /details >}}
 
