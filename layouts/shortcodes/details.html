@@ -1,0 +1,28 @@
+{{- /* Get arguments. */}}
+{{- $summary := or (.Get "summary") (T "details") "Details" | .Page.RenderString }}
+{{- $altSummary := or (.Get "altSummary") $summary | .Page.RenderString }}
+{{- $open := false }}
+{{- with .Get "open" }}
+{{- if not (eq . false) }}
+{{- $open = true }}
+{{- end }}
+{{- end }}
+{{- $attributes := dict }}
+{{- range $key, $value := .Params }}
+{{- if not (in (slice "summary" "altSummary" "open") $key) }}
+{{- $attributes = merge $attributes (dict (string $key) $value) }}
+{{- end }}
+{{- end }}
+
+{{- /* Render. */}}
+<details {{- if $open }} open {{- end -}} {{- range $key, $value :=$attributes }} {{ $key }}="{{ $value }}" {{- end }}>
+    <summary onclick="this.innerHTML = this.parentNode.open ? '{{ $summary }}' : '{{ $altSummary }}';">
+        {{ if $open }}
+        {{ $altSummary }}
+        {{ else }}
+        {{ $summary }}
+        {{ end }}
+    </summary>
+    {{ .Inner | .Page.RenderString (dict "display" "block") }}
+</details>
+<br />
