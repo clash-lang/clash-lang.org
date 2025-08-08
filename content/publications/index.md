@@ -10,6 +10,9 @@ If you want to add a publication to this list, you can [edit this file on Github
 
 # Publications by year
 
+## 2023
+* Kringen, H. and, Sisco, Z. and Balkind, J. and Sherwood, T. and Hardekopf, V. (2023) <strong><a href="https://pldi23.sigplan.org/details/plarch-2023-papers/17/Semi-Automated-Translation-of-a-Formal-ISA-Specification-to-Hardware">Semi-Automated Translation of a Formal ISA Specification to Hardware</a></strong>. PLDI 2023, June 2023.
+
 ## 2021
 
 * Klute, L.R.W. (2021) <strong><a href="http://essay.utwente.nl/87696/">Space-time Trade-off in Clash: Improving Smart Machines</a></strong>. MSc thesis, University of Twente, The Netherlands, July 2021. 
