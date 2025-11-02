@@ -13,6 +13,8 @@ If you want to add a publication to this list, you can [edit this file on Github
 ## 2025 
 * Müller, A. and, Kashif, M. and Döttling, N. (2025) <strong><a href="https://dl.acm.org/doi/abs/10.1145/3733811.3767311">A Haskell to FHE Transpiler with Circuit Parallelisation</a></strong>. In Proceedings of the 13th Workshop on Encrypted Computing & Applied Homomorphic Computing (WAHC '25). Association for Computing Machinery, New York, NY, USA, 62–67.
 
+* Érdi, G. (2025, October). **[A Clash Course in Solving Sudoku (Functional Pearl)](https://dl.acm.org/doi/abs/10.1145/3759164.3759345)**. In Proceedings of the 18th ACM SIGPLAN International Haskell Symposium (pp. 3-16).
+
 ## 2023
 * Kringen, H. and, Sisco, Z. and Balkind, J. and Sherwood, T. and Hardekopf, V. (2023) <strong><a href="https://pldi23.sigplan.org/details/plarch-2023-papers/17/Semi-Automated-Translation-of-a-Formal-ISA-Specification-to-Hardware">Semi-Automated Translation of a Formal ISA Specification to Hardware</a></strong>. PLDI 2023, June 2023.
 
