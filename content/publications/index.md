@@ -10,7 +10,7 @@ If you want to add a publication to this list, you can [edit this file on Github
 
 # Publications by year
 
-## 2025 
+## 2025
 * Müller, A. and, Kashif, M. and Döttling, N. (2025) <strong><a href="https://dl.acm.org/doi/abs/10.1145/3733811.3767311">A Haskell to FHE Transpiler with Circuit Parallelisation</a></strong>. In Proceedings of the 13th Workshop on Encrypted Computing & Applied Homomorphic Computing (WAHC '25). Association for Computing Machinery, New York, NY, USA, 62–67.
 
 * Érdi, G. (2025, October). **[A Clash Course in Solving Sudoku (Functional Pearl)](https://dl.acm.org/doi/abs/10.1145/3759164.3759345)**. In Proceedings of the 18th ACM SIGPLAN International Haskell Symposium (pp. 3-16).
@@ -20,15 +20,19 @@ If you want to add a publication to this list, you can [edit this file on Github
 
 ## 2021
 
-* Klute, L.R.W. (2021) <strong><a href="http://essay.utwente.nl/87696/">Space-time Trade-off in Clash: Improving Smart Machines</a></strong>. MSc thesis, University of Twente, The Netherlands, July 2021. 
+* Klute, L.R.W. (2021) <strong><a href="http://essay.utwente.nl/87696/">Space-time Trade-off in Clash: Improving Smart Machines</a></strong>. MSc thesis, University of Twente, The Netherlands, July 2021.
 
-* Strijker, H.W. (2021) <strong><a href="http://essay.utwente.nl/85643/">Ethernet implementation in Clash</a></strong>. MSc thesis, University of Twente, The Netherlands, January 2021. 
+* Bornebusch, F. (2021) **[Coq meets CλaSH: proposing a hardware design synthesis flow that combines proof assistants with functional hardware description languages](https://doi.org/10.26092/elib/783)**. PhD thesis, University of Bremen, Germany 2021.
+
+* Strijker, H.W. (2021) <strong><a href="http://essay.utwente.nl/85643/">Ethernet implementation in Clash</a></strong>. MSc thesis, University of Twente, The Netherlands, January 2021.
 
 ## 2020
 
-* Westerveld, J.P. van (2020) <strong><a href="https://essay.utwente.nl/85411/">FPGA partial reconfiguration and automatic variant generation as a side-channel attack countermeasure with functional HDL Clash</a></strong>. MSc thesis, University of Twente, The Netherlands, December 2020. 
+* Westerveld, J.P. van (2020) <strong><a href="https://essay.utwente.nl/85411/">FPGA partial reconfiguration and automatic variant generation as a side-channel attack countermeasure with functional HDL Clash</a></strong>. MSc thesis, University of Twente, The Netherlands, December 2020.
 
-* Bremmer, D.J. (2020) <strong><a href="https://essay.utwente.nl/85254/">Mapping dataflow over multiple FPGAs in Clash</a></strong>. MSc thesis, University of Twente, The Netherlands, November 2020. 
+* Bremmer, D.J. (2020) <strong><a href="https://essay.utwente.nl/85254/">Mapping dataflow over multiple FPGAs in Clash</a></strong>. MSc thesis, University of Twente, The Netherlands, November 2020.
+
+* Bornebusch, F. and, Lüth, C. and, Wille, R. and Drechsler, R. (2020) **[Towards Automatic Hardware Synthesis from Formal Specification to Implementation](https://doi.org/10.1109/ASP-DAC47756.2020.9045406)**. 25th Asia and South Pacific Design Automation Conference, January 2020.
 
 ## 2019
 
