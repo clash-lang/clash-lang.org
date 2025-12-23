@@ -1,0 +1,10 @@
+{
+    "name": "Ryan Slawson",
+    "bio": "Ryan Slawson has been a software engineer at <a href='http://qbaylogic.com'>QBayLogic</a> since 2024. Ryan is primarily an engineer on the <a href='https://github.com/bittide/bittide-hardware'>Bittide project</a>, but also contributes to various other Clash projects under the QBayLogic umbrella.",
+    "image": "/media/authors/ryanslawson.jpeg",
+    "weight": 1,
+    "social": {
+        "github": "https://www.github.com/rslawson",
+        "discord": "rslawson"
+    }
+}
