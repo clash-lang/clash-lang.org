@@ -21,7 +21,10 @@ A battery-included library for writing on-chip protocols, such as AMBA AXI and A
   ```yaml
   extra-deps:
     - git: https://github.com/clash-lang/clash-protocols.git
-      commit: 8b6a7695161c2bada9d1373c6fcaf0da887c787a
+      commit: 77e9f91b59a9a7b3e513b0e7c29431ffd5a356a0
+      subdirs:
+        - clash-protocols-base
+        - clash-protocols
     - git: https://github.com/cchalmers/circuit-notation.git
       commit: 564769c52aa05b90f81bbc898b7af7087d96613d
   ```
