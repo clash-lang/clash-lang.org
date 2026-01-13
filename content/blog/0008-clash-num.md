@@ -303,7 +303,7 @@ isn't implemented for your type. Instead, you can take a look at the type and sa
 wrong in a panic message.
 
 [bittide]: https://github.com/bittide/bittide-hardware
-[cpm]: https://github.com/bittide/bittide-hardware/tree/main/clash-protocols-memmap
-[bpc]: https://github.com/bittide/bittide-hardware/tree/main/clash-bitpackc
+[cpm]: https://github.com/QBayLogic/clash-protocols-memmap/tree/main/clash-protocols-memmap
+[bpc]: https://github.com/QBayLogic/clash-protocols-memmap/tree/main/clash-bitpackc
 [num]: https://github.com/QBayLogic/clash-num
 [hlist]: https://hackage.haskell.org/package/hlist-0.0.0.0/docs/Data-HList.html
