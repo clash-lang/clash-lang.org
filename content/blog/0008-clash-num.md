@@ -43,8 +43,8 @@ So then, what if you want to have a register for a `BitVector n`, `Unsigned n`, 
 monomorphization: a `BitVector 3` becomes a `[u8; 1]` in Rust (or a `uint8_t*` in C), an
 `Unsigned 18` becomes a `u32`, and so on. While it's true that these are the correct representations
 of these types, I found it unsatisfactory that writing a component with an `Index 107`  in Clash
-would then require the user to talk about a `u8` in Rust. As such, I started work on the `clash-num`
-repository.
+would then require the user to talk about a `u8` in Rust. As such, I started work on the
+[`clash-num` repository][num].
 
 ## Limits
 
