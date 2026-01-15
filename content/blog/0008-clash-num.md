@@ -292,8 +292,8 @@ to that that it warranted publishing _somewhere_.
 As for what it was like writing this - honestly, it was pretty nice once I figured out that what I
 should be working with is the trait LUT method rather than specialization. I plan to use this method
 in other things as well, since I have some other projects that use const generics to inform
-associated types (such as canonicalizing something that looks like [homogeneous lists][hlist]). The
-trait LUT pattern is really great for such cases, and honestly I wish it was written down more
+associated types (such as canonicalizing something that looks like [heterogeneous lists][hlist]).
+The trait LUT pattern is really great for such cases, and honestly I wish it was written down more
 clearly in more places, since it would've saved me a lot of time getting started with this project.
 
 I'm also quite a fan of using these `const fn`s to do the mapping, since it's a lot easier to insert
