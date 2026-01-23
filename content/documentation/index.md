@@ -1,6 +1,7 @@
 ---
 identifier: documentation
 title: Documentation
+description: "Links and references to material and documentation about Clash"
 disable_comments: true
 ---
 
