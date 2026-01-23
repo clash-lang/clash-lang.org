@@ -1,7 +1,7 @@
 ---
 title: "Tricking Haskell into state: how Clash's Signal type works"
 date: "2025-02-07"
-description: ""
+description: "Going into detail on how the Signal type allows simulation of multiple, synchronous clock domains"
 disable_comments: false
 author: "martijnbastiaan"
 authorbox: true # Optional, enable authorbox for specific post
