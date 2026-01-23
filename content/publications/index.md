@@ -1,6 +1,7 @@
 ---
 identifier: publications
 title: Academic publications
+description: "Curated list of academic publications about or using Clash"
 disable_comments: true
 ---
 

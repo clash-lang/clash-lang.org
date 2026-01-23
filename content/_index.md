@@ -1,6 +1,7 @@
 ---
 identifier: home
-title: Home
+title: Clash Language Homepage
+description: A modern functional hardware description language
 weight: -50
 ---
 
