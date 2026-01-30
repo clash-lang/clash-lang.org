@@ -5,8 +5,8 @@
   "license": "GPL-2.0",
   "dependencies": {},
   "devDependencies": {
-    "stylelint": "^9.2.0",
-    "stylelint-order": "^0.8.1"
+    "stylelint": "^17.1.0",
+    "stylelint-order": "^7.0.1"
   },
   "scripts": {
     "lint:css": "stylelint static/css/*.css",
