@@ -1,7 +1,7 @@
 ---
 title: "Undefined values, how do they work?"
 date: "2019-06-10"
-description: "What it says on the tin"
+description: "What are undefined values? Common pitfalls and available tooling to deal with them"
 disable_comments: false
 author: "martijnbastiaan"
 authorbox: true # Optional, enable authorbox for specific post
