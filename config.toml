@@ -1,7 +1,7 @@
 baseurl = "https://clash-lang.org/"
 title = "Clash"
 languageCode = "en-us"
-paginate = "10" 
+pagination.pagerSize = "10"
 theme = "mainroad"
 disqusShortname = "clash-lang" # Enable comments by entering your Disqus shortname
 googleAnalytics = "" # Enable Google Analytics by entering your tracking id
@@ -15,23 +15,23 @@ pygmentsStyle = "tango"
 unsafe= true
 
 [Params]
-    subtitle = "From Haskell to hardware" 
+    subtitle = "From Haskell to hardware"
     description = ""
-    opengraph = true 
+    opengraph = true
     twitter_cards = false
     readmore = true
-    leftsidebar = false 
-    authorbox = true 
-    post_navigation = true 
-    
+    leftsidebar = false
+    authorbox = true
+    post_navigation = true
+
     mathjax = true
     mathjaxPath = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js"
     mathjaxConfig = "TeX-MML-AM_HTMLorMML"
-    
+
     #mathjaxConfig = "TeX-AMS-MML_HTMLorMML" # <- Default
 
     # change the format of dates
-    #dateformat = "2006-01-02" 
+    dateformat = "2006-01-02"
 
 [Params.widgets]
     search = true # Enable "Search" widget
@@ -69,7 +69,7 @@ unsafe= true
 
   [[menu.main]]
     identifier = "documentation"
-    name = "Documentation"    
+    name = "Documentation"
     pre = ""
     url = "/documentation/"
     weight = 60
@@ -83,7 +83,7 @@ unsafe= true
 
   [[menu.main]]
     identifier = "publications"
-    name = "Publications"    
+    name = "Publications"
     pre = ""
     url = "/publications/"
     weight = 40
