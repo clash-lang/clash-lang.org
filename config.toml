@@ -1,15 +1,19 @@
 baseurl = "https://clash-lang.org/"
 title = "Clash"
 languageCode = "en-us"
-paginate = "10" 
 theme = "mainroad"
-disqusShortname = "clash-lang" # Enable comments by entering your Disqus shortname
 googleAnalytics = "" # Enable Google Analytics by entering your tracking id
 
 pygmentsUseClassic = true
 pygmentsUseClasses = true
 pygmentsStyle = "tango"
 
+[pagination]
+  pagerSize = 10
+
+[services]
+  [services.disqus]
+    shortname = "clash-lang" # Enable comments by entering your Disqus shortname
 
 [markup.goldmark.renderer]
 unsafe= true
@@ -52,7 +56,7 @@ unsafe= true
     disable = true
   [privacy.instagram]
     disable = true
-  [privacy.twitter]
+  [privacy.x]
     disable = true
   [privacy.vimeo]
     disable = false
