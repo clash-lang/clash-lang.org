@@ -1,0 +1,3 @@
+[build.environment]
+  # When you update this, please update 'flake.nix' too
+  HUGO_VERSION = "0.152.2"
