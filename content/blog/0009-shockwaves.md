@@ -8,12 +8,12 @@ authorbox: false # Optional, enable authorbox for specific post
 summary: "For years, debugging Clash designs in a waveform viewer has been a massive pain. After all, the waveform viewers we have were not designed with Clash in mind, and glady present us with unintelligible binary values. But those times are now over! I've spent the last months working on Shockwaves, a system that lets you show typed waveforms in (Surfer)[https://surfer-project.org/], and after many, *many* changes, tests, bug fixes and rewrites, we have finally reached the point of an official release!"
 toc: true
 mathjax: false
-categories:
-  - TODO "Tutorial"
+# categories:
+#   - "Tutorial"
 tags:
-  - TODO "Debugging"
-  - TODO "Waveform viewer"
-  - TODO "VCD files"
+  - "Shockwaves"
+  - "Debugging"
+  - "Waveform viewer"
 ---
 
 
@@ -23,7 +23,7 @@ For years, debugging Clash designs in a waveform viewer has been a massive pain.
 After all, the waveform viewers we have were not designed with Clash in mind,
 and glady present us with unintelligible binary values.
 But those times are now over! I've spent the last months working on Shockwaves,
-a system that lets you show typed waveforms in (Surfer)[https://surfer-project.org/],
+a system that lets you show typed waveforms in [Surfer](https://surfer-project.org/),
 and after many, *many* changes, tests, bug fixes and rewrites, we have finally reached
 the point of an official release!
 
@@ -40,8 +40,8 @@ this type information inside the waveform viewer:
 
 - The `Clash.Shockwaves` Haskell library, which exports translation information on top of
   the standard VCD file.
-- The Shockwaves extension for (Surfer)[surfer-project.org], which uses this information
-  to translate the values inside the VCD file back into thei Haskell representation.
+- The Shockwaves extension for Surfer, which uses this information
+  to translate the values inside the VCD file back into the Haskell representation.
 
 Shockwaves uses a collection of highly configurable translator modules to build up the
 best representations of Haskell types. And if no good representation is available, it can
@@ -126,19 +126,21 @@ TODO
 
 ## Going beyond the basics
 
-Shockwaves was designed to be highly configurable and modular in its design.
-For each Haskell type, it defines a `Translator` which determines how the binary
+Shockwaves was designed to be highly configurable and modular.
+For each Haskell type, it defines a `Translator` that determines how the binary
 value of a signal is turned into a waveform viewer translation -
 a textual representation, style, and any number of (nested) translations of subsignals.
 In a way, they represent a combination of `unpack` and `show`, applied recursively.
 
 The translators are fairly granular and have almost no hardcoded limitations on
-how values are displayed. This basically lets you represent your type however you
+how values are displayed.
+Most translators are composed of other translators.
+This lets you represent your type in virtually any form you
 want though custom `Waveform` instances.
 
 And if the standard modules do not work for you, there's always
 the option to switch to using lookup tables. While these are a little less performant,
-they give you absolutely full control! You can do things like:
+they give you absolutely full control from within Haskell! You can do things like:
 
 - creating colors on the fly
 - adding debug signals that are computed from the original values
