@@ -4,7 +4,7 @@ date: "2026-03-10"
 description: ""
 disable_comments: false
 author: "marijnadriaanse"
-authorbox: false # Optional, enable authorbox for specific post
+authorbox: true # Optional, enable authorbox for specific post
 summary: "For years, debugging Clash designs in a waveform viewer has been a massive pain. After all, the waveform viewers we have were not designed with Clash in mind, and glady present us with unintelligible binary values. But those times are now over! I've spent the last months working on Shockwaves, a system that lets you show typed waveforms in (Surfer)[https://surfer-project.org/], and after many, *many* changes, tests, bug fixes and rewrites, we have finally reached the point of an official release!"
 toc: true
 mathjax: false
@@ -16,6 +16,7 @@ tags:
   - "Waveform viewer"
 ---
 
+<center><img style="min-width:25%" src="/blog/0009-shockwaves/shockwaves_logo.svg"></img></center>
 
 ## Typed waveforms with Shockwaves
 
@@ -26,6 +27,32 @@ But those times are now over! I've spent the last months working on Shockwaves,
 a system that lets you show typed waveforms in [Surfer](https://surfer-project.org/),
 and after many, *many* changes, tests, bug fixes and rewrites, we have finally reached
 the point of an official release!
+
+
+## What do we even want to show?
+
+Haskell, and thus Clash, heavily relies on the notion of _algebraic data types_.
+These consist of sum and product types.
+
+In Haskell terms, these are the equivalents of a data type having multiple constructors,
+and those constructors having fields respectively.
+
+For example, a tuple is probably the most basic for of a product type.
+`(Bool,Int)` is a type for which each value contrains _both_ a `Bool` and an `Int` value.
+`Bool` itself is a sum type: it has the two constructors `True` and `False`,
+and a value is _either_ `True` _or_ `False`.
+If we look at `Maybe a` (rustaceans will know this as `Option<a>`),
+it is both: `Maybe` is _either_ `Nothing`, or `Just`, and `Just` contains a
+field of type `a`.
+
+We want to be able to take our binary values and translate them to their textual
+Haskell representation, but we also want to _deconstruct_ these values into their
+parts recursively, which we can then add as subsignals.
+
+For example, if we have a type `data Point = Point{x::Int, y::Int}`, we'd like
+the signal for our `Point` type to have subsignals for the `x` and `y` values.
+Similarly, if we have a type that has multiple constructors, we want subsignals
+for each, so we can look at their values.
 
 
 ## A short introduction to Shockwaves
@@ -62,8 +89,8 @@ import GHC.Generics
 import Data.Typeable
 import Clash.Shockwaves
 
-data MyColor = Red | Green | Blue Int
-  deriving (BitPack,Generic,Typeable,Waveform)
+data MyColor = Red | Green | Blue
+  deriving (BitPack,Generic,Typeable,Waveform,NFDataX)
 ```
 
 The tracing functions are designed to be a drop-in replacement for Clash's `Signal.Trace`.
@@ -74,21 +101,23 @@ store this file under the same base name:
 ```hs
 import qualified Clash.Shockwaves.Trace as T
 
-... T.traceSignal mySignal
-
-... T.dumpVCD ...
-
-(vcd,json) -> do
-  writeFile     "waveform.vcd" $ Text.pack vcd
-  writeFileJSON "waveform.json" json
-
+main :: IO ()
+main = do
+  let signal = T.traceSignal @System "color"
+        $ fromList $ L.cycle [undefined, Red, Green, Blue]
+  vcd <- T.dumpVCD (0, 100) signal ["color"]
+  case vcd of
+    Left msg ->
+      error msg
+    Right (vcd, meta) -> do
+      writeFile     "waveform.vcd"  $ Text.unpack vcd
+      writeFileJSON "waveform.json" meta
 ```
 
 If you now open `waveform.vcd` in Surfer, the Shockwaves extension will detect the JSON
-file and automatically start translating the data!
+file and automatically start translating the data! The result should look like this:
 
-TODO image
-
+<center><img style="min-width:25%" src="/blog/0009-shockwaves/rgb_simple.png"></img></center>
 
 ## Adding a splash of color
 
@@ -103,26 +132,40 @@ a slightly customized `Waveform` instance, instead of deriving it:
 
 ```hs
 instance Waveform MyColor where
-  style = [WSWarn, "geen", "#08f"]
+  styles = [WSWarn, "green", "#08f"]
 ```
 
 If we run our code again, we now see that our signals have taken on color!
 
-TODO
+
+<center><img style="min-width:25%" src="/blog/0009-shockwaves/rgb_color.png"></img></center>
 
 
-And if we add a file called `shockwaves.toml` in the same directory as our VCD
+Let's have a quick look at the style variables too! Let's change our styles like this:
+
+```hs
+instance Waveform MyColor where
+  styles = ["$red", "$green", "$blue"]
+```
+
+If we run our simulation again, the colors have disappeared, and Surfer is reporting a
+bunch of warnings about style variables not being found.
+
+But now we add a file called `shockwaves.toml` in the same directory as our VCD
 file, containing the following:
 
+```toml
+[style]
+red = "#f33"
+green = "#3f3"
+blue = "#08f"
 ```
-bool_true = "#afa"
-bool_false = "#b88"
-```
 
-We can now see that our booleans have changed color:
+If we then reload Surfer (press `r`), we can suddenly see our colors show up!
+We can also use these style variiables to, for example, give `True` and `False`
+different styles.
 
-TODO
-
+<center><img style="min-width:25%" src="/blog/0009-shockwaves/rgb_vars.png"></img></center>
 
 ## Going beyond the basics
 
@@ -157,14 +200,15 @@ let you:
 - turn on and off error propagation
 - and set all these globally or locally!
 
-TODO image of point with modulus? and color?
+<center><img style="min-width:25%" src="/blog/0009-shockwaves/luts.png"></img></center>
 
 ## Want to try for yourself?
 
-You can find the `clash-shockwaves` repository [here](TODO).
-Shockwaves has been documented in a collection of [HOWTO guides](TODO). 
-To get started with Shockwaves yourself, have a look at the HOWTO on
-[setting up Shockwaves](TODO) and [getting started](TODO).
+You can find the `clash-shockwaves` repository [here](https://github.com/clash-lang/clash-shockwaves).
+Shockwaves has been documented in a collection of [HOWTO guides](https://github.com/clash-lang/clash-shockwaves/tree/main/docs/howto). 
+To get started with Shockwaves yourself, have a look at the HOWTOs on
+[setting up Shockwaves](https://github.com/clash-lang/clash-shockwaves/blob/main/docs/howto/SETUP.md)
+and [getting started](https://github.com/clash-lang/clash-shockwaves/blob/main/docs/howto/START.md).
 
 If you have any feedback, we'd love to hear it!
 
