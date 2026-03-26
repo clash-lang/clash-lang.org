@@ -1,7 +1,7 @@
 ---
 title: "New feature: configurable initial values"
 date: "2019-06-11"
-description: "What it says on the tin"
+description: "A new way to represent signal domains allows us to track whether registers have initial values"
 disable_comments: false
 author: "martijnbastiaan"
 authorbox: true # Optional, enable authorbox for specific post
