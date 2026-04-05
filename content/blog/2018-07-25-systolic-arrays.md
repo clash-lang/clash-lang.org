@@ -16,6 +16,8 @@ tags:
   - "Design"
 ---
 
+{{% darkmode-notice %}}
+
 Systolic arrays are networks of locally coupled processing elements, continuously receiving and sending their inputs and outputs from and to their neighbors. They cannot access main memory or global buses, thus allowing them to keep critical paths short. Because of this, they are extremely good at solving problems in the field of image processing, artificial intelligence, and computer vision. This blogpost will take a look at how to build systolic arrays with Clash and subsequently build a matrix multiplier with it. If you're new to Clash or matrix multiplication, [read this blogpost first](/blog/0001-matrix-multiplication/).
 
 # Concepts
