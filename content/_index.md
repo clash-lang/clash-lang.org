@@ -111,6 +111,8 @@ Whether you need a question answered or want to contribute to open-source featur
 
 {{% fontawesome list-alt %}} [Discourse: long form discussions and questions](https://clash-lang.discourse.group/)</br>
 {{% fontawesome discord %}} [Discord: short form discussions and community chat room](https://discord.gg/rebGq25FB4)</br>
+{{% fontawesome mastodon %}} [Fosstodon: microblogging and community chat room](https://fosstodon.org/@ClashHDL)</br>
+{{% fontawesome bluesky %}} [Bluesky: microblogging and community chat room](https://bsky.app/profile/clash-lang.bsky.social)</br>
 {{% fontawesome ticket-alt %}} [Github: issue tracker](https://github.com/clash-lang/clash-compiler/issues)
 
 # Support
