@@ -1,0 +1,494 @@
+/* Dark mode styles */
+[data-theme="dark"] body,
+[data-theme="dark"] .body {
+    background: #0d1117;
+    color: #e0e0e0;
+}
+
+[data-theme="dark"] .wrapper {
+    background: #161b22;
+}
+
+[data-theme="dark"] .header {
+    background: #161b22;
+}
+
+[data-theme="dark"] .menu {
+    background: #21262d;
+}
+
+[data-theme="dark"] .menu__toggle {
+    background: #21262d;
+}
+
+[data-theme="dark"] .menu__item:hover,
+[data-theme="dark"] .menu__item--active {
+    background: #7BCC70;
+}
+
+[data-theme="dark"] .menu__link {
+    color: #e0e0e0;
+}
+
+[data-theme="dark"] .menu__link:hover {
+    color: #fff;
+}
+
+[data-theme="dark"] .menu__logo__inner {
+    color: #e0e0e0;
+}
+
+[data-theme="dark"] .btn {
+    background: #21262d;
+}
+
+[data-theme="dark"] .btn:hover {
+    background: #7BCC70;
+}
+
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3,
+[data-theme="dark"] h4,
+[data-theme="dark"] h5,
+[data-theme="dark"] h6 {
+    color: #e0e0e0;
+}
+
+[data-theme="dark"] a {
+    color: #8bc98a;
+}
+
+[data-theme="dark"] a:hover {
+    color: #7BCC70;
+}
+
+[data-theme="dark"] hr {
+    border-top-color: #30363d;
+}
+
+[data-theme="dark"] .logo__title {
+    color: #e0e0e0;
+}
+
+[data-theme="dark"] .logo__tagline {
+    color: #e0e0e0;
+    text-shadow: none;
+}
+
+/* Retrocomputing book link */
+.retroclash-link {
+    color: #000;
+}
+
+[data-theme="dark"] .retroclash-link {
+    color: #e0e0e0;
+}
+
+/* Code blocks */
+[data-theme="dark"] pre,
+[data-theme="dark"] code {
+    background-color: #0d1117;
+    border-color: #30363d;
+}
+
+[data-theme="dark"] pre {
+    color: #e0e0e0;
+}
+
+[data-theme="dark"] code {
+    color: #8bc98a;
+}
+
+[data-theme="dark"] kbd {
+    background-color: #21262d;
+}
+
+[data-theme="dark"] blockquote {
+    border-left-color: #7BCC70;
+    color: #ccc;
+}
+
+/* Post content */
+[data-theme="dark"] .post__content a,
+[data-theme="dark"] .warning a {
+    color: #7BCC70;
+}
+
+[data-theme="dark"] .post__meta {
+    border-top-color: #30363d;
+    border-bottom-color: #30363d;
+}
+
+[data-theme="dark"] .meta,
+[data-theme="dark"] .meta a {
+    color: #888;
+}
+
+[data-theme="dark"] .meta a:hover {
+    color: #7BCC70;
+}
+
+/* Cards */
+[data-theme="dark"] .card > h2 {
+    color: #aaa;
+}
+
+/* Lists */
+[data-theme="dark"] .list__item {
+    border-bottom-color: #30363d;
+}
+
+/* Pagination */
+[data-theme="dark"] .pagination__item {
+    color: #e0e0e0;
+    background: #0d1117;
+}
+
+[data-theme="dark"] .pagination__item:hover,
+[data-theme="dark"] .pagination__item--current {
+    color: #fff;
+    background: #7BCC70;
+}
+
+/* Sidebar */
+[data-theme="dark"] .widget__title {
+    border-bottom-color: #7BCC70;
+    color: #e0e0e0;
+}
+
+[data-theme="dark"] .widget__item {
+    border-bottom-color: #30363d;
+}
+
+[data-theme="dark"] .widget-search__form {
+    background: #0d1117;
+}
+
+[data-theme="dark"] .widget-search__field {
+    background: #161b22;
+    border-color: #30363d;
+    color: #e0e0e0;
+}
+
+/* Tags */
+[data-theme="dark"] .tags__item {
+    background: #21262d;
+}
+
+[data-theme="dark"] .tags__item:hover {
+    background: #7BCC70;
+}
+
+/* Table of Contents */
+[data-theme="dark"] .toc {
+    background: #161b22;
+    border-color: #30363d;
+    color: #aaa;
+}
+
+[data-theme="dark"] .toc__title {
+    background: #21262d;
+}
+
+[data-theme="dark"] .toc__menu a {
+    color: #7BCC70;
+    border-bottom-color: #30363d;
+}
+
+/* Author box */
+[data-theme="dark"] .authorbox {
+    border-top-color: #30363d;
+    border-bottom-color: #30363d;
+}
+
+[data-theme="dark"] .authorbox__avatar {
+    border-color: #30363d;
+}
+
+/* Post navigation */
+[data-theme="dark"] .post-nav {
+    border-bottom-color: #30363d;
+}
+
+/* Table */
+[data-theme="dark"] table {
+    border-top-color: #30363d;
+    border-left-color: #30363d;
+}
+
+[data-theme="dark"] td,
+[data-theme="dark"] th {
+    border-right-color: #30363d;
+    border-bottom-color: #30363d;
+}
+
+/* Forms */
+[data-theme="dark"] input {
+    background: #0d1117;
+    border-color: #30363d;
+    color: #e0e0e0;
+}
+
+[data-theme="dark"] textarea {
+    background: #0d1117;
+    border-color: #30363d;
+    color: #e0e0e0;
+}
+
+[data-theme="dark"] input[type=submit] {
+    background: #7BCC70;
+    color: #fff;
+}
+
+[data-theme="dark"] input[type=submit]:hover {
+    background: #21262d;
+}
+
+/* Footer */
+[data-theme="dark"] .footer {
+    background: #21262d;
+    border-top-color: #484f58;
+    color: #aaa;
+}
+
+/* Container shadow */
+[data-theme="dark"] .container-outer {
+    box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+}
+
+/* Figcaption */
+[data-theme="dark"] figcaption {
+    color: #888;
+}
+
+/* Dark mode notice banner — hidden in light mode */
+.darkmode-notice {
+    display: none;
+}
+
+[data-theme="dark"] .darkmode-notice {
+    display: block;
+    padding: 12px 16px;
+    margin-bottom: 20px;
+    background: #21262d;
+    border-left: 4px solid #7BCC70;
+    border-radius: 4px;
+    color: #ccc;
+    font-size: 14px;
+}
+
+/* Mark */
+[data-theme="dark"] mark {
+    background-color: #665500;
+    color: #e0e0e0;
+}
+
+/* Warning */
+[data-theme="dark"] .warning {
+    border-color: #30363d;
+}
+
+/* Divider */
+[data-theme="dark"] .divider {
+    background: #7BCC70;
+}
+
+/* Banner - dark green in dark mode */
+[data-theme="dark"] .clash-banner {
+    background-color: #2d5a27;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 304 304' width='304' height='304'%3E%3Cpath fill='%237BCC70' fill-opacity='0.35' d='M44.1 224a5 5 0 1 1 0 2H0v-2h44.1zm160 48a5 5 0 1 1 0 2H82v-2h122.1zm57.8-46a5 5 0 1 1 0-2H304v2h-42.1zm0 16a5 5 0 1 1 0-2H304v2h-42.1zm6.2-114a5 5 0 1 1 0 2h-86.2a5 5 0 1 1 0-2h86.2zm-256-48a5 5 0 1 1 0 2H0v-2h12.1zm185.8 34a5 5 0 1 1 0-2h86.2a5 5 0 1 1 0 2h-86.2zM258 12.1a5 5 0 1 1-2 0V0h2v12.1zm-64 208a5 5 0 1 1-2 0v-54.2a5 5 0 1 1 2 0v54.2zm48-198.2V80h62v2h-64V21.9a5 5 0 1 1 2 0zm16 16V64h46v2h-48V37.9a5 5 0 1 1 2 0zm-128 96V208h16v12.1a5 5 0 1 1-2 0V210h-16v-76.1a5 5 0 1 1 2 0zm-5.9-21.9a5 5 0 1 1 0 2H114v48H85.9a5 5 0 1 1 0-2H112v-48h12.1zm-6.2 130a5 5 0 1 1 0-2H176v-74.1a5 5 0 1 1 2 0V242h-60.1zm-16-64a5 5 0 1 1 0-2H114v48h10.1a5 5 0 1 1 0 2H112v-48h-10.1zM66 284.1a5 5 0 1 1-2 0V274H50v30h-2v-32h18v12.1zM236.1 176a5 5 0 1 1 0 2H226v94h48v32h-2v-30h-48v-98h12.1zm25.8-30a5 5 0 1 1 0-2H274v44.1a5 5 0 1 1-2 0V146h-10.1zm-64 96a5 5 0 1 1 0-2H208v-80h16v-14h-42.1a5 5 0 1 1 0-2H226v18h-16v80h-12.1zm86.2-210a5 5 0 1 1 0 2H272V0h2v32h10.1zM98 101.9V146H53.9a5 5 0 1 1 0-2H96v-42.1a5 5 0 1 1 2 0zM53.9 34a5 5 0 1 1 0-2H80V0h2v34H53.9zm60.1 3.9V66H82v64H69.9a5 5 0 1 1 0-2H80V64h32V37.9a5 5 0 1 1 2 0zM101.9 82a5 5 0 1 1 0-2H128V37.9a5 5 0 1 1 2 0V82h-28.1zm16-64a5 5 0 1 1 0-2H146v44.1a5 5 0 1 1-2 0V18h-26.1zm102.2 270a5 5 0 1 1 0 2H98v14h-2v-16h124.1zM242 149.9V160h16v34h-16v62h48v48h-2v-46h-48v-66h16v-30h-16v-12.1a5 5 0 1 1 2 0zM53.9 18a5 5 0 1 1 0-2H64V2H48V0h18v18H53.9zm112 32a5 5 0 1 1 0-2H192V0h50v2h-48v48h-28.1zm-48-48a5 5 0 0 1-9.8-2h2.07a3 3 0 1 0 5.66 0H178v34h-18V21.9a5 5 0 1 1 2 0V32h14V2h-58.1zm0 96a5 5 0 1 1 0-2H137l32-32h39V21.9a5 5 0 1 1 2 0V66h-40.17l-32 32H117.9zm28.1 90.1a5 5 0 1 1-2 0v-76.51L175.59 80H224V21.9a5 5 0 1 1 2 0V82h-49.59L146 112.41v75.69zm16 32a5 5 0 1 1-2 0v-99.51L184.59 96H300.1a5 5 0 0 1 3.9-3.9v2.07a3 3 0 0 0 0 5.66v2.07a5 5 0 0 1-3.9-3.9H185.41L162 121.41v98.69zm-144-64a5 5 0 1 1-2 0v-3.51l48-48V48h32V0h2v50H66v55.41l-48 48v2.69zM50 53.9v43.51l-48 48V208h26.1a5 5 0 1 1 0 2H0v-65.41l48-48V53.9a5 5 0 1 1 2 0zm-16 16V89.41l-34 34v-2.82l32-32V69.9a5 5 0 1 1 2 0zM12.1 32a5 5 0 1 1 0 2H9.41L0 43.41V40.6L8.59 32h3.51zm265.8 18a5 5 0 1 1 0-2h18.69l7.41-7.41v2.82L297.41 50H277.9zm-16 160a5 5 0 1 1 0-2H288v-71.41l16-16v2.82l-14 14V210h-28.1zm-208 32a5 5 0 1 1 0-2H64v-22.59L40.59 194H21.9a5 5 0 1 1 0-2H41.41L66 216.59V242H53.9zm150.2 14a5 5 0 1 1 0 2H96v-56.6L56.6 162H37.9a5 5 0 1 1 0-2h19.5L98 200.6V256h106.1zm-150.2 2a5 5 0 1 1 0-2H80v-46.59L48.59 178H21.9a5 5 0 1 1 0-2H49.41L82 208.59V258H53.9zM34 39.8v1.61L9.41 66H0v-2h8.59L32 40.59V0h2v39.8zM2 300.1a5 5 0 0 1 3.9 3.9H3.83A3 3 0 0 0 0 302.17V256h18v48h-2v-46H2v42.1zM34 241v63h-2v-62H0v-2h34v1zM17 18H0v-2h16V0h2v18h-1zm273-2h14v2h-16V0h2v16zm-32 273v15h-2v-14h-14v14h-2v-16h18v1zM0 92.1A5.02 5.02 0 0 1 6 97a5 5 0 0 1-6 4.9v-2.07a3 3 0 1 0 0-5.66V92.1zM80 272h2v32h-2v-32zm37.9 32h-2.07a3 3 0 0 0-5.66 0h-2.07a5 5 0 0 1 9.8 0zM5.9 0A5.02 5.02 0 0 1 0 5.9V3.83A3 3 0 0 0 3.83 0H5.9zm294.2 0h2.07A3 3 0 0 0 304 3.83V5.9a5 5 0 0 1-3.9-5.9zm3.9 300.1v2.07a3 3 0 0 0-1.83 1.83h-2.07a5 5 0 0 1 3.9-3.9zM97 100a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0-16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-48 32a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm32 48a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-16 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm32-16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0-32a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16 32a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm32 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0-16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-16-64a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16 96a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16-144a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 32a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16-32a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16-16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-96 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16-32a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm96 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-16-64a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16-16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-32 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0-16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-16 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-16 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-16 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM49 36a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-32 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm32 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM33 68a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16-48a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 240a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16 32a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-16-64a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-16-32a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm80-176a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-16-16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm32 48a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16-16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0-32a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm112 176a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-16 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM17 180a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0-32a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM17 84a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm32 64a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16-16a3 3 0 1 0 0-6 3 3 0 0 0 0 6z'%3E%3C/path%3E%3C/svg%3E");
+}
+
+[data-theme="dark"] .clash-banner .logo {
+    background-image: url("/media/logos/icon_light.svg");
+}
+
+[data-theme="dark"] .clash-banner .logo__title,
+[data-theme="dark"] .clash-banner .logo__tagline {
+    color: #fff;
+    text-shadow: none;
+}
+
+/* Opened menu */
+[data-theme="dark"] .opened.menu__list {
+    border-top-color: #7BCC70;
+}
+
+/* Syntax highlighting overrides for dark mode */
+[data-theme="dark"] code .hll { background-color: #161b22; border-color: #484f58; }
+[data-theme="dark"] code .c { color: #6a9955; }
+[data-theme="dark"] code .err { color: #f44747; background-color: transparent; }
+[data-theme="dark"] code .cm { color: #6a9955; }
+[data-theme="dark"] code .cp { color: #c586c0; }
+[data-theme="dark"] code .c1 { color: #6a9955; }
+[data-theme="dark"] code .cs { color: #6a9955; }
+[data-theme="dark"] code .gd { color: #f44747; background-color: rgba(244, 71, 71, 0.1); }
+[data-theme="dark"] code .gd .x { color: #f44747; background-color: rgba(244, 71, 71, 0.2); }
+[data-theme="dark"] code .gi { color: #8bc98a; background-color: rgba(139, 201, 138, 0.1); }
+[data-theme="dark"] code .gi .x { color: #8bc98a; background-color: rgba(139, 201, 138, 0.2); }
+[data-theme="dark"] code .go { color: #888; }
+[data-theme="dark"] code .gp { color: #aaa; }
+[data-theme="dark"] code .gr { color: #f44747; }
+[data-theme="dark"] code .gh { color: #aaa; }
+[data-theme="dark"] code .gu { color: #c586c0; }
+[data-theme="dark"] code .gt { color: #f44747; }
+[data-theme="dark"] code .k { color: #569cd6; }
+[data-theme="dark"] code .kc { color: #569cd6; }
+[data-theme="dark"] code .kd { color: #569cd6; }
+[data-theme="dark"] code .kn { color: #c586c0; }
+[data-theme="dark"] code .kp { color: #569cd6; }
+[data-theme="dark"] code .kr { color: #569cd6; }
+[data-theme="dark"] code .kt { color: #4ec9b0; }
+[data-theme="dark"] code .m { color: #b5cea8; }
+[data-theme="dark"] code .s { color: #ce9178; }
+[data-theme="dark"] code .n { color: #dcdcaa; }
+[data-theme="dark"] code .na { color: #4ec9b0; }
+[data-theme="dark"] code .nb { color: #4ec9b0; }
+[data-theme="dark"] code .nc { color: #4ec9b0; }
+[data-theme="dark"] code .no { color: #4ec9b0; }
+[data-theme="dark"] code .ni { color: #c586c0; }
+[data-theme="dark"] code .ne { color: #f44747; }
+[data-theme="dark"] code .nf { color: #dcdcaa; }
+[data-theme="dark"] code .nn { color: #4ec9b0; }
+[data-theme="dark"] code .nt { color: #569cd6; }
+[data-theme="dark"] code .nv { color: #9cdcfe; }
+[data-theme="dark"] code .w { color: #888; }
+[data-theme="dark"] code .mf { color: #b5cea8; }
+[data-theme="dark"] code .mh { color: #b5cea8; }
+[data-theme="dark"] code .mi { color: #b5cea8; }
+[data-theme="dark"] code .mo { color: #b5cea8; }
+[data-theme="dark"] code .sb { color: #ce9178; }
+[data-theme="dark"] code .sc { color: #ce9178; }
+[data-theme="dark"] code .sd { color: #ce9178; }
+[data-theme="dark"] code .s2 { color: #ce9178; }
+[data-theme="dark"] code .se { color: #d7ba7d; }
+[data-theme="dark"] code .sh { color: #ce9178; }
+[data-theme="dark"] code .si { color: #ce9178; }
+[data-theme="dark"] code .sx { color: #ce9178; }
+[data-theme="dark"] code .sr { color: #d16969; }
+[data-theme="dark"] code .s1 { color: #ce9178; }
+[data-theme="dark"] code .ss { color: #c586c0; }
+[data-theme="dark"] code .bp { color: #9cdcfe; }
+[data-theme="dark"] code .vc { color: #9cdcfe; }
+[data-theme="dark"] code .vg { color: #9cdcfe; }
+[data-theme="dark"] code .vi { color: #9cdcfe; }
+[data-theme="dark"] code .il { color: #b5cea8; }
+[data-theme="dark"] code .gc { color: #aaa; background-color: #0d1117; }
+
+/* Theme switcher dropdown */
+.theme-switcher {
+    float: right;
+    position: relative;
+    z-index: 1001;
+}
+
+.theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px 15px;
+    font-size: 18px;
+    color: #fff;
+    line-height: 1;
+    vertical-align: middle;
+}
+
+.theme-toggle:hover {
+    opacity: 0.8;
+}
+
+.theme-toggle .inline-svg {
+    height: 1.1rem;
+    width: 1.1rem;
+    top: 0.1rem;
+    position: relative;
+    fill: #fff;
+}
+
+.theme-icon {
+    display: none;
+}
+
+.theme-menu .inline-svg {
+    height: 1rem;
+    width: 1rem;
+    top: 0.1rem;
+    position: relative;
+    fill: #fff;
+    margin-right: 4px;
+}
+
+.theme-menu {
+    display: none;
+    position: fixed;
+    margin: 0;
+    padding: 4px 0;
+    list-style: none;
+    background: #536267;
+    box-shadow: 0 4px 12px rgba(0,0,0,.25);
+    border-radius: 4px;
+    z-index: 10000;
+    min-width: 130px;
+}
+
+.theme-menu--open {
+    display: block;
+}
+
+.theme-menu li {
+    margin: 0;
+}
+
+.theme-menu button {
+    display: block;
+    width: 100%;
+    padding: 8px 16px;
+    border: none;
+    background: none;
+    color: #fff;
+    font-size: 14px;
+    text-align: left;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.theme-menu button:hover {
+    background: #7BCC70;
+}
+
+.theme-menu button.theme-menu__active {
+    font-weight: 700;
+}
+
+.theme-menu button.theme-menu__active::after {
+    content: ' \2713';
+}
+
+[data-theme="dark"] .theme-menu {
+    background: #21262d;
+}
+
+[data-theme="dark"] .theme-menu button:hover {
+    background: #7BCC70;
+}
+
+/* Scrollbar for dark mode */
+[data-theme="dark"] ::-webkit-scrollbar {
+    background: #0d1117;
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb {
+    background: #484f58;
+}
+
+/* Adjust install page if present */
+[data-theme="dark"] .install-tab {
+    background: #0d1117;
+    color: #e0e0e0;
+}
+
+/* abbr */
+[data-theme="dark"] abbr[title] {
+    border-bottom-color: #888;
+}
