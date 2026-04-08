@@ -1,6 +1,7 @@
 ---
 identifier: ecosystem
 title: Clash Ecosystem
+description: "A curated list of useful Clash packages"
 disable_comments: true
 ---
 
