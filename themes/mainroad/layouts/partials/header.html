@@ -35,7 +35,7 @@
 		<header class="header">
 			{{ partial "menu.html" . }}
 		</header>
-        {{ if eq .Title "Home" }}
+        {{ if .IsHome }}
         <div class="clash-banner">
             <div class="logo"></div>
             <div class="logo__inner">
