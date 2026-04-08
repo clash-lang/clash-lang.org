@@ -110,6 +110,15 @@ error: [GHC-64725]
   |     ^^^^^^
 ```
 
+### Completely polymorphic
+In cases where a type is left completely polymorphic, like the introductory problem, users will see the raw workings of the plugin:
+
+```
+    • Could not deduce ‘CheckedPositiveIntegerLiteral 0 a’ arising from a use of ‘checkedPositiveIntegerLiteral’
+```
+
+Perhaps [if-instance](https://github.com/sheaf/if-instance) or [ifcxt](https://github.com/mikeizbicki/ifcxt) could help here in the future.
+
 ## Clash types: `Unsigned`
 
 Now for the types that motivated this plugin in the first place.
