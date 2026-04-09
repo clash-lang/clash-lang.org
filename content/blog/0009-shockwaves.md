@@ -37,7 +37,7 @@ These consist of sum and product types.
 In Haskell terms, these are the equivalents of a data type having multiple constructors,
 and those constructors having fields respectively.
 
-For example, a tuple is probably the most basic for of a product type.
+For example, a tuple is probably the most basic form of a product type.
 `(Bool,Int)` is a type for which each value contrains _both_ a `Bool` and an `Int` value.
 `Bool` itself is a sum type: it has the two constructors `True` and `False`,
 and a value is _either_ `True` _or_ `False`.
@@ -45,9 +45,9 @@ If we look at `Maybe a` (rustaceans will know this as `Option<a>`),
 it is both: `Maybe` is _either_ `Nothing`, or `Just`, and `Just` contains a
 field of type `a`.
 
-We want to be able to take our binary values and translate them to their textual
+In the waveform viewer, we want to be able to take our algebraic values and translate them to their textual
 Haskell representation, but we also want to _deconstruct_ these values into their
-parts recursively, which we can then add as subsignals.
+parts recursively, so we can add them as subsignals.
 
 For example, if we have a type `data Point = Point{x::Int, y::Int}`, we'd like
 the signal for our `Point` type to have subsignals for the `x` and `y` values.
@@ -65,13 +65,13 @@ Haskell values again.
 The Shockwaves system consists of two parts that work together to reconstruct
 this type information inside the waveform viewer:
 
-- The `Clash.Shockwaves` Haskell library, which exports translation information on top of
+- The `Clash.Shockwaves` Haskell library, which exports translation information in addition to
   the standard VCD file.
 - The Shockwaves extension for Surfer, which uses this information
   to translate the values inside the VCD file back into the Haskell representation.
 
 Shockwaves uses a collection of highly configurable translator modules to build up the
-best representations of Haskell types. And if no good representation is available, it can
+best representations of Haskell types. And, if no good representation is available, it can
 also just store the translations in lookup tables! Add some flexible styles and
 configuration options, and you've got yourself a very powerful debugging tool.
 
@@ -90,7 +90,7 @@ import Data.Typeable
 import Clash.Shockwaves
 
 data MyColor = Red | Green | Blue
-  deriving (BitPack,Generic,Typeable,Waveform,NFDataX)
+  deriving (BitPack,Generic,Typeable,NFDataX,Waveform)
 ```
 
 The tracing functions are designed to be a drop-in replacement for Clash's `Signal.Trace`.
@@ -121,7 +121,7 @@ file and automatically start translating the data! The result should look like t
 
 ## Adding a splash of color
 
-Surfer is not limited to just showing Haskell values as text; it also has a powerful
+Surfer is not limited to just showing Haskell values as text; it also has a handy
 style system. As you've already seen above, `undefined` values show up in red,
 but there's so much more you can do! Shockwaves supports Surfer's builtin styles,
 but also allows you to create colors of your own, and even add style variables that
