@@ -215,7 +215,7 @@ If you have any feedback, we'd love to hear it!
 
 ## Closing words
 
-I've been working on Shockwaves for a long time now, and I'm proud to show what I've
-achieved. I hope this will make debugging a lot easier. For future versions, we are
+I've been working on Shockwaves for a long time now, and I'm proud to finally show what I've
+created. I hope this will make debugging a lot easier. For future versions, we are
 working on improving Clash simulation as a whole, and integrating Shockwaves with
 Clash-ILA.
