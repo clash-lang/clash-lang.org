@@ -34,7 +34,7 @@ ghci> let x = -5 :: Num a => a in x :: Word
 18446744073709551611
 ```
 
-No warning at all, yet we still get unexpected wrapping behavior. This is the kind of thing that's easy to do accidentally, especially in a larger codebase where definitions and their use sites are in different modules. The chances of hitting this in standard Haskell programs is pretty low, because typical literals don't often come close to the boundaries of typical numeric types. In Clash programs this is different though, as sizes for its numeric types (`Unsigned`, `Signed,` `Index`, etc.) are often picked a low as possible to not waste silicon area. Wouldn't it be nice if we could pick out literals that don't fit?
+No warning at all, yet we still get unexpected wrapping behavior. This is the kind of thing that's easy to do accidentally, especially in a larger codebase where definitions and their use sites are in different modules. The chances of hitting this in standard Haskell programs is pretty low, because typical literals don't often come close to the boundaries of typical numeric types. In Clash programs this is different though, as sizes for its numeric types ([`Unsigned`](https://hackage-content.haskell.org/package/clash-prelude-1.8.5/docs/Clash-Sized-Unsigned.html#t:Unsigned), [`Signed`](https://hackage-content.haskell.org/package/clash-prelude-1.8.5/docs/Clash-Sized-Signed.html#t:Signed), [`Index`](https://hackage-content.haskell.org/package/clash-prelude-1.8.5/docs/Clash-Sized-Index.html#t:Index), etc.) are often picked a low as possible to not waste silicon area. Wouldn't it be nice if we could pick out literals that don't fit?
 
 ## `checked-literals`
 
@@ -74,7 +74,7 @@ error: [GHC-64725]
 
 Instead of silently wrapping, this is now a hard type error. The message tells you exactly what the valid range is.
 
-### Negative literal on unsigned type
+### Negative literal on `Word8`
 
 ```haskell
 x :: Word8
@@ -93,7 +93,7 @@ error: [GHC-64725]
 
 ### Rounding detection for `Data.Fixed`
 
-The plugin also works for rational literals. For example, Haskell's `Milli` type (from `Data.Fixed`) has a resolution of 1/1000. Assigning a literal that requires more precision than that is now caught:
+The plugin also works for rational literals. For example, Haskell's [`Milli`](https://hackage.haskell.org/package/base/docs/Data-Fixed.html#t:Milli) type (from [`Data.Fixed`](https://hackage.haskell.org/package/base/docs/Data-Fixed.html)) has a resolution of 1/1000. Assigning a literal that requires more precision than that is now caught:
 
 ```haskell
 x :: Milli
@@ -261,7 +261,7 @@ GHC's type checker does the rest. This design means the plugin itself is small a
 
 ## Escape hatch
 
-Sometimes you really do want to use a literal that doesn't fit the target type. The `uncheckedLiteral` function bypasses the plugin's checks:
+Sometimes you really do want to use a literal that doesn't fit the target type. The [`uncheckedLiteral`](https://hackage-content.haskell.org/package/checked-literals-0.1.0.0/docs/CheckedLiterals.html#v:uncheckedLiteral) function bypasses the plugin's checks:
 
 ```haskell
 x :: Word8
@@ -286,6 +286,6 @@ Because GHC doesn't have `TypeWarning` (yet). Once it does, offering a warning m
 
 ## Status
 
-`checked-literals` is [available on Hackage](https://hackage.haskell.org/package/checked-literals). It ships with instances for all standard numeric types (`Word`, `Word8`, ..., `Int`, `Int8`, ..., `Integer`, `Natural`, `Float`, `Double`, `Data.Fixed`, `Ratio`). If you maintain a library with custom numeric types, writing instances is straightforward -- the `Unsigned` and `UFixed` instances in Clash serve as good examples.
+`checked-literals` is [available on Hackage](https://hackage.haskell.org/package/checked-literals). It ships with instances for all standard numeric types ([`Word`](https://hackage.haskell.org/package/base/docs/Data-Word.html#t:Word), [`Word8`](https://hackage.haskell.org/package/base/docs/Data-Word.html#t:Word8), ..., [`Int`](https://hackage.haskell.org/package/base/docs/Data-Int.html#t:Int), [`Int8`](https://hackage.haskell.org/package/base/docs/Data-Int.html#t:Int8), ..., [`Integer`](https://hackage.haskell.org/package/base/docs/Prelude.html#t:Integer), [`Natural`](https://hackage.haskell.org/package/base/docs/Numeric-Natural.html#t:Natural), [`Float`](https://hackage.haskell.org/package/base/docs/Prelude.html#t:Float), [`Double`](https://hackage.haskell.org/package/base/docs/Prelude.html#t:Double), [`Fixed`](https://hackage-content.haskell.org/package/base-4.22.0.0/docs/Data-Fixed.html#t:Fixed), [`Ratio`](https://hackage.haskell.org/package/base/docs/Data-Ratio.html#t:Ratio)). If you maintain a library with custom numeric types, writing instances is straightforward -- the [`Unsigned`](https://hackage-content.haskell.org/package/clash-prelude-1.8.5/docs/Clash-Sized-Unsigned.html#t:Unsigned) and [`UFixed`](https://hackage-content.haskell.org/package/clash-prelude-1.8.5/docs/Clash-Sized-Fixed.html#t:UFixed) instances in Clash serve as good examples.
 
 We're working on integrating `checked-literals` into `clash-prelude` so that Clash users can get compile-time literal checking just by enabling the plugin.
