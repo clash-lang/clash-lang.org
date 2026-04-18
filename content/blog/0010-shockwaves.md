@@ -16,7 +16,7 @@ tags:
   - "Waveform viewer"
 ---
 
-<center><img style="min-width:25%" src="/blog/0009-shockwaves/shockwaves_logo.svg"></img></center>
+<center><img style="min-width:25%" src="shockwaves_logo.svg"></img></center>
 
 ## Typed waveforms with Shockwaves
 
@@ -117,7 +117,7 @@ main = do
 If you now open `waveform.vcd` in Surfer, the Shockwaves extension will detect the JSON
 file and automatically start translating the data! The result should look like this:
 
-<center><img style="min-width:25%" src="/blog/0009-shockwaves/rgb_simple.png"></img></center>
+<center><img style="min-width:25%" src="rgb_simple.png"></img></center>
 
 ## Adding a splash of color
 
@@ -138,7 +138,7 @@ instance Waveform MyColor where
 If we run our code again, we now see that our signals have taken on color!
 
 
-<center><img style="min-width:25%" src="/blog/0009-shockwaves/rgb_color.png"></img></center>
+<center><img style="min-width:25%" src="rgb_color.png"></img></center>
 
 
 Let's have a quick look at the style variables too! Let's change our styles like this:
@@ -165,7 +165,7 @@ If we then reload Surfer (press `r`), we can suddenly see our colors show up!
 We can also use these style variiables to, for example, give `True` and `False`
 different styles.
 
-<center><img style="min-width:25%" src="/blog/0009-shockwaves/rgb_vars.png"></img></center>
+<center><img style="min-width:25%" src="rgb_vars.png"></img></center>
 
 ## Going beyond the basics
 
@@ -200,7 +200,7 @@ let you:
 - turn on and off error propagation
 - and set all these globally or locally!
 
-<center><img style="min-width:25%" src="/blog/0009-shockwaves/luts.png"></img></center>
+<center><img style="min-width:25%" src="luts.png"></img></center>
 
 ## Want to try for yourself?
 
