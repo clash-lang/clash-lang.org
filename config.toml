@@ -106,13 +106,6 @@ unsafe= true
     weight = 30
 
   [[menu.main]]
-    identifier = "news"
-    name = "News"
-    pre = ""
-    url = "/news/"
-    weight = 20
-
-  [[menu.main]]
     identifier = "support"
     name = "Support plan"
     pre = ""
