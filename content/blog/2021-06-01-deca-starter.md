@@ -1,6 +1,7 @@
 ---
 title: "Getting started with Clash on the Arrow DECA devkit"
-date: "2021-06-01"
+aliases:
+  - /blog/0006-deca-starter/
 description: "Quickly set up a Clash project for the Arrow DECA development board"
 disable_comments: false
 author: "christiaanbaaij"

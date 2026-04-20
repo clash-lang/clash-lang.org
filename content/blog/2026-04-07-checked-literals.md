@@ -1,6 +1,7 @@
 ---
 title: "Introducing checked-literals: compile-time bounds checking for numeric literals"
-date: "2026-04-07"
+aliases:
+  - /blog/0009-checked-literals/
 description: "A GHC plugin that turns out-of-range numeric literals into type errors"
 disable_comments: false
 author: "martijnbastiaan"

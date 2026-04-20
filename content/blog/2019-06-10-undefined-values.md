@@ -1,6 +1,7 @@
 ---
 title: "Undefined values, how do they work?"
-date: "2019-06-10"
+aliases:
+  - /blog/0004-undefined-values/
 description: "What are undefined values? Common pitfalls and available tooling to deal with them"
 disable_comments: false
 author: "martijnbastiaan"

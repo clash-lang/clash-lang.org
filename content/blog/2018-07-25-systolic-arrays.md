@@ -1,6 +1,7 @@
 ---
 title: "Building systolic arrays with Clash"
-date: "2018-07-25"
+aliases:
+  - /blog/0002-systolic-arrays/
 description: "Building a matrix multiplier using systolic arrays"
 disable_comments: false
 author: "martijnbastiaan"

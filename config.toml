@@ -10,6 +10,12 @@ pagerSize = 10
   [services.disqus]
     shortname = ""
 
+[permalinks]
+  blog = "/blog/:year-:month-:day/:slug/"
+
+[frontmatter]
+  date = [":filename", ":default"]
+
 [markup.highlight]
 noClasses = false
 style = "tango"
