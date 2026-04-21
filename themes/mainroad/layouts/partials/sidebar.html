@@ -1,4 +1,4 @@
-{{ if or (eq .Title "Blogs") (eq .Title "News") }}
+{{ if or (and (eq .Kind "section") (eq .Section "blog")) (and (eq .Kind "term") (eq .Data.Plural "categories")) }}
     <aside class="sidebar">
         {{ partial "widgets/search.html" . }}
         {{ partial "widgets/recent.html" . }}
