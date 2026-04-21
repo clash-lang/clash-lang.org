@@ -11,7 +11,7 @@ pagerSize = 10
     shortname = ""
 
 [permalinks]
-  blog = "/blog/:year-:month-:day/:slug/"
+  blog = "/blog/:year-:month-:day-:slug/"
 
 [frontmatter]
   date = [":filename", ":default"]
