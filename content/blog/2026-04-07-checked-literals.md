@@ -10,6 +10,7 @@ summary: "GHC's builtin overflow warnings are easy to bypass and don't work for 
 toc: true
 mathjax: false
 categories:
+  - "News"
   - "Tutorial"
 tags:
   - "Clash internals"

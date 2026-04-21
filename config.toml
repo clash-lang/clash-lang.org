@@ -109,7 +109,7 @@ unsafe= true
     identifier = "news"
     name = "News"
     pre = ""
-    url = "/news/"
+    url = "/categories/news/"
     weight = 20
 
   [[menu.main]]
