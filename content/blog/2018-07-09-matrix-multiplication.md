@@ -1,6 +1,7 @@
 ---
 title: "Matrix multiplication with Clash"
-date: "2018-07-09"
+aliases:
+  - /blog/0001-matrix-multiplication/
 description: "Building, restructuring, and pipelining matrix multiplication with Clash"
 disable_comments: false
 author: "martijnbastiaan"
