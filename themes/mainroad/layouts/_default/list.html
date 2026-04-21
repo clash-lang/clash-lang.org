@@ -1,15 +1,28 @@
 {{ partial "header.html" . }}
 
+	{{- $isBlogSection := and (eq .Kind "section") (eq .Section "blog") }}
+	{{- $isCategoryPage := and (eq .Kind "term") (eq .Data.Plural "categories") }}
+	{{- $showBlogFilter := or $isBlogSection $isCategoryPage }}
 	<main class="main list content" role="main">
-        <!--
-		{{- if not .IsHome}}
-		{{- with .Title }}
-		<header class="page-header">
-			<h1 class="page-header__title">{{ . }}</h1>
-		</header>
+		{{- if $showBlogFilter }}
+		{{- $activeCategory := "" }}
+		{{- if $isCategoryPage }}
+			{{- $activeCategory = .Title | urlize }}
 		{{- end }}
+		<div class="blog-filter">
+			<span class="blog-filter__label">Categories:</span>
+			<div class="blog-filter__options">
+				<a class="blog-filter__option{{ if not $isCategoryPage }} is-active{{ end }}" href="{{ "/blog/" | relLangURL }}">
+					All
+				</a>
+				{{- range $name, $_ := .Site.Taxonomies.categories }}
+					<a class="blog-filter__option{{ if eq $activeCategory $name }} is-active{{ end }}" href="{{ "/categories/" | relLangURL }}{{ $name }}">
+						{{ $name | title | humanize }}
+					</a>
+				{{- end }}
+			</div>
+		</div>
 		{{- end }}
-        -->
 		{{- with .Content }}
 		<div class="page-content">
 			{{ . }}

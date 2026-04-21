@@ -686,6 +686,47 @@ select {
     margin-bottom: 1.25rem;
 }
 
+.blog-filter {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ebebeb;
+}
+
+.blog-filter__label {
+    font-size: 12px;
+    font-size: .75rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: #536267;
+}
+
+.blog-filter__options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.blog-filter__option {
+    display: inline-block;
+    padding: 4px 10px;
+    font-weight: 700;
+    color: #536267;
+    background: #f5f5f5;
+    border: 1px solid #ebebeb;
+}
+
+.blog-filter__option:hover,
+.blog-filter__option.is-active {
+    color: #fff;
+    background: #7BCC70;
+    border-color: #7BCC70;
+}
+
 .meta {
     font-size: 13px;
     font-size: .8125rem;

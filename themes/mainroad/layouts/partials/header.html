@@ -4,14 +4,11 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-    {{ if or (eq .Title "Blogs") (eq .Title "News") }}
-        <title>Clash: {{ string .CurrentSection.Type | title }}</title>
+    {{ $showSidebar := or (and (eq .Kind "section") (eq .Section "blog")) (and (eq .Kind "term") (eq .Data.Plural "categories")) }}
+    {{ if .Title }}
+        <title>Clash: {{ .Title }}</title>
     {{ else }}
-        {{ if .Title }}
-            <title>Clash: {{ .Title }}</title>
-        {{ else }}
-            <title</title>
-        {{ end }}
+        <title</title>
     {{ end }}
 
 	<meta name="description" content="{{ if .IsHome }}{{ .Site.Params.description }}{{else}}{{ .Params.Description }}{{end}}">
@@ -30,7 +27,7 @@
 	<script type="text/javascript" src="{{ "js/jquery-3.3.1.min.js" | relURL }}"></script>
 	<link rel="shortcut icon" href="{{ "/media/logos/favicon.png" | relURL }}">
 </head>
-<body class="body {{ if or (eq .Title "Blogs") (eq .Title "News") }}body-right-sidebar{{ else }}body-no-sidebar{{ end }}">
+<body class="body {{ if $showSidebar }}body-right-sidebar{{ else }}body-no-sidebar{{ end }}">
 	<div class="container container-outer">
 		<header class="header">
 			{{ partial "menu.html" . }}
