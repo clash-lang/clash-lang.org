@@ -7,7 +7,8 @@ authorbox: true # Optional, enable authorbox for specific post
 summary: "For years, debugging Clash designs in a waveform viewer has been a massive pain. After all, the waveform viewers we have were not designed with Clash in mind, and glady present us with unintelligible binary values. But those times are now over! I've spent the last months working on Shockwaves, a system that lets you show typed waveforms in (Surfer)[https://surfer-project.org/], and after many, *many* changes, tests, bug fixes and rewrites, we have finally reached the point of an official release!"
 toc: true
 mathjax: false
-# categories:
+categories:
+  - "News"
 #   - "Tutorial"
 tags:
   - "Shockwaves"
