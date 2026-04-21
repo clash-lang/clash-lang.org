@@ -22,7 +22,7 @@ Systolic arrays are networks of locally coupled processing elements, continuousl
 
 Let's first have a look at a simple systolic array where each processing element has an input from their left and upper neighbor, and an output to their right and bottom neighbor. It looks like:
 
-<center><img src="/blog/0002-systolic-arrays/LeftTopPE.svg"></img></center>
+<center><img src="LeftTopPE.svg"></img></center>
 
 Processing elements can do arbitrary things with their inputs and pass arbitrary things as their outputs, but we'll keep it simple for now. The following example consists of processing elements which each simply pass along the data they receive from their left neighbour to their right neighbor. Similarly, they pass their top input to their bottom neighbor. Simulating a grid of three by three for a total of nine processing elements looks like:
 
@@ -78,7 +78,7 @@ Lots of other applications exist, such as matrix inversion, correlation, and QR 
 # Generic systolic array
 A generic systolic array consists of processing elements consuming and producing from and to all their direct neighbors, chained together to create that large interconnected structure. A single processing element therefore looks like:
 
-<center><img src="/blog/0002-systolic-arrays/LinearPE.svg"></img></center>
+<center><img src="LinearPE.svg"></img></center>
 
 Apart from style choices, its type is fairly straightforward in Clash. We simply define it as a function taking four inputs, and producing four outputs. For debugging purposes, each processing element will also receive its index in the systolic array. One might later use this in combination with `trace`. To ease working with this function later, it is defined in its [uncurried form](https://wiki.haskell.org/Currying).
 
@@ -99,7 +99,7 @@ type ProcessingElement dom m n lr rl tb bt
 
 In order to create a systolic array these processing elements need to be chained together. Let's first focus on creating a single column of processing elements, which -for a column of three elements- looks like:
 
-<center><img style="min-width:25%" src="/blog/0002-systolic-arrays/SysColumn.svg"></img></center>
+<center><img style="min-width:25%" src="SysColumn.svg"></img></center>
 
 Any function constructing the array above would need to (internally) construct the colored edges, given the uncolored ones. In code, we'll use the following names for the inputs:
 
@@ -168,7 +168,7 @@ systolicArray2D pelem lrs rls tbs bts = (lrs''', rls''', tbs''', bts''')
 
 And that's it for actually tying the processing elements together in a grid. This doesn't quite correspond to the examples shown at the very beginning of this blogpost, the grid is now a continuous circuit. That is, data flows from the sides of the systolic array all through it in a single clock cycle. All outputs need to be delayed a single clock cycle, as such:
 
-<center><img style="min-width:25%" src="/blog/0002-systolic-arrays/LinearPEReg.svg"></img></center>
+<center><img style="min-width:25%" src="LinearPEReg.svg"></img></center>
 
 By simply using [register](http://hackage.haskell.org/package/clash-prelude-0.99.3/docs/Clash-Signal.html#v:register) we can delay its output by one:
 
@@ -241,7 +241,7 @@ And that's all there is to it.
 # Matrix multiplication
 So far we've built a generic systolic array and a delayed one on top of it. We haven't built anything useful yet though, which is what this section is for. We've selected a few amongst the most commonly used. Even with a rigid structures such systolic arrays, many design choices still exist. The implemented algorithms are therefore by no means meant as perfect solutions. This subsection will deal with matrix multiplication.
 
-<center><img style="min-width:40%" src="/blog/0002-systolic-arrays/MM.svg"></img></center>
+<center><img style="min-width:40%" src="MM.svg"></img></center>
 
 To test and communicate various communication strategies, we'll use spacetime diagrams. On the vertical axis there's space: the processing elements. On the horizontal axis there's time. We'll only consider the case where processing elements can communicate in one dimension: either left-right or top-bottom. If they communicate left-right, the processing elements represent a row in the systolic array, if they communicate top-down, the processing elements represent a column in the systolic array. It actually doesn't really matter, so to ease talking about this problem let's assume the communicate top-bottom. A <span style="background-color:#66CC00; color:white;">green</span> background represents every moment in time a specific element produces useful data:
 
@@ -364,7 +364,7 @@ Empty cells will be used to indicate where some piece of data resides. We'll see
 ## General matrix multiplication
 Matrix multiplication can implemented by having each processing element multiply both its input signals, accumulating, and pushing its data out periodically as shown in the first part of this blogpost. The period at which processing elements need to push out data depends on `n`, the number of columns in the left matrix and the number of rows in the right. Visually:
 
-<center><img style="min-width:70%" src="/blog/0002-systolic-arrays/Dimensions.svg"></img></center>
+<center><img style="min-width:70%" src="Dimensions.svg"></img></center>
 
 Assuming that each cell communicates its result downwards and each cell can only push a single element, we need a number of flush rounds if `m` exceeds `n`. After all, the bandwidth of the outer processing element to its environment is a single element per cycle. Thus, more than one result per cycle per column exceeds that bandwidth. If `n` exceeds `m` no flush rounds are needed, but the systolic array produces "garbage" values some of the time as the bandwidth exceeds the result production. 
 
