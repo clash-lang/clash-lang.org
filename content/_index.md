@@ -29,7 +29,7 @@ Clash is an [open-source](https://github.com/clash-lang/clash-compiler) project,
     </div>
 </div>
 
-<h1 id="get-thebook-retrocomputing-with-clash"><a href="https://unsafeperform.io/retroclash/" style="color:black">Get the book: Retrocomputing with Clash</a></h1>
+<h1 id="get-thebook-retrocomputing-with-clash"><a href="https://unsafeperform.io/retroclash/" class="retroclash-link">Get the book: Retrocomputing with Clash</a></h1>
 <div class="cards250">
     <div class="card">
         <p style="text-align:center;"><a href="https://unsafeperform.io/retroclash/"><img src="/media/home/cover-3d-220px.png" width="220px"></a></p>

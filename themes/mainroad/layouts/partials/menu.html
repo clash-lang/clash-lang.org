@@ -9,6 +9,18 @@
         {{ partial "menu_logo.html" }}
     {{ end }}
 
+	<div class="theme-switcher">
+		<button id="theme-toggle" class="theme-toggle" aria-label="Theme" aria-expanded="false">
+			<span class="theme-icon theme-icon--light">{{ partial "fontawesome.html" "sun" }}</span>
+			<span class="theme-icon theme-icon--dark">{{ partial "fontawesome.html" "moon" }}</span>
+			<span class="theme-icon theme-icon--auto">{{ partial "fontawesome.html" "custom-auto" }}</span>
+		</button>
+		<ul id="theme-menu" class="theme-menu" role="menu">
+			<li role="menuitem"><button data-theme-choice="light">{{ partial "fontawesome.html" "sun" }} Light</button></li>
+			<li role="menuitem"><button data-theme-choice="dark">{{ partial "fontawesome.html" "moon" }} Dark</button></li>
+			<li role="menuitem"><button data-theme-choice="auto">{{ partial "fontawesome.html" "custom-auto" }} Auto</button></li>
+		</ul>
+	</div>
 	<ul class="menu__list">
     {{ if .CurrentSection }}
         {{ if not (eq .Title "Home") }}
