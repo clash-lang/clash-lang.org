@@ -6,10 +6,10 @@ disable_comments: true
 ---
 
 # Tutorial and reference material
-{{% fontawesome book %}} [User guide](https://clash-lang.readthedocs.io/en/latest/index.html)</br>
-{{% fontawesome book %}} [Tutorial](http://hackage.haskell.org/package/clash-prelude/docs/Clash-Tutorial.html)</br>
+{{% fontawesome book %}} [User guide](https://docs.clash-lang.org/compiler-user-guide/)</br>
+{{% fontawesome book %}} [Tutorial](https://docs.clash-lang.org/tutorial/)</br>
 {{% fontawesome book %}} [Reference documentation](http://hackage.haskell.org/package/clash-prelude/docs/Clash-Prelude.html)</br>
-{{% fontawesome github %}} [FAQ](https://github.com/clash-lang/clash-compiler/wiki/FAQ)
+{{% fontawesome book %}} [FAQ](https://docs.clash-lang.org/compiler-user-guide/general/faqs.html)
 
 # Blog posts
 {{% fontawesome globe %}} [Dr. Gergő Érdi posts on CPU, VGA, PS2 and much more](https://gergo.erdi.hu/blog/tags/clash/)</br>
