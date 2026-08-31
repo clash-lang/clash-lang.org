@@ -1,0 +1,6 @@
+{{- /* Inline an SVG that lives in the static directory matching this page's
+       URL (static/blog/<date>-<slug>/), so its CSS participates in the page
+       cascade and can respond to the site's data-theme dark mode toggle.
+       Usage: inline-svg "figure.svg" */}}
+{{- $file := printf "static%s%s" .Page.RelPermalink (.Get 0) -}}
+{{- readFile $file | safeHTML -}}
