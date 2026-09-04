@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="sig-figure" viewBox="0 0 302 260" width="302" height="260" role="img" aria-label="A clock signal with a rising edge and a data signal. The data signal is unstable (hatched) except in a window around the clock edge, called the stable period. The setup time is the part of the stable period before the edge, the hold time the part after it." style="display: block; margin: 1em auto; width: 302px; max-width: 100%; height: auto;">
+<style>
+.sig-figure {
+  --sig-ink: #000000;
+  --sig-accent: #6c8ebf;
+}
+@media (prefers-color-scheme: dark) {
+  .sig-figure:not([data-theme="light"] *) {
+    --sig-ink: #e0e0e0;
+    --sig-accent: #8fb3e6;
+  }
+}
+[data-theme="dark"] .sig-figure {
+  --sig-ink: #e0e0e0;
+  --sig-accent: #8fb3e6;
+}
+.sig-figure text {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  fill: var(--sig-ink);
+}
+.sig-figure .sig-label {
+  font-weight: bold;
+}
+.sig-figure .sig-wire {
+  fill: none;
+  stroke: var(--sig-ink);
+  stroke-width: 1;
+  stroke-linejoin: miter;
+}
+.sig-figure .sig-guide {
+  fill: none;
+  stroke: var(--sig-accent);
+  stroke-width: 1.5;
+  stroke-dasharray: 2 3;
+}
+.sig-figure .sig-measure {
+  fill: none;
+  stroke: var(--sig-accent);
+  stroke-width: 1;
+}
+.sig-figure .sig-hatch-line {
+  fill: none;
+  stroke: var(--sig-ink);
+  stroke-width: 1;
+}
+</style>
+<defs>
+  <pattern id="sh1-hatch" patternUnits="userSpaceOnUse" width="10" height="40">
+    <path class="sig-hatch-line" d="M 0,0 L 10,40 M 10,0 L 0,40"/>
+  </pattern>
+  <marker id="sh1-arrow" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+    <path d="M 0,0 L 8,4 L 0,8 z" fill="var(--sig-accent)"/>
+  </marker>
+</defs>
+<g transform="translate(0.5,0.5)">
+  <!-- setup / hold boundaries -->
+  <path class="sig-guide" d="M 140,5 L 140,250"/>
+  <path class="sig-guide" d="M 220,5 L 220,250"/>
+
+  <!-- clock -->
+  <text class="sig-label" x="2" y="74">Clock</text>
+  <path class="sig-wire" d="M 60,86 L 180,86 L 180,46 L 300,46"/>
+
+  <!-- hold time -->
+  <text x="190" y="14" text-anchor="middle">Hold time</text>
+  <path class="sig-measure" d="M 182,27 L 218,27" marker-start="url(#sh1-arrow)" marker-end="url(#sh1-arrow)"/>
+
+  <!-- setup time -->
+  <path class="sig-measure" d="M 142,106 L 178,106" marker-start="url(#sh1-arrow)" marker-end="url(#sh1-arrow)"/>
+  <text x="180" y="125" text-anchor="middle">Setup time</text>
+
+  <!-- data -->
+  <text class="sig-label" x="2" y="194">Data</text>
+  <rect x="60" y="165" width="80" height="40" fill="url(#sh1-hatch)"/>
+  <rect x="220" y="165" width="80" height="40" fill="url(#sh1-hatch)"/>
+  <path class="sig-wire" d="M 60,165 L 300,165 M 60,205 L 300,205"/>
+
+  <!-- stable period -->
+  <path class="sig-measure" d="M 142,226 L 218,226" marker-start="url(#sh1-arrow)" marker-end="url(#sh1-arrow)"/>
+  <text x="180" y="243" text-anchor="middle">Stable</text>
+  <text x="180" y="256" text-anchor="middle">period</text>
+</g>
+</svg>
