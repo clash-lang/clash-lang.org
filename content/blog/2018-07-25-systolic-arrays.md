@@ -16,8 +16,6 @@ tags:
   - "Design"
 ---
 
-{{% darkmode-notice %}}
-
 Systolic arrays are networks of locally coupled processing elements, continuously receiving and sending their inputs and outputs from and to their neighbors. They cannot access main memory or global buses, thus allowing them to keep critical paths short. Because of this, they are extremely good at solving problems in the field of image processing, artificial intelligence, and computer vision. This blogpost will take a look at how to build systolic arrays with Clash and subsequently build a matrix multiplier with it. If you're new to Clash or matrix multiplication, [read this blogpost first](/blog/0001-matrix-multiplication/).
 
 *This post was originally written in 2018 for Clash 0.99. It was updated in September 2026 for Clash 1.10, and now comes with a companion repository.*
@@ -42,7 +40,7 @@ stack run clash -- SystolicArrays.Top --vhdl
 
 Let's first have a look at a simple systolic array where each processing element has an input from their left and upper neighbor, and an output to their right and bottom neighbor. It looks like:
 
-<center><img src="LeftTopPE.svg"></img></center>
+{{< inline-svg "LeftTopPE.svg" >}}
 
 Processing elements can do arbitrary things with their inputs and pass arbitrary things as their outputs, but we'll keep it simple for now. The following example consists of processing elements which each simply pass along the data they receive from their left neighbour to their right neighbor. Similarly, they pass their top input to their bottom neighbor. Simulating a grid of three by three for a total of nine processing elements looks like:
 
@@ -98,7 +96,7 @@ Lots of other applications exist, such as matrix inversion, correlation, and QR 
 # Generic systolic array
 A generic systolic array consists of processing elements consuming and producing from and to all their direct neighbors, chained together to create that large interconnected structure. A single processing element therefore looks like:
 
-<center><img src="LinearPE.svg"></img></center>
+{{< inline-svg "LinearPE.svg" >}}
 
 Apart from style choices, its type is fairly straightforward in Clash. We simply define it as a function taking four inputs, and producing four outputs. For debugging purposes, each processing element will also receive its index in the systolic array. One might later use this in combination with `trace`. To ease working with this function later, it is defined in its [uncurried form](https://wiki.haskell.org/Currying).
 
@@ -119,7 +117,7 @@ type ProcessingElement dom m n lr rl tb bt =
 
 In order to create a systolic array these processing elements need to be chained together. Let's first focus on creating a single column of processing elements, which -for a column of three elements- looks like:
 
-<center><img style="min-width:25%" src="SysColumn.svg"></img></center>
+{{< inline-svg "SysColumn.svg" >}}
 
 Any function constructing the array above would need to (internally) construct the colored edges, given the uncolored ones. In code, we'll use the following names for the inputs:
 
@@ -186,7 +184,7 @@ Note that a column has `m + 1` processing elements rather than `m`: `init`, `tai
 
 Before we tie columns together, there is one thing missing. As it stands, data would flow from the sides of the systolic array all through it in a single clock cycle. This doesn't quite correspond to the examples shown at the very beginning of this blogpost, where data moves one processing element per cycle. All outputs need to be delayed a single clock cycle, as such:
 
-<center><img style="min-width:25%" src="LinearPEReg.svg"></img></center>
+{{< inline-svg "LinearPEReg.svg" >}}
 
 By simply using [register](https://hackage.haskell.org/package/clash-prelude-1.10.1/docs/Clash-Signal.html#v:register) we can delay every output by one:
 
@@ -338,9 +336,9 @@ And that's all there is to it. These functions live in `SystolicArrays.Delayed`.
 # Matrix multiplication
 So far we've built a generic systolic array and a delayed one on top of it. We haven't built anything useful yet though, which is what this section is for. We've selected a few amongst the most commonly used. Even with rigid structures such as systolic arrays, many design choices still exist. The implemented algorithms are therefore by no means meant as perfect solutions. This subsection will deal with matrix multiplication.
 
-<center><img style="min-width:40%" src="MM.svg"></img></center>
+{{< inline-svg "MM.svg" >}}
 
-To test and communicate various communication strategies, we'll use spacetime diagrams. On the vertical axis there's space: the processing elements. On the horizontal axis there's time. We'll only consider the case where processing elements can communicate in one dimension: either left-right or top-bottom. If they communicate left-right, the processing elements represent a row in the systolic array, if they communicate top-down, the processing elements represent a column in the systolic array. It actually doesn't really matter, so to ease talking about this problem let's assume the communicate top-bottom. A <span style="background-color:#66CC00; color:white;">green</span> background represents every moment in time a specific element produces useful data:
+To test and communicate various communication strategies, we'll use spacetime diagrams. On the vertical axis there's space: the processing elements. On the horizontal axis there's time. We'll only consider the case where processing elements can communicate in one dimension: either left-right or top-bottom. If they communicate left-right, the processing elements represent a row in the systolic array, if they communicate top-down, the processing elements represent a column in the systolic array. It actually doesn't really matter, so to ease talking about this problem let's assume the communicate top-bottom. A <span class="st-active">green</span> background represents every moment in time a specific element produces useful data:
 
 <table cellspacing="0" border="0">
 	<colgroup width="34"></colgroup>
@@ -366,17 +364,17 @@ To test and communicate various communication strategies, we'll use spacetime di
 	</tr>
 	<tr>
 		<td height="17" align="left"><b>pe1</b></td>
-		<td bgcolor="#66CC00" align="center"><font color="#EEEEEE">r1</font></td>
+		<td class="st-active" align="center">r1</td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
-		<td bgcolor="#66CC00" align="center"><font color="#EEEEEE">r1</font></td>
+		<td class="st-active" align="center">r1</td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
-		<td bgcolor="#66CC00" align="center"><font color="#EEEEEE">r1</font></td>
+		<td class="st-active" align="center">r1</td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
@@ -385,17 +383,17 @@ To test and communicate various communication strategies, we'll use spacetime di
 	<tr>
 		<td height="17" align="left"><b>pe2</b></td>
 		<td align="center"><br></td>
-		<td bgcolor="#66CC00" align="center"><font color="#EEEEEE">r2</font></td>
+		<td class="st-active" align="center">r2</td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
-		<td bgcolor="#66CC00" align="center"><font color="#EEEEEE">r2</font></td>
+		<td class="st-active" align="center">r2</td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
-		<td bgcolor="#66CC00" align="center"><font color="#EEEEEE">r2</font></td>
+		<td class="st-active" align="center">r2</td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
@@ -404,17 +402,17 @@ To test and communicate various communication strategies, we'll use spacetime di
 		<td height="17" align="left"><b>pe3</b></td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
-		<td bgcolor="#66CC00" align="center"><font color="#EEEEEE">r3</font></td>
+		<td class="st-active" align="center">r3</td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
-		<td bgcolor="#66CC00" align="center"><font color="#EEEEEE">r3</font></td>
+		<td class="st-active" align="center">r3</td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
-		<td bgcolor="#66CC00" align="center"><font color="#EEEEEE">r3</font></td>
+		<td class="st-active" align="center">r3</td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
 	</tr>
@@ -423,17 +421,17 @@ To test and communicate various communication strategies, we'll use spacetime di
 		<td align="center"><br></td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
-		<td bgcolor="#66CC00" align="center"><font color="#EEEEEE">r4</font></td>
+		<td class="st-active" align="center">r4</td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
-		<td bgcolor="#66CC00" align="center"><font color="#EEEEEE">r4</font></td>
+		<td class="st-active" align="center">r4</td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
-		<td bgcolor="#66CC00" align="center"><font color="#EEEEEE">r4</font></td>
+		<td class="st-active" align="center">r4</td>
 		<td align="center"><br></td>
 	</tr>
 	<tr>
@@ -442,17 +440,17 @@ To test and communicate various communication strategies, we'll use spacetime di
 		<td align="center"><br></td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
-		<td bgcolor="#66CC00" align="center"><font color="#EEEEEE">r5</font></td>
+		<td class="st-active" align="center">r5</td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
-		<td bgcolor="#66CC00" align="center"><font color="#EEEEEE">r5</font></td>
+		<td class="st-active" align="center">r5</td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
-		<td bgcolor="#66CC00" align="center"><font color="#EEEEEE">r5</font></td>
+		<td class="st-active" align="center">r5</td>
 	</tr>
 </tbody></table>
 
@@ -461,7 +459,7 @@ Empty cells will be used to indicate where some piece of data resides. We'll see
 ## General matrix multiplication
 Matrix multiplication can be implemented by having each processing element multiply both its input signals, accumulating, and pushing its data out periodically as shown in the first part of this blogpost. The period at which processing elements need to push out data depends on `n`, the number of columns in the left matrix and the number of rows in the right. Visually:
 
-<center><img style="min-width:70%" src="Dimensions.svg"></img></center>
+{{< inline-svg "Dimensions.svg" >}}
 
 Assuming that each cell communicates its result downwards and each cell can only push a single element, we need a number of flush rounds if `m` exceeds `n`. After all, the bandwidth of the outer processing element to its environment is a single element per cycle. Thus, more than one result per cycle per column exceeds that bandwidth. If `n` exceeds `m` no flush rounds are needed, but the systolic array produces "garbage" values some of the time as the bandwidth exceeds the result production. 
 
@@ -489,56 +487,56 @@ For now, let's assume `n = m`. Communication downwards effectively binds the sys
 	</tr>
 	<tr>
 		<td height="17" align="left"><b>pe1</b></td>
-		<td bgcolor="#66CC00" align="center"><font color="#EEEEEE">r1</font></td>
-		<td align="center"><font color="#CCCCCC">r1</font></td>
-		<td align="center"><font color="#CCCCCC">r1</font></td>
-		<td align="center"><font color="#CCCCCC">r1</font></td>
+		<td class="st-active" align="center">r1</td>
+		<td class="st-faded" align="center">r1</td>
+		<td class="st-faded" align="center">r1</td>
+		<td class="st-faded" align="center">r1</td>
 		<td align="center">r1</td>
-		<td bgcolor="#66CC00" align="center"><font color="#EEEEEE">r1</font></td>
-		<td align="center"><font color="#CCCCCC">r1</font></td>
-		<td align="center"><font color="#CCCCCC">r1</font></td>
-		<td align="center"><font color="#CCCCCC">r1</font></td>
+		<td class="st-active" align="center">r1</td>
+		<td class="st-faded" align="center">r1</td>
+		<td class="st-faded" align="center">r1</td>
+		<td class="st-faded" align="center">r1</td>
 		<td align="center">r1</td>
-		<td bgcolor="#66CC00" align="center"><font color="#EEEEEE">r1</font></td>
-		<td align="center"><font color="#CCCCCC">r1</font></td>
-		<td align="center"><font color="#CCCCCC">r1</font></td>
-		<td align="center"><font color="#CCCCCC">r1</font></td>
+		<td class="st-active" align="center">r1</td>
+		<td class="st-faded" align="center">r1</td>
+		<td class="st-faded" align="center">r1</td>
+		<td class="st-faded" align="center">r1</td>
 		<td align="center">r1</td>
 	</tr>
 	<tr>
 		<td height="17" align="left"><b>pe2</b></td>
 		<td align="center"><br></td>
-		<td bgcolor="#66CC00" align="center"><font color="#EEEEEE">r2</font></td>
-		<td align="center"><font color="#CCCCCC">r2</font></td>
-		<td align="center"><font color="#CCCCCC">r2</font></td>
+		<td class="st-active" align="center">r2</td>
+		<td class="st-faded" align="center">r2</td>
+		<td class="st-faded" align="center">r2</td>
 		<td align="center">r2</td>
 		<td align="center">r1</td>
-		<td bgcolor="#66CC00" align="center"><font color="#EEEEEE">r2</font></td>
-		<td align="center"><font color="#CCCCCC">r2</font></td>
-		<td align="center"><font color="#CCCCCC">r2</font></td>
+		<td class="st-active" align="center">r2</td>
+		<td class="st-faded" align="center">r2</td>
+		<td class="st-faded" align="center">r2</td>
 		<td align="center">r2</td>
 		<td align="center">r1</td>
-		<td bgcolor="#66CC00" align="center"><font color="#EEEEEE">r2</font></td>
-		<td align="center"><font color="#CCCCCC">r2</font></td>
-		<td align="center"><font color="#CCCCCC">r2</font></td>
+		<td class="st-active" align="center">r2</td>
+		<td class="st-faded" align="center">r2</td>
+		<td class="st-faded" align="center">r2</td>
 		<td align="center">r2</td>
 	</tr>
 	<tr>
 		<td height="17" align="left"><b>pe3</b></td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
-		<td bgcolor="#66CC00" align="center"><font color="#EEEEEE">r3</font></td>
-		<td align="center"><font color="#CCCCCC">r3</font></td>
+		<td class="st-active" align="center">r3</td>
+		<td class="st-faded" align="center">r3</td>
 		<td align="center">r3</td>
 		<td align="center">r2</td>
 		<td align="center">r1</td>
-		<td bgcolor="#66CC00" align="center"><font color="#EEEEEE">r3</font></td>
-		<td align="center"><font color="#CCCCCC">r3</font></td>
+		<td class="st-active" align="center">r3</td>
+		<td class="st-faded" align="center">r3</td>
 		<td align="center">r3</td>
 		<td align="center">r2</td>
 		<td align="center">r1</td>
-		<td bgcolor="#66CC00" align="center"><font color="#EEEEEE">r3</font></td>
-		<td align="center"><font color="#CCCCCC">r3</font></td>
+		<td class="st-active" align="center">r3</td>
+		<td class="st-faded" align="center">r3</td>
 		<td align="center">r3</td>
 	</tr>
 	<tr>
@@ -546,17 +544,17 @@ For now, let's assume `n = m`. Communication downwards effectively binds the sys
 		<td align="center"><br></td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
-		<td bgcolor="#66CC00" align="center"><font color="#EEEEEE">r4</font></td>
+		<td class="st-active" align="center">r4</td>
 		<td align="center">r4</td>
 		<td align="center">r3</td>
 		<td align="center">r2</td>
 		<td align="center">r1</td>
-		<td bgcolor="#66CC00" align="center"><font color="#EEEEEE">r4</font></td>
+		<td class="st-active" align="center">r4</td>
 		<td align="center">r4</td>
 		<td align="center">r3</td>
 		<td align="center">r2</td>
 		<td align="center">r1</td>
-		<td bgcolor="#66CC00" align="center"><font color="#EEEEEE">r4</font></td>
+		<td class="st-active" align="center">r4</td>
 		<td align="center">r4</td>
 	</tr>
 	<tr>
@@ -565,17 +563,17 @@ For now, let's assume `n = m`. Communication downwards effectively binds the sys
 		<td align="center"><br></td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
-		<td bgcolor="#66CC00" align="center"><font color="#EEEEEE">r5</font></td>
+		<td class="st-active" align="center">r5</td>
 		<td align="center">r4</td>
 		<td align="center">r3</td>
 		<td align="center">r2</td>
 		<td align="center">r1</td>
-		<td bgcolor="#66CC00" align="center"><font color="#EEEEEE">r5</font></td>
+		<td class="st-active" align="center">r5</td>
 		<td align="center">r4</td>
 		<td align="center">r3</td>
 		<td align="center">r2</td>
 		<td align="center">r1</td>
-		<td bgcolor="#66CC00" align="center"><font color="#EEEEEE">r5</font></td>
+		<td class="st-active" align="center">r5</td>
 	</tr>
 </tbody></table>
 
@@ -783,17 +781,17 @@ Square matrices turn out to have an interesting property which allows them to be
 	</tr>
 	<tr>
 		<td height="17" align="left"><b>pe1</b></td>
-		<td bgcolor="#66CC00" align="center"><font color="#EEEEEE">r1</font></td>
+		<td class="st-active" align="center">r1</td>
 		<td align="center"><br></td>
 		<td align="center">r2</td>
 		<td align="center"><br></td>
 		<td align="center">r3</td>
-		<td bgcolor="#66CC00" align="center"><font color="#EEEEEE">r1</font></td>
+		<td class="st-active" align="center">r1</td>
 		<td align="center">r4</td>
 		<td align="center">r2</td>
 		<td align="center">r5</td>
 		<td align="center">r3</td>
-		<td bgcolor="#66CC00" align="center"><font color="#EEEEEE">r1</font></td>
+		<td class="st-active" align="center">r1</td>
 		<td align="center">r4</td>
 		<td align="center">r2</td>
 		<td align="center">r5</td>
@@ -802,17 +800,17 @@ Square matrices turn out to have an interesting property which allows them to be
 	<tr>
 		<td height="17" align="left"><b>pe2</b></td>
 		<td align="center"><br></td>
-		<td bgcolor="#66CC00" align="center"><font color="#EEEEEE">r2</font></td>
+		<td class="st-active" align="center">r2</td>
 		<td align="center"><br></td>
 		<td align="center">r3</td>
 		<td align="center"><br></td>
 		<td align="center">r4</td>
-		<td bgcolor="#66CC00" align="center"><font color="#EEEEEE">r2</font></td>
+		<td class="st-active" align="center">r2</td>
 		<td align="center">r5</td>
 		<td align="center">r3</td>
 		<td align="center"><br></td>
 		<td align="center">r4</td>
-		<td bgcolor="#66CC00" align="center"><font color="#EEEEEE">r2</font></td>
+		<td class="st-active" align="center">r2</td>
 		<td align="center">r5</td>
 		<td align="center">r3</td>
 		<td align="center"><br></td>
@@ -821,17 +819,17 @@ Square matrices turn out to have an interesting property which allows them to be
 		<td height="17" align="left"><b>pe3</b></td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
-		<td bgcolor="#66CC00" align="center"><font color="#EEEEEE">r3</font></td>
+		<td class="st-active" align="center">r3</td>
 		<td align="center"><br></td>
 		<td align="center">r4</td>
 		<td align="center"><br></td>
 		<td align="center">r5</td>
-		<td bgcolor="#66CC00" align="center"><font color="#EEEEEE">r3</font></td>
+		<td class="st-active" align="center">r3</td>
 		<td align="center"><br></td>
 		<td align="center">r4</td>
 		<td align="center"><br></td>
 		<td align="center">r5</td>
-		<td bgcolor="#66CC00" align="center"><font color="#EEEEEE">r3</font></td>
+		<td class="st-active" align="center">r3</td>
 		<td align="center"><br></td>
 		<td align="center">r4</td>
 	</tr>
@@ -840,17 +838,17 @@ Square matrices turn out to have an interesting property which allows them to be
 		<td align="center"><br></td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
-		<td bgcolor="#66CC00" align="center"><font color="#EEEEEE">r4</font></td>
+		<td class="st-active" align="center">r4</td>
 		<td align="center"><br></td>
 		<td align="center">r5</td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
-		<td bgcolor="#66CC00" align="center"><font color="#EEEEEE">r4</font></td>
+		<td class="st-active" align="center">r4</td>
 		<td align="center"><br></td>
 		<td align="center">r5</td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
-		<td bgcolor="#66CC00" align="center"><font color="#EEEEEE">r4</font></td>
+		<td class="st-active" align="center">r4</td>
 		<td align="center"><br></td>
 	</tr>
 	<tr>
@@ -859,17 +857,17 @@ Square matrices turn out to have an interesting property which allows them to be
 		<td align="center"><br></td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
-		<td bgcolor="#66CC00" align="center"><font color="#EEEEEE">r5</font></td>
+		<td class="st-active" align="center">r5</td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
-		<td bgcolor="#66CC00" align="center"><font color="#EEEEEE">r5</font></td>
+		<td class="st-active" align="center">r5</td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
 		<td align="center"><br></td>
-		<td bgcolor="#66CC00" align="center"><font color="#EEEEEE">r5</font></td>
+		<td class="st-active" align="center">r5</td>
 	</tr>
 </tbody></table>
 
@@ -982,7 +980,7 @@ One of the advantages of using a systolic array like this one is that integratin
 # Triangular systolic arrays
 Systolic arrays are not by definition of rectangular shape. For example, [Gentleman and Kung](http://www.csd.uwo.ca/~moreno/CS433-CS9624/Resources/Matrix_Triangularization_by_systetolic_arrays.pdf) describe a systolic array with a triangular shape for many different algorithms. Due to a varying number of processing elements on each "row" of the systolic array, we cannot use the same tactic for building systolic arrays as before. Let's first look at a visualized systolic array as described by Gentleman and Kung:
 
-<center><img src="halfSysArray.svg"></img></center>
+{{< inline-svg "halfSysArray.svg" >}}
 
 Let's define the types of the different wires as follows:
 
@@ -1172,6 +1170,25 @@ We've built two types of systolic arrays in Clash, both solving real-world probl
 <script src="script.js"></script>
 
 <style>
+/* Spacetime diagrams */
+.st-active {
+  background-color: #66CC00;
+  color: #EEEEEE;
+}
+
+.st-faded {
+  color: #CCCCCC;
+}
+
+[data-theme="dark"] .st-active {
+  background-color: #3f8a00;
+}
+
+[data-theme="dark"] .st-faded {
+  color: #555b66;
+}
+
+/* Interactive systolic arrays */
 .sysarray{
   min-height:568px;
 }
@@ -1195,6 +1212,14 @@ We've built two types of systolic arrays in Clash, both solving real-world probl
   background-color: #DAE8FC;
 }
 
+[data-theme="dark"] .sysarray .a{
+  background-color: #3d3520;
+}
+
+[data-theme="dark"] .sysarray .b{
+  background-color: #1e2c3f;
+}
+
 .systolic table{ 
   height:auto;
   width:auto;
@@ -1202,7 +1227,7 @@ We've built two types of systolic arrays in Clash, both solving real-world probl
 }
 
 .sysarray td.pe{
-  border: 1px solid black;
+  border: 1px solid currentColor;
 }
 
 #mm0 table{
