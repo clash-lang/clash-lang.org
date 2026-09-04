@@ -1,0 +1,47 @@
+/* Callout banners, see layouts/shortcodes/notice.html */
+.notice {
+    padding: 12px 16px;
+    margin: 0 0 20px;
+    margin-bottom: 1.25rem;
+    background: #f6f8fa;
+    border-left: 4px solid #7BCC70;
+    border-radius: 4px;
+}
+
+.notice p:last-child {
+    margin-bottom: 0;
+}
+
+.notice__title {
+    margin: 0 0 6px;
+    font-weight: 700;
+}
+
+.notice--warning {
+    background: #fff8e6;
+    border-left-color: #e0a800;
+}
+
+.notice--warning .notice__title::before {
+    content: "⚠ ";
+}
+
+.notice--tip {
+    border-left-color: #2a78d6;
+    background: #eef4fc;
+}
+
+[data-theme="dark"] .notice {
+    background: #21262d;
+    color: #ccc;
+}
+
+[data-theme="dark"] .notice--warning {
+    background: #2d2712;
+    border-left-color: #d4a72c;
+}
+
+[data-theme="dark"] .notice--tip {
+    background: #14212f;
+    border-left-color: #3987e5;
+}

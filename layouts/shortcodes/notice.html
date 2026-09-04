@@ -1,0 +1,11 @@
+{{- /* A callout banner. Usage:
+       {{% notice warning "Optional title" %}}
+       Markdown body...
+       {{% /notice %}}
+     The first argument is the type: note (default), warning or tip. */}}
+{{- $type := or (.Get 0) "note" -}}
+{{- $title := .Get 1 -}}
+<div class="notice notice--{{ $type }}">
+  {{- with $title }}<p class="notice__title">{{ . }}</p>{{ end }}
+  {{ .Inner | .Page.RenderString (dict "display" "block") }}
+</div>
