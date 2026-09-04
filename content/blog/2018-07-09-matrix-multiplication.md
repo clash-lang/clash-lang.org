@@ -557,6 +557,10 @@ dMultiplyAdd ab c = delayed (repeat 0) result
 
 Unfortunately, we just broke our definition of `dot`. The delayed version of `multiplyAdd`, `dMultiplyAdd`, is of the form `a -> b -> c` due to differing delays between the two arguments and the result. Still, in this case we could use the result of type `c` as a second argument to another application of `dMultiplyAdd`. In fact, if we would manually unroll the definition of `foldr` in `dot`, we would end up with a perfectly fine Haskell program! Of course, we cannot, since we do not know the number of times we would have to unroll it when writing the function. It could be three times, it could be a thousand, depending on the context.
 
+{{% notice warning "Advanced features" %}}
+What follows is quite advanced (and uncomfortable) use of Clash's type system. In a typical engineering context, you would probably not go as far as this, but instead use escape hatches such as `Delayed.unsafeFromSignal` to tell the type system "Trust Me".
+{{% /notice %}}
+
 Luckily, Clash offers a way out: [dependently typed folds](https://hackage.haskell.org/package/clash-prelude-1.10.1/docs/Clash-Sized-Vector.html#v:dfold). Dependently typed folds can help whenever one wants to fold a function `g :: a -> b -> c`, where `g a c` would type-check. `dfold` asks its users two things:
 
 1. To provide a [type-level function](https://hackage.haskell.org/package/singletons-3.0.4/docs/Data-Singletons.html#t:TyFun) which, given an index *l*, provides the type for a circuit folded *l* times.
