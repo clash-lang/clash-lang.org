@@ -5,6 +5,58 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   <meta name="description" content="An interactive matrix multiplication calculator for educational purposes"/>
+  <style>
+    /* Colors referenced by main.js. The dark variants match clash-lang.org's
+       dark mode; the page background itself stays transparent so the
+       embedding page shows through. */
+    :root {
+      color-scheme: light;
+      --mm-white: #FFFFFF;
+      --mm-gray-light: #EEEEEE;
+      --mm-gray: #C5C5C5;
+      --mm-gray-dark: #686868;
+      --mm-black: #323232;
+      --mm-bg-rgb: 255, 255, 255;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        color-scheme: dark;
+        --mm-gray-light: #2c313a;
+        --mm-gray: #555b66;
+        --mm-gray-dark: #a0a4ab;
+        --mm-black: #e0e0e0;
+        --mm-bg-rgb: 22, 27, 34;
+      }
+    }
+    :root[data-theme="dark"] {
+      color-scheme: dark;
+      --mm-gray-light: #2c313a;
+      --mm-gray: #555b66;
+      --mm-gray-dark: #a0a4ab;
+      --mm-black: #e0e0e0;
+      --mm-bg-rgb: 22, 27, 34;
+    }
+  </style>
+  <script>
+    // Follow the theme of the embedding page (same origin), including toggles.
+    (function () {
+      try {
+        var parentRoot = window.parent.document.documentElement;
+        var sync = function () {
+          var theme = parentRoot.getAttribute('data-theme');
+          if (theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+          } else {
+            document.documentElement.removeAttribute('data-theme');
+          }
+        };
+        sync();
+        new MutationObserver(sync).observe(parentRoot, { attributes: true, attributeFilter: ['data-theme'] });
+      } catch (e) {
+        // Not embedded, or embedded cross-origin: fall back to prefers-color-scheme.
+      }
+    })();
+  </script>
 </head>
 <body style="margin-top: -90px;">
   <div id="main-container"></div>

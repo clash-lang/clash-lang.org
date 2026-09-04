@@ -566,7 +566,7 @@ var Styles;
         position: 'relative',
         paddingTop: '86px',
         paddingBottom: '40px',
-        backgroundImage: "linear-gradient(to bottom,\n      rgba(255,255,255,0) 0,\n      rgba(255,255,255,0.8) 92px,\n      rgba(255,255,255,0.8) 126px,\n      rgba(255,255,255,0) 100%)\n    ",
+        backgroundImage: "linear-gradient(to bottom,\n      rgba(var(--mm-bg-rgb),0) 0,\n      rgba(var(--mm-bg-rgb),0.8) 92px,\n      rgba(var(--mm-bg-rgb),0.8) 126px,\n      rgba(var(--mm-bg-rgb),0) 100%)\n    ",
         zIndex: 2,
         $nest: {
             '& > * + *': {
@@ -1493,12 +1493,13 @@ exports.pallete = {
     blueWeak: 'rgb(93, 166, 252)',
     orange: 'rgb(255, 162, 48)',
     orangeWeak: 'rgb(253, 180, 97)',
-    // grayscale
-    white: '#FFFFFF',
-    grayLight: '#EEEEEE',
-    gray: '#C5C5C5',
-    grayDark: '#686868',
-    black: '#323232',
+    // grayscale; defined as CSS custom properties in index.html so the page
+    // can follow the dark mode of the embedding site (clash-lang.org).
+    white: 'var(--mm-white)',
+    grayLight: 'var(--mm-gray-light)',
+    gray: 'var(--mm-gray)',
+    grayDark: 'var(--mm-gray-dark)',
+    black: 'var(--mm-black)',
 };
 
 },{"typestyle":141}],35:[function(require,module,exports){
