@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="sig-figure" viewBox="0 0 162 81" width="162" height="81" role="img" aria-label="A basic flip-flop diagram with a clock input, a data input (D), and a data output (Q)" style="display: block; margin: 1em auto; width: 162px; max-width: 100%; height: auto;">
+<style>
+.sig-figure {
+  --sig-ink: #000000;
+  --sig-accent: #6c8ebf;
+}
+@media (prefers-color-scheme: dark) {
+  .sig-figure:not([data-theme="light"] *) {
+    --sig-ink: #e0e0e0;
+    --sig-accent: #8fb3e6;
+  }
+}
+[data-theme="dark"] .sig-figure {
+  --sig-ink: #e0e0e0;
+  --sig-accent: #8fb3e6;
+}
+.sig-figure text {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  fill: var(--sig-ink);
+}
+.sig-figure .sig-label {
+  font-weight: bold;
+}
+.sig-figure .sig-wire {
+  fill: none;
+  stroke: var(--sig-ink);
+  stroke-width: 1;
+  stroke-linejoin: miter;
+}
+.sig-figure .sig-guide {
+  fill: none;
+  stroke: var(--sig-accent);
+  stroke-width: 1.5;
+  stroke-dasharray: 2 3;
+}
+.sig-figure .sig-measure {
+  fill: none;
+  stroke: var(--sig-accent);
+  stroke-width: 1;
+}
+.sig-figure .sig-hatch-line {
+  fill: none;
+  stroke: var(--sig-ink);
+  stroke-width: 1;
+}
+</style>
+<g transform="translate(0.5,0.5)">
+  <rect class="sig-wire" x="50" y="0" width="60" height="80"/>
+  <path class="sig-wire" d="M 0,24 L 50,24"/>
+  <path class="sig-wire" d="M 110,24 L 161,24"/>
+  <path class="sig-wire" d="M 0,57 L 50,57"/>
+  <path class="sig-wire" d="M 50,50 L 60,57 L 50,64"/>
+  <text x="56" y="28">D</text>
+  <text x="104" y="28" text-anchor="end">Q</text>
+</g>
+</svg>

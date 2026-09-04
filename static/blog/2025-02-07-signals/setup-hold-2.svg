@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="sig-figure" viewBox="0 0 542 123" width="542" height="123" role="img" aria-label="A clock signal with two rising edges and a data signal that is unstable (hatched) except around each edge. The stable period around the first edge is labeled A, the one around the second edge is labeled B." style="display: block; margin: 1em auto; width: 542px; max-width: 100%; height: auto;">
+<style>
+.sig-figure {
+  --sig-ink: #000000;
+  --sig-accent: #6c8ebf;
+}
+@media (prefers-color-scheme: dark) {
+  .sig-figure:not([data-theme="light"] *) {
+    --sig-ink: #e0e0e0;
+    --sig-accent: #8fb3e6;
+  }
+}
+[data-theme="dark"] .sig-figure {
+  --sig-ink: #e0e0e0;
+  --sig-accent: #8fb3e6;
+}
+.sig-figure text {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  fill: var(--sig-ink);
+}
+.sig-figure .sig-label {
+  font-weight: bold;
+}
+.sig-figure .sig-wire {
+  fill: none;
+  stroke: var(--sig-ink);
+  stroke-width: 1;
+  stroke-linejoin: miter;
+}
+.sig-figure .sig-guide {
+  fill: none;
+  stroke: var(--sig-accent);
+  stroke-width: 1.5;
+  stroke-dasharray: 2 3;
+}
+.sig-figure .sig-measure {
+  fill: none;
+  stroke: var(--sig-accent);
+  stroke-width: 1;
+}
+.sig-figure .sig-hatch-line {
+  fill: none;
+  stroke: var(--sig-ink);
+  stroke-width: 1;
+}
+</style>
+<defs>
+  <pattern id="sh2-hatch" patternUnits="userSpaceOnUse" width="10" height="40">
+    <path class="sig-hatch-line" d="M 0,0 L 10,40 M 10,0 L 0,40"/>
+  </pattern>
+</defs>
+<g transform="translate(0.5,0.5)">
+  <!-- clock -->
+  <text class="sig-label" x="2" y="27">Clock</text>
+  <path class="sig-wire" d="M 60,42 L 180,42 L 180,3 L 300,3 L 300,42 L 420,42 L 420,3 L 540,3"/>
+
+  <!-- data -->
+  <text class="sig-label" x="2" y="106">Data</text>
+  <rect x="60" y="81" width="80" height="40" fill="url(#sh2-hatch)"/>
+  <rect x="220" y="81" width="160" height="40" fill="url(#sh2-hatch)"/>
+  <rect x="460" y="81" width="80" height="40" fill="url(#sh2-hatch)"/>
+  <path class="sig-wire" d="M 60,81 L 540,81 M 60,121 L 540,121"/>
+  <text x="180" y="105" text-anchor="middle">A</text>
+  <text x="420" y="105" text-anchor="middle">B</text>
+</g>
+</svg>
