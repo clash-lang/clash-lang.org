@@ -16,8 +16,6 @@ tags:
   - "Design"
 ---
 
-{{% darkmode-notice %}}
-
 <script src="script.js" defer></script>
 
 *Matrix multiplications happen to be useful in a very broad range of computational applications, such as computer graphics, artificial intelligence, and climate change research. At QbayLogic we help implement these (and more) applications on FPGAs using Clash. In this blogpost we will explore the intricacies of implementing matrix multiplications on FPGAs. We will explore the apparent differences between hardware and software development, how to use Clash to convert a “naive” algorithm to one suitable for an FPGA, and the use of Clash dependent types.*
@@ -501,11 +499,11 @@ The test suite in the repository does this for a number of submatrix configurati
 ### Pipelining `dot`
 Any circuit's performance is determined by its critical path: the path between two registers incurring the maximum delay in the whole circuit. In the circuit developed so far we're still using the matrix multiplication from the very first part of this blogpost. This chains multiple multiply-add operations together, clearly inducing a very long path:
 
-<img style="margin-left:30%; margin-right:30%;" width="40%" src="images/01-dot.svg" />
+{{< inline-svg "images/01-dot.svg" >}}
 
 Simply adding a register after each `f` would greatly reduce the length of the critical path. This however changes the behavior of the circuit significantly, as the output of the first `f` would only be present at the input of the second `f` at timestep *t+1*, while the other inputs of the second `f` still arrive at *t+0*. Instead, we need to add registers to the inputs of every `f`, progressively more further down the pipeline, as such:
 
-<img style="margin-left:25%; margin-right:25%;" width="50%" src="images/02-dot.svg" />
+{{< inline-svg "images/02-dot.svg" >}}
 
 This new dot-operator would functionally behave the same way as its non-pipelined counterpart, bar a delay between the input and output. Clash allows us to model this kind of behavior with [delayed signals](https://hackage.haskell.org/package/clash-prelude-1.10.1/docs/Clash-Signal-Delayed.html#t:DSignal). Let's first consider the definition of a non-delayed multiply-add as displayed in the first image:
 
@@ -651,7 +649,7 @@ To summarize, we built a pipelined version of `dot` with the help of delayed sig
 ### Putting it together again
 We can't use `dotf` in our definition of `mmmult2dmealy` anymore, as the former is described at a signal level, while the latter is described at a value level. A strategy to handle this is to make multiple mealy machines, chained together in a combining function. In our case, we would designate a component with producing the right input for our `dotf` function, and another component processing the results of that pipeline:
 
-<img style="margin-left:25%; margin-right:25%;" width="50%" src="images/03-dot.svg" />
+{{< inline-svg "images/03-dot.svg" >}}
 
 Our new function `mmmult2dreader` is an almost exact copy of our previously defined mealy machine. Instead of doing matrix multiplications though, it produces rows and columns fed to `dotf`. Its counter gained two indices to walk over the rows and columns *within* a submatrix:
 
