@@ -617,7 +617,7 @@ Note that the only difference between `systolicArray2Dud` and `systolicArray2Dd`
 
 ```haskell
 -- | Synchronous instruction: passed to the processing elements undelayed
-data SyncInstrPEDown
+data SyncInstrPeDown
   = -- | Take data from upper neighbor, pass to lower neighbor
     Pass
   | -- | Discard data from upper neighbor, pass own storage to lower neighbor
@@ -625,7 +625,7 @@ data SyncInstrPEDown
   deriving (Generic, Show, Eq, NFDataX)
 
 -- | Asynchronous instruction: travels along with the data
-data AsyncInstrPEDown
+data AsyncInstrPeDown
   = -- | Accumulate products of incoming signals
     Accum
   | -- | Move current result to storage
@@ -642,7 +642,7 @@ pelemDown ::
     dom
     m
     n
-    (SyncInstrPEDown, (a, AsyncInstrPEDown))
+    (SyncInstrPeDown, (a, AsyncInstrPeDown))
     ((), ())
     ((), (a, a))
     ((), ())
@@ -875,7 +875,7 @@ Compared to the previous communication strategy, no additional buffers are neede
 
 ```haskell
 -- | Instruction for 'pelemUp'
-data InstrPEUp
+data InstrPeUp
   = -- | Clear state, push old state plus product of incoming to upper neighbor
     Clear
   | -- | Move data from neighbor below to upper neighbor
@@ -888,7 +888,7 @@ The implementation of the processing elements now looks like:
 ```haskell
 pelemUp ::
   (HiddenClockResetEnable dom, Num a, NFDataX a) =>
-  ProcessingElement dom m n (InstrPEUp, a) () a a
+  ProcessingElement dom m n (InstrPeUp, a) () a a
 pelemUp (_mn, lrs, rls, tbs, bts) = (lrs, rls, tbs, bts1)
  where
   bts1 = mealy pelem1 0 (bundle (lrs, tbs, bts))
@@ -904,7 +904,7 @@ sysInput ::
   Index n ->
   Vec m a ->
   Vec p a ->
-  (Vec m (InstrPEUp, a), Vec p a)
+  (Vec m (InstrPeUp, a), Vec p a)
 sysInput c col row
   | c == maxBound = (zip (repeat Clear) col, row)
   | otherwise = (zip (repeat Data) col, row)
