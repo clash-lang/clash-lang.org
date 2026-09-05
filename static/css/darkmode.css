@@ -492,3 +492,62 @@
 [data-theme="dark"] abbr[title] {
     border-bottom-color: #888;
 }
+
+/* ---------------------------------------------------------------------------
+   draw.io / diagrams.net SVG exports
+   ---------------------------------------------------------------------------
+   draw.io themes its exports itself, using the CSS light-dark() function keyed
+   on `color-scheme: light dark`. That follows the *operating system* preference,
+   so it ignores our data-theme toggle: pick Dark on a light OS and you get a
+   white diagram on a dark page.
+
+   Rather than steer color-scheme (unreliable, and does nothing on browsers
+   without light-dark() support) we override the adaptive colours directly.
+   Selecting on `[style*="… light-dark"]` targets exactly the values draw.io
+   marked as adaptive, so explicitly coloured shapes keep their colours. The
+   attribute match works whether or not the browser understands light-dark().
+
+   !important throughout: draw.io writes all of this into inline style
+   attributes, which normal author rules cannot beat.
+
+   No editing of the export is needed -- every "editable SVG" export carries the
+   embedded mxfile XML and a ge-svg-* id. `.drawio-figure` is a manual opt-in
+   for exports that have neither.
+   --------------------------------------------------------------------------- */
+
+svg[content^="<mxfile"],
+svg[id^="ge-svg-"],
+.drawio-figure {
+    --drawio-ink: #0b0b0b;
+    /* draw.io's own variable, used for shape fills, the full-bleed backdrop
+       rect and the svg element background. Transparent lets the page show
+       through, so the diagram sits on the real surface colour in both themes. */
+    --ge-adaptive-bg: transparent !important;
+    background: none !important;
+}
+
+[data-theme="dark"] svg[content^="<mxfile"],
+[data-theme="dark"] svg[id^="ge-svg-"],
+[data-theme="dark"] .drawio-figure {
+    --drawio-ink: #e0e0e0;
+}
+
+/* Shape outlines and connectors */
+:is(svg[content^="<mxfile"], svg[id^="ge-svg-"], .drawio-figure) [style*="stroke: light-dark"] {
+    stroke: var(--drawio-ink) !important;
+}
+
+/* Arrowheads and other solid fills (plain connectors carry fill="none") */
+:is(svg[content^="<mxfile"], svg[id^="ge-svg-"], .drawio-figure) [style*="fill: light-dark"] {
+    fill: var(--drawio-ink) !important;
+}
+
+/* Labels. html=1 shapes render their text into a foreignObject div; shapes
+   exported as plain SVG use <text>, which takes fill rather than color. */
+:is(svg[content^="<mxfile"], svg[id^="ge-svg-"], .drawio-figure) [style*="color: light-dark"] {
+    color: var(--drawio-ink) !important;
+}
+
+:is(svg[content^="<mxfile"], svg[id^="ge-svg-"], .drawio-figure) text[style*="light-dark"] {
+    fill: var(--drawio-ink) !important;
+}
