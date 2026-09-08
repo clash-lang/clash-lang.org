@@ -1,10 +1,26 @@
 {{- /* Inline an SVG that lives in the static directory matching this page's
        URL (static/blog/<date>-<slug>/), so its CSS participates in the page
        cascade and can respond to the site's data-theme dark mode toggle.
-       Usage: inline-svg "figure.svg" */}}
+
+       Usage: inline-svg "figure.svg"
+              inline-svg "figure.svg" "A caption, with **markdown** support."
+
+       A caption is rendered LaTeX style: centered under the figure and
+       automatically prefixed with "Figure N:" (numbered per page, captioned
+       figures only; see static/css/inline-svg.css).
+
+       Files named *.drawio.svg get automatic dark mode support and
+       responsive sizing (see static/css/inline-svg.css). For this to work
+       they must be exported from draw.io with adaptive colors: check
+       "Appearance: Automatic" in the File > Export as > SVG dialog. Such
+       exports pick their colors with the CSS light-dark() function, which
+       inline-svg.css pins to the site theme. */}}
 {{- $name := .Get 0 -}}
 {{- $file := printf "static%s%s" .Page.RelPermalink $name -}}
 {{- $svg := readFile $file -}}
+{{- /* Drop the XML prolog, DOCTYPE, and comments preceding the root element;
+       they are not valid when inlined into HTML. */ -}}
+{{- $svg = replaceRE `(?s)^.*?<svg` "<svg" $svg -}}
 {{- if hasSuffix $name ".drawio.svg" -}}
 {{- /* draw.io renders every text label as a <switch> holding an HTML
        <foreignObject> followed by a base64 PNG <image> fallback for
@@ -19,4 +35,11 @@
        file on disk keeps it; the inlined copy does not need it. */ -}}
 {{- $svg = replaceRE `(<svg[^>]*?) content="[^"]*"` "$1" $svg -}}
 {{- end -}}
-{{- $svg | safeHTML -}}
+{{- /* NB: the class is not called "inline-svg", because the theme already
+       uses that name for its menu icons. */ -}}
+<figure class="svg-figure{{ if hasSuffix $name ".drawio.svg" }} svg-figure--drawio{{ end }}">
+	{{- $svg | safeHTML -}}
+	{{- with .Get 1 }}
+	<figcaption>{{ . | $.Page.RenderString }}</figcaption>
+	{{- end }}
+</figure>

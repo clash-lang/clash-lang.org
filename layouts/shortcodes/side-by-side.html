@@ -1,0 +1,35 @@
+{{- /*
+Renders two blocks of markdown side by side, each with a small title bar.
+Typically used to compare a Clash snippet to its VHDL equivalent. Separate
+the two blocks with a line containing only `<--->`:
+
+    {{< side-by-side >}}
+    ```haskell
+    -- left block (Clash)
+    ```
+    <--->
+    ```vhdl
+    -- right block (VHDL)
+    ```
+    {{< /side-by-side >}}
+
+Arguments (all optional):
+  left  - title of the left column (default: "Clash")
+  right - title of the right column (default: "VHDL")
+*/}}
+{{- $left := or (.Get "left") "Clash" }}
+{{- $right := or (.Get "right") "VHDL" }}
+{{- $parts := split .Inner "<--->" }}
+{{- if ne (len $parts) 2 }}
+{{- errorf "side-by-side shortcode in %s expects exactly one `<--->` separator, got %d part(s)" .Page.File.Path (len $parts) }}
+{{- end }}
+<div class="side-by-side">
+	<div class="side-by-side__col">
+		<div class="side-by-side__title">{{ $left }}</div>
+		{{ index $parts 0 | .Page.RenderString (dict "display" "block") }}
+	</div>
+	<div class="side-by-side__col">
+		<div class="side-by-side__title">{{ $right }}</div>
+		{{ index $parts 1 | .Page.RenderString (dict "display" "block") }}
+	</div>
+</div>

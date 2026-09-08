@@ -1,0 +1,58 @@
+/* Styles for the `inline-svg` shortcode. Only files named *.drawio.svg get
+   the drawio treatment below; other SVGs are inlined untouched. */
+
+/* Cancel the browser's default figure margins; the SVGs bring their own. */
+.svg-figure {
+    margin: 0;
+}
+
+/* LaTeX-style captions: centered under the figure, prefixed with an
+   automatically numbered "Figure N:". Only captioned figures are counted. */
+.post__content {
+    counter-reset: svg-figure;
+}
+
+.svg-figure > figcaption {
+    counter-increment: svg-figure;
+    max-width: 85%;
+    margin: 0 auto 1.25rem;
+    text-align: center;
+    font-size: 0.875rem;
+    color: #555;
+}
+
+.svg-figure > figcaption::before {
+    content: "Figure " counter(svg-figure) ": ";
+    font-weight: 700;
+}
+
+[data-theme="dark"] .svg-figure > figcaption {
+    color: #aaa;
+}
+
+.svg-figure--drawio svg {
+    display: block;
+    margin: 1em auto;
+    max-width: 100%;
+    height: auto;
+}
+
+/* draw.io SVGs exported with adaptive colors ("Appearance: Automatic") carry
+   both a light and a dark palette and pick one with the CSS light-dark()
+   function. That function follows the `color-scheme` property, which the
+   export sets to `light dark` (= follow the OS preference). Pin it to the
+   site's theme toggle instead. `!important` is needed to override the inline
+   style on the exported <svg> element. */
+.svg-figure--drawio svg {
+    color-scheme: light !important;
+}
+
+[data-theme="dark"] .svg-figure--drawio svg {
+    color-scheme: dark !important;
+}
+
+/* In dark mode, draw.io renders "white" fills as var(--ge-dark-color);
+   match the site's dark background. */
+.svg-figure--drawio {
+    --ge-dark-color: #161b22;
+}
