@@ -2,5 +2,21 @@
        URL (static/blog/<date>-<slug>/), so its CSS participates in the page
        cascade and can respond to the site's data-theme dark mode toggle.
        Usage: inline-svg "figure.svg" */}}
-{{- $file := printf "static%s%s" .Page.RelPermalink (.Get 0) -}}
-{{- readFile $file | safeHTML -}}
+{{- $name := .Get 0 -}}
+{{- $file := printf "static%s%s" .Page.RelPermalink $name -}}
+{{- $svg := readFile $file -}}
+{{- if hasSuffix $name ".drawio.svg" -}}
+{{- /* draw.io renders every text label as a <switch> holding an HTML
+       <foreignObject> followed by a base64 PNG <image> fallback for
+       renderers without foreignObject support. Every browser takes the
+       foreignObject branch when the SVG is inlined in HTML, so the PNGs
+       (typically over half of the file) are dead weight: drop them. Only
+       the trailing fallback inside a <switch> is removed, so images
+       deliberately embedded in a diagram are kept. */ -}}
+{{- $svg = replaceRE `<image [^>]*href="data:image/[^"]*"[^>]*/>\s*</switch>` "</switch>" $svg -}}
+{{- /* The root element's `content` attribute holds the diagram source
+       (an escaped mxfile) so draw.io can re-open the exported file. The
+       file on disk keeps it; the inlined copy does not need it. */ -}}
+{{- $svg = replaceRE `(<svg[^>]*?) content="[^"]*"` "$1" $svg -}}
+{{- end -}}
+{{- $svg | safeHTML -}}
