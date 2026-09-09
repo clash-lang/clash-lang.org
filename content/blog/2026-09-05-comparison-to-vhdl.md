@@ -110,48 +110,58 @@ data Maybe a = Nothing | Just a
 A value of type `Maybe (Unsigned 8)` encodes the absence of a value (`Nothing`) or the presence of one (`Just 4`). Because this is known to the compiler, you cannot access the data inside the `Just` without first having matched on it. The VHDL idiom is a `valid` bit next to a `data` field, where `data` is don't-care whenever `valid` is low -- and nothing stops you from reading `data` anyway. Clash completely eliminates this class of bugs: there simply is no data to read unless the "valid" bit is set.
 
 ### Type arithmetic
-Both languages let you write components that are generic in their widths. VHDL uses generics, Clash uses type variables. Take an adder that keeps its carry:
+Both languages let you write components that are generic in their widths. VHDL uses generics, Clash uses type variables. Take a multiply-accumulate whose accumulator width is left to the user:
 
 {{< side-by-side >}}
 ```haskell
-add ::
-  KnownNat n =>
-  Unsigned n ->
-  Unsigned n ->
-  Unsigned (n + 1)
-add a b = extend a + extend b
+mac ::
+  ( HiddenClockResetEnable dom
+  , KnownNat n, KnownNat m ) =>
+  Signal dom (Unsigned n) ->
+  Signal dom (Unsigned n) ->
+  Signal dom (Unsigned (m + 2 * n))
+mac a b = acc
+ where
+  acc = register 0 (acc + fmap extend (liftA2 mul a b))
 ```
 <--->
 ```vhdl
 library ieee;
+use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-entity add is
-  generic (n : natural);
+entity mac is
+  generic (n, acc_width : natural);
   port (
-    a, b   : in  unsigned(n - 1 downto 0);
-    result : out unsigned(n downto 0)
+    clk  : in  std_logic;
+    a, b : in  unsigned(n - 1 downto 0);
+    acc  : out unsigned(acc_width - 1 downto 0) := (others => '0')
   );
 end entity;
 
-architecture rtl of add is
+architecture rtl of mac is
 begin
-  result <= resize(a, n + 1) + resize(b, n + 1);
+  process (clk) is
+  begin
+    if rising_edge(clk) then
+      acc <= acc + resize(a * b, acc_width);
+    end if;
+  end process;
 end architecture;
 ```
 {{< /side-by-side >}}
 
-Both say "the result is one bit wider than the inputs". The difference is when that claim is checked. In Clash the widths are types and the relation between them is part of the signature, so the body is checked against it when `add` is compiled, whether or not anyone ever instantiates it. In VHDL the widths are expressions over generics that only become concrete during elaboration, and so do the mismatches.
+Instantiate the VHDL with `n => 8` and `acc_width => 12` -- forgetting that a product is twice as wide as its operands -- and every product silently loses its top four bits. VHDL's `resize` both extends and truncates, and truncating is silent: analysis, elaboration, and simulation all go through, and the numbers are just wrong. In Clash the widths are types and their relation is part of the signature, so it is checked when `mac` is compiled rather than when it is elaborated. Here the accumulator width is stated relative to the inputs: `mul` is the widening multiplication (its result is `Unsigned (n + n)`), `m` is whatever headroom you want on top of that, and `extend` can only make things wider. The same mistake is caught where it is made:
 
-Because sizes are types, the compiler can compute with them. Most of `Vec`'s API is written this way (some constraints elided):
-
-```haskell
-(++)     :: Vec n a -> Vec m a -> Vec (n + m) a
-concat   :: Vec n (Vec m a) -> Vec (n * m) a
-splitAtI :: Vec (m + n) a -> (Vec m a, Vec n a)
+```
+>>> mac a b :: Signal dom (Unsigned 12)
+error: [GHC-83865]
+    • Couldn't match type ‘m0 + 16’ with ‘12’
+      Expected: Signal dom (Unsigned 12)
+        Actual: Signal dom (Unsigned (m0 + (2 * 8)))
 ```
 
-These relations compose. Wire a handful of such components together and the compiler works out whether the widths line up, without you writing a single length expression yourself.
+Because sizes are types, the compiler can compute with them: `m + 2 * n` above is such a computation, and most of `Vec`'s API is written this way. Wire a handful of components together and the compiler works out whether the widths line up, without you writing a single length expression yourself.
 
 Where this really pays off is that requirements propagate through your own abstractions. `fold` combines the elements of a vector using a binary function and needs at least one element to work with. Its type says so:
 
